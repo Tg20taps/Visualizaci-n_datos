@@ -1,4 +1,12 @@
+# Análisis y limpieza
 pandas>=2.0
 numpy>=1.24
+
+# Gráficos
 matplotlib>=3.7
+
+# Notebooks
 jupyter>=1.0
+
+# Generación del informe ejecutivo en PDF (src/informe/generar.py)
+weasyprint>=60

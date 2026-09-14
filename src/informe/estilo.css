@@ -1,0 +1,151 @@
+/* Hoja de estilo del informe ejecutivo.
+   Los colores son los mismos de src/graficos.py: el informe y los gráficos
+   comparten paleta para que una categoría conserve su color en todo el proyecto. */
+
+@page {
+  size: A4;
+  margin: 22mm 20mm 20mm 20mm;
+  @bottom-center {
+    content: counter(page) " / " counter(pages);
+    font-family: "DejaVu Sans", sans-serif;
+    font-size: 8pt;
+    color: #898781;
+  }
+  @bottom-right {
+    content: "StreamView Analytics · Informe ejecutivo";
+    font-family: "DejaVu Sans", sans-serif;
+    font-size: 7.5pt;
+    color: #c3c2b7;
+  }
+}
+@page :first { margin: 0; @bottom-center { content: none } @bottom-right { content: none } }
+
+:root {
+  --azul: #2a78d6; --naranja: #eb6834; --verde: #0ca30c; --rojo: #d03b3b;
+  --tinta: #0b0b0b; --tinta2: #52514e; --tenue: #898781;
+  --grilla: #e1e0d9; --fondo: #fcfcfb;
+}
+
+body {
+  font-family: "DejaVu Sans", sans-serif;
+  font-size: 9.6pt; line-height: 1.55; color: var(--tinta2);
+  hyphens: auto;
+}
+
+/* ── Portada ─────────────────────────────────────────────────────────────── */
+.portada {
+  page-break-after: always;
+  height: 297mm; padding: 42mm 24mm 20mm 24mm;
+  background: var(--fondo);
+  box-sizing: border-box;
+}
+.portada .marca {
+  font-size: 8.5pt; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--azul); font-weight: bold; margin-bottom: 6mm;
+}
+.portada h1 {
+  font-size: 25pt; line-height: 1.22; color: var(--tinta);
+  margin: 0 0 7mm 0; font-weight: bold; letter-spacing: -0.01em;
+  max-width: 150mm;
+}
+.portada .bajada {
+  font-size: 12.5pt; line-height: 1.5; color: var(--tinta2);
+  margin: 0 0 14mm 0; max-width: 135mm;
+}
+.portada .regla { height: 3px; width: 46mm; background: var(--azul); margin-bottom: 12mm; }
+.portada .meta { font-size: 9.5pt; color: var(--tinta2); line-height: 1.85; }
+.portada .meta b { color: var(--tinta); }
+.portada .alcance {
+  margin-top: 16mm; padding: 6mm 7mm; background: #fff;
+  border-left: 3px solid var(--naranja); font-size: 8.8pt; line-height: 1.5;
+}
+.portada .alcance b { color: var(--tinta); }
+
+/* ── Jerarquía ───────────────────────────────────────────────────────────── */
+h2 {
+  font-size: 14.5pt; color: var(--tinta); margin: 9mm 0 1.5mm 0;
+  padding-bottom: 2mm; border-bottom: 2px solid var(--grilla);
+  page-break-after: avoid; font-weight: bold;
+}
+h2 .num { color: var(--azul); margin-right: 3mm; }
+h3 {
+  font-size: 10.8pt; color: var(--tinta); margin: 6mm 0 1.5mm 0;
+  page-break-after: avoid; font-weight: bold;
+}
+h4 { font-size: 9.8pt; color: var(--tinta2); margin: 4mm 0 1mm 0; page-break-after: avoid; }
+p { margin: 0 0 2.6mm 0; text-align: justify; orphans: 2; widows: 2; }
+ul, ol { margin: 0 0 3mm 0; padding-left: 5mm; }
+li { margin-bottom: 1.4mm; }
+strong { color: var(--tinta); }
+code {
+  font-family: "DejaVu Sans Mono", monospace; font-size: 8.4pt;
+  background: #f2f1ec; padding: 0.3mm 1mm; border-radius: 1.5mm; color: var(--tinta2);
+  /* Sin esto, una ruta larga no puede partirse y el justificado abre huecos
+     enormes en la línea anterior. */
+  overflow-wrap: anywhere;
+}
+
+/* ── Tablas ──────────────────────────────────────────────────────────────── */
+table {
+  width: 100%; border-collapse: collapse; margin: 3mm 0 4mm 0;
+  font-size: 8.6pt; page-break-inside: avoid;
+}
+th {
+  text-align: left; color: var(--tinta); font-weight: bold;
+  border-bottom: 1.5px solid var(--tinta2); padding: 1.8mm 2mm; vertical-align: bottom;
+}
+td { padding: 1.6mm 2mm; border-bottom: 1px solid var(--grilla); vertical-align: top; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+tr:last-child td { border-bottom: none; }
+
+/* ── Figuras ─────────────────────────────────────────────────────────────── */
+figure { margin: 4mm 0 4.5mm 0; page-break-inside: avoid; }
+figure img { width: 100%; display: block; }
+figcaption {
+  font-size: 8.2pt; color: var(--tenue); margin-top: 1.5mm;
+  padding-top: 1.5mm; border-top: 1px solid var(--grilla);
+}
+figcaption b { color: var(--tinta2); }
+
+/* ── Bloques destacados ──────────────────────────────────────────────────── */
+.hallazgo {
+  background: #fff; border-left: 3px solid var(--azul);
+  padding: 4mm 5mm; margin: 4mm 0; page-break-inside: avoid;
+}
+.hallazgo .rotulo {
+  font-size: 7.6pt; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--azul); font-weight: bold; display: block; margin-bottom: 1.5mm;
+}
+.hallazgo p:last-child { margin-bottom: 0; }
+
+.limitacion { border-left-color: var(--naranja); }
+.limitacion .rotulo { color: var(--naranja); }
+
+.reco {
+  border: 1px solid var(--grilla); border-top: 3px solid var(--verde);
+  padding: 4.5mm 5mm; margin: 4mm 0; page-break-inside: avoid; background: #fff;
+}
+.reco h3 { margin-top: 0; color: var(--tinta); font-size: 11pt; }
+.reco .numero {
+  display: inline-block; background: var(--verde); color: #fff;
+  font-size: 8.5pt; font-weight: bold; padding: 0.6mm 2.4mm;
+  border-radius: 1mm; margin-right: 2.5mm; vertical-align: 2px;
+}
+.reco .meta-fila {
+  margin-top: 3mm; padding-top: 2.5mm; border-top: 1px solid var(--grilla);
+  font-size: 8.4pt; color: var(--tinta2);
+}
+.reco .meta-fila b { color: var(--tinta); }
+.reco p:last-child { margin-bottom: 0; }
+
+.kpi-fila { display: flex; gap: 3mm; margin: 4mm 0; page-break-inside: avoid; }
+.kpi {
+  flex: 1; background: #fff; border: 1px solid var(--grilla);
+  border-top: 2.5px solid var(--azul); padding: 3.5mm 3mm;
+}
+.kpi .valor { font-size: 17pt; font-weight: bold; color: var(--tinta); line-height: 1.1; }
+.kpi .rotulo { font-size: 7.8pt; color: var(--tinta2); margin-top: 1.5mm; line-height: 1.35; }
+.kpi .base { font-size: 7pt; color: var(--tenue); margin-top: 1mm; }
+
+.nota-pie { font-size: 8pt; color: var(--tenue); font-style: italic; }
+.salto { page-break-before: always; }

@@ -89,9 +89,9 @@ Cada gráfico se guarda en `images/exploratorio/` **y** genera su entrada en `do
 
 ## Bloque E — Informe ejecutivo (tareas 28 a 30)
 
-- [ ] **28.** Redactar las secciones en el orden que exige el enunciado: problema de negocio → objetivos → audiencia y propósito comunicacional → fuentes de datos → **calidad y limitaciones** (sección agregada, es el diferencial) → análisis exploratorio → justificación de las representaciones → narrativa visual → diseño del dashboard → evaluación crítica → conclusiones y recomendaciones.
-- [ ] **29.** Insertar los gráficos finales desde `images/finales/`. Cada título de gráfico redactado como la conclusión, no como la descripción: "Drama lidera en volumen pero no en nota", no "Géneros por cantidad".
-- [ ] **30.** Escribir las 3 recomendaciones finales, concretas y medibles, cada una apuntando al gráfico que la respalda. Exportar a PDF en `docs/informe_ejecutivo.pdf`.
+- [x] **28.** Redactar las secciones en el orden que exige el enunciado: problema de negocio → objetivos → audiencia y propósito comunicacional → fuentes de datos → **calidad y limitaciones** (sección agregada, es el diferencial) → análisis exploratorio → justificación de las representaciones → narrativa visual → diseño del dashboard → evaluación crítica → conclusiones y recomendaciones.
+- [x] **29.** Insertar los gráficos finales desde `images/finales/`. Cada título de gráfico redactado como la conclusión, no como la descripción: "Drama lidera en volumen pero no en nota", no "Géneros por cantidad".
+- [x] **30.** Escribir las 3 recomendaciones finales, concretas y medibles, cada una apuntando al gráfico que la respalda. Exportar a PDF en `docs/informe_ejecutivo.pdf`.
 
 ## Bloque F — Presentación y defensa (tareas 31 a 34)
 

@@ -34,7 +34,8 @@ streamview-analytics/
 │   ├── limpieza.py          # carga, limpieza e integración (pipeline completo)
 │   ├── analisis.py          # agregaciones del exploratorio
 │   ├── graficos.py          # paleta, tipografía y helpers de estilo
-│   └── etiquetas.py         # traducción de géneros, países e idiomas al español
+│   ├── etiquetas.py         # traducción de géneros, países e idiomas al español
+│   └── informe/             # contenido, estilo y generador del PDF ejecutivo
 ├── dashboard/               # archivo .pbix / .twb / app
 ├── images/
 │   ├── exploratorio/        # gráficos de trabajo
@@ -42,6 +43,7 @@ streamview-analytics/
 ├── docs/
 │   ├── calidad_datos.md     # auditoría y limitaciones (sección clave)
 │   ├── decisiones_diseno.md # por qué cada gráfico es ese gráfico
+│   ├── dashboard_spec.md    # qué muestra el dashboard y por qué
 │   ├── informe_ejecutivo.pdf
 │   └── presentacion.pdf
 ├── CLAUDE.md                # plan de trabajo y checklist de rúbrica
@@ -99,7 +101,8 @@ jupyter notebook notebooks/03_analisis_exploratorio.ipynb  # exporta a images/
 También se puede regenerar el catálogo sin abrir Jupyter:
 
 ```bash
-python src/limpieza.py   # escribe data/processed/ desde data/raw/
+python src/limpieza.py        # escribe data/processed/ desde data/raw/
+python src/informe/generar.py # regenera docs/informe_ejecutivo.pdf
 ```
 
 Todo notebook corre de arriba a abajo sin intervención manual. Si uno requiere editar una ruta a mano, está mal y hay que arreglarlo: el entregable 5 exige que el proyecto se pueda ejecutar de nuevo sin modificaciones adicionales.

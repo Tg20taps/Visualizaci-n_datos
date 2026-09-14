@@ -1,0 +1,225 @@
+<section class="portada">
+  <div class="marca">StreamView Analytics · ADY1104 Visualización de Datos</div>
+  <h1>Qué produce el catálogo,<br>qué recibe bien la audiencia<br>y dónde no coinciden</h1>
+  <div class="regla"></div>
+  <p class="bajada">Un diagnóstico del desempeño del catálogo de 31.991 títulos, orientado a las decisiones de adquisición, producción y promoción del Gerente de Contenidos.</p>
+  <div class="meta">
+    <b>Informe ejecutivo</b><br>
+    Matías Retamal · Claudio González<br>
+    Duoc UC · Evaluación EP1 + EP2
+  </div>
+  <div class="alcance">
+    <b>Alcance declarado.</b> Este informe analiza <b>composición y desempeño del catálogo</b>. El enunciado original mencionaba fuentes de usuarios, reproducciones, suscripciones y dispositivos: esas fuentes no fueron entregadas. Por lo tanto aquí <b>no se mide retención ni engagement</b>. Se usan <code>popularity</code>, <code>vote_count</code> y <code>vote_average</code> como proxies declarados de recepción de audiencia. Todas las limitaciones están en la sección 5.
+  </div>
+</section>
+
+<h2><span class="num">1</span>Problema de negocio</h2>
+<p>El Gerente de Contenidos de StreamView Analytics decide <strong>qué contenidos adquirir, producir y promocionar</strong>. Hoy toma esas decisiones sin una vista consolidada del desempeño del catálogo: no sabe qué combinaciones de género, país e idioma concentran mejor recepción, ni dónde el gasto en producción se traduce en retorno.</p>
+<p>La consecuencia práctica es que el catálogo crece por inercia. Se produce más de lo que ya se producía, y nadie tiene a la vista si eso que se produce es lo que mejor se recibe. Este informe pone las dos cosas en el mismo plano y muestra dónde se separan.</p>
+
+<h2><span class="num">2</span>Objetivos</h2>
+<ol>
+  <li>Caracterizar la composición del catálogo por tipo, género, país e idioma.</li>
+  <li>Medir la recepción de cada segmento con un indicador que no se deje distorsionar por títulos con votación insuficiente.</li>
+  <li>Establecer si existe relación entre recepción y retorno financiero, sobre el subconjunto que lo permite.</li>
+  <li>Identificar los segmentos donde la oferta del catálogo y la recepción de la audiencia <strong>no coinciden</strong>, y traducir esa brecha en recomendaciones accionables.</li>
+</ol>
+
+<h2><span class="num">3</span>Audiencia y propósito comunicacional</h2>
+<h3>Quién va a leer esto</h3>
+<p>El <strong>Gerente de Contenidos</strong>. Decide adquisiciones y prioridades de producción con una periodicidad de semanas, no de meses. Tiene criterio de negocio y de industria, pero <strong>no es un perfil técnico</strong>: no va a interpretar un coeficiente de correlación ni a discutir un intervalo de confianza, y no debería tener que hacerlo.</p>
+<p>Lo que hoy no sabe: si el catálogo está desbalanceado respecto de lo que la audiencia recibe mejor, y si el dinero puesto en producción está puesto donde vuelve. Lo que necesita de nosotros no es un dato: es una <strong>lista corta de decisiones defendibles ante su jefatura</strong>.</p>
+
+<h3>Propósito comunicacional</h3>
+<div class="hallazgo">
+  <span class="rotulo">Propósito</span>
+  <p>Que el Gerente de Contenidos pueda responder, <strong>en menos de un minuto y sin ayuda técnica</strong>, tres preguntas: qué está funcionando en el catálogo, dónde hay una oportunidad que hoy no ve, y qué se recomienda hacer al respecto.</p>
+</div>
+<p>De ahí salen las dos piezas de esta entrega y la diferencia entre ellas. El <strong>dashboard</strong> es para la exploración recurrente: el Gerente filtra por género o país cuando le llega una propuesta concreta y comprueba en el momento si encaja. El <strong>informe</strong> es para respaldar la decisión frente a su jefatura: fija una narrativa, muestra la evidencia y deja las recomendaciones por escrito. El dashboard responde preguntas que aún no le hemos hecho; el informe defiende las respuestas que ya tenemos.</p>
+
+<h2><span class="num">4</span>Fuentes de datos</h2>
+<table>
+  <tr><th>Archivo</th><th class="num">Filas</th><th class="num">Columnas</th><th>Contenido</th></tr>
+  <tr><td><code>netflix_movies_detailed_up_to_2025.csv</code></td><td class="num">16.000</td><td class="num">18</td><td>Películas: ficha, popularidad, votos, presupuesto y recaudación</td></tr>
+  <tr><td><code>netflix_tv_shows_detailed_up_to_2025.csv</code></td><td class="num">16.000</td><td class="num">16</td><td>Series: ficha, popularidad y votos (sin datos financieros)</td></tr>
+</table>
+<p>Tras prefijar los identificadores y resolver 9 duplicados internos, el catálogo unificado queda en <strong>31.991 títulos</strong>: 16.000 películas y 15.991 series, cubriendo los años 2010 a 2025.</p>
+
+<div class="kpi-fila">
+  <div class="kpi"><div class="valor">31.991</div><div class="rotulo">Títulos en el catálogo</div><div class="base">16.000 películas · 15.991 series</div></div>
+  <div class="kpi"><div class="valor">6,71</div><div class="rotulo">Nota media ponderada</div><div class="base">sobre 20.980 con votación suficiente</div></div>
+  <div class="kpi"><div class="valor">1,70×</div><div class="rotulo">ROI mediano</div><div class="base">sobre 3.540 películas con datos financieros</div></div>
+  <div class="kpi"><div class="valor">46,2%</div><div class="rotulo">Del catálogo es drama</div><div class="base">14.773 títulos, el género líder</div></div>
+</div>
+
+<h2 class="salto"><span class="num">5</span>Calidad de los datos y limitaciones</h2>
+<p>Esta sección va antes del análisis y no después, a propósito. Buena parte de lo que el enunciado original sugería analizar <strong>no es analizable con los datos entregados</strong>, y presentar resultados sin decir eso primero sería presentar conclusiones que el dataset no sostiene.</p>
+
+<h3>Qué prometía el brief y qué llegó</h3>
+<table>
+  <tr><th>Fuente mencionada en el enunciado</th><th>¿Está?</th><th>Consecuencia</th></tr>
+  <tr><td>Usuarios, reproducciones, suscripciones, dispositivos, interacciones</td><td><strong>No</strong></td><td>Retención y engagement quedan fuera de alcance</td></tr>
+  <tr><td>Contenidos (catálogo)</td><td>Sí</td><td>Es la base de todo este informe</td></tr>
+  <tr><td>Calificaciones</td><td>Sí, agregadas por título</td><td>Sirven como proxy de recepción, no de consumo</td></tr>
+</table>
+
+<h3>Lo que la auditoría encontró</h3>
+<p>Cada hallazgo está verificado en código, celda por celda, en <code>notebooks/01_auditoria_datos.ipynb</code>. No son afirmaciones: son cálculos.</p>
+<table>
+  <tr><th>Hallazgo</th><th>Decisión tomada</th></tr>
+  <tr><td><code>duration</code> es 100% nula en películas y constante («1 Seasons») en las 16.000 series</td><td>El análisis de duración contra popularidad <strong>es imposible</strong>. No se puede recomendar una duración óptima</td></tr>
+  <tr><td><code>rating</code> es copia exacta de <code>vote_average</code> en el 100% de las filas</td><td>El dataset <strong>no trae clasificación por edad</strong>. Se elimina la columna y se descarta ese análisis</td></tr>
+  <tr><td>Exactamente 1.000 títulos por año, 2010–2025, en ambos archivos</td><td>La serie de tiempo es plana <strong>por construcción del muestreo</strong>. No se grafica evolución del volumen</td></tr>
+  <tr><td><code>release_year</code> coincide con el año de <code>date_added</code> en el 100% de las filas</td><td>No se puede medir antigüedad del contenido al incorporarse</td></tr>
+  <tr><td><code>budget</code> = 0 en el 69,7% y <code>revenue</code> = 0 en el 64,7% de las películas</td><td>El ROI se calcula solo sobre <strong>3.540 películas</strong> (22%), declarado en cada gráfico que lo usa</td></tr>
+  <tr><td>397 <code>show_id</code> colisionan entre archivos y 9 se repiten dentro de series</td><td>Se prefijan los identificadores con <code>MOV_</code> y <code>TV_</code> antes de unir</td></tr>
+  <tr><td><code>vote_count</code> = 0 en el 5,6% de las películas y el 23% de las series</td><td>Umbral mínimo de votos <strong>por tipo</strong> en todo ranking</td></tr>
+  <tr><td>Películas y series usan <strong>taxonomías de género distintas</strong>: solo 8 de 28 etiquetas son comunes</td><td>El análisis por género se hace por tipo; la comparación entre tipos, solo sobre los géneros comunes</td></tr>
+</table>
+
+<h3>Dos decisiones metodológicas que conviene explicar</h3>
+<h4>Umbral de votos por tipo, no único</h4>
+<p>La mediana de votos es <strong>138 en películas y 4 en series</strong>. Un umbral común de 30 dejaría fuera el 17,4% de las películas pero el 75,0% de las series, vaciando la muestra. Se fija <code>vote_count ≥ 30</code> para películas y <code>≥ 5</code> para series: quedan 13.217 películas y 7.763 series con votación suficiente para entrar en un ranking.</p>
+<h4>Nota ponderada en vez de nota cruda</h4>
+<p>Sin ponderar, el ranking del catálogo lo encabezan títulos con <strong>un solo voto y nota 10,0</strong>. Se usa una fórmula tipo IMDb que arrastra hacia la media a los títulos con pocos votos, de modo que un 10,0 con tres votos no le gane a un 8,4 con doce mil.</p>
+
+<div class="hallazgo limitacion">
+  <span class="rotulo">Qué NO se puede afirmar con estos datos</span>
+  <p>Nada sobre duración óptima de contenido. Nada sobre clasificación por edad. Nada sobre evolución del volumen del catálogo en el tiempo. Nada sobre comportamiento real de audiencia — retención, engagement, reproducciones — porque el dataset es de catálogo y no de consumo. Y nada que compare la presencia de un género entre películas y series fuera de los ocho comunes, porque ahí la diferencia es de vocabulario y no de catálogo.</p>
+</div>
+
+<h2 class="salto"><span class="num">6</span>Análisis exploratorio</h2>
+
+<h3>6.1 · El catálogo produce más de lo que peor se recibe</h3>
+<figure>
+  <img src="IMG/16_genero_nota_peliculas.png" alt="Nota media ponderada por género en películas">
+  <figcaption><b>Figura 1.</b> Terror obtiene la nota más baja del catálogo de películas (5,89) y es el quinto género más producido, con 2.093 títulos. Suspenso lo sigue: 6,15 con 3.338 títulos. En el otro extremo, documental encabeza la recepción (7,01) con apenas 626 títulos.</figcaption>
+</figure>
+<p>Las notas se leen en un gráfico de puntos y no de barras porque el rango útil es estrecho: entre 5,89 y 7,01. Una barra codifica magnitud desde cero, y con este rango habría que truncar el eje —lo que exagera diferencias pequeñas— o dibujar barras indistinguibles entre sí.</p>
+
+<h3>6.2 · Los mercados que mejor se reciben no son los que más aportan</h3>
+<figure>
+  <img src="IMG/17_paises_nota.png" alt="Nota media ponderada por país de origen">
+  <figcaption><b>Figura 2.</b> Japón (7,21) y Corea del Sur (7,11) encabezan la recepción. Estados Unidos aporta 9.773 títulos —más de cuatro veces los de Japón— con una nota de 6,56, en la mitad baja de la tabla.</figcaption>
+</figure>
+<p>El patrón se repite en el corte por idioma, que es otra manera de mirar lo mismo: japonés (7,24), turco (7,17), coreano (7,13) y chino (7,12) están todos por sobre el inglés (6,53), que concentra 11.687 títulos con votación suficiente. Que dos cortes independientes —país de origen e idioma original— ordenen los mercados de la misma forma es lo que da confianza en la lectura.</p>
+<p>Conviene precisar qué <em>no</em> dice esta figura. No dice que el contenido asiático sea mejor: dice que, <strong>entre el contenido que este catálogo ya tiene</strong>, el de origen japonés y coreano recibe mejores calificaciones de quienes lo califican. Tampoco es una medición de demanda: un título con nota alta y audiencia pequeña se ve igual aquí que uno con nota alta y audiencia masiva, porque no tenemos datos de reproducción. La conclusión defendible es de <em>subrepresentación relativa</em>, no de superioridad.</p>
+
+<h3>6.3 · La recepción ordena el retorno; el presupuesto no</h3>
+<figure>
+  <img src="IMG/18_roi_nota_presupuesto.png" alt="ROI mediano por banda de nota y por cuartil de presupuesto">
+  <figcaption><b>Figura 3.</b> El ROI mediano sube de forma sostenida con la nota: de 0,83× bajo 5,5 —ni siquiera recupera lo invertido— hasta 3,23× sobre 7,0. Por cuartil de presupuesto no sigue ningún patrón (1,60× · 1,23× · 1,45× · 2,34×). Correlación de Spearman con el ROI: 0,33 para la nota, 0,07 para el presupuesto.</figcaption>
+</figure>
+<div class="hallazgo">
+  <span class="rotulo">Hallazgo con consecuencia directa</span>
+  <p>El 53% de las películas con nota bajo 6,0 <strong>no recupera lo invertido</strong>. Entre las de nota sobre 7,0, solo el 21% no lo recupera. La recepción no es una métrica de vanidad: es el mejor predictor financiero disponible en estos datos, y es mejor predictor que el propio presupuesto.</p>
+</div>
+
+<h3 class="salto">6.4 · Dónde la oferta y la recepción no coinciden</h3>
+<figure>
+  <img src="IMG/19_brecha_oferta_recepcion.png" alt="Volumen contra nota media ponderada por género">
+  <figcaption><b>Figura 4.</b> Cruce de volumen y recepción por género, con las medianas del conjunto como ejes. Abajo a la derecha, los géneros con mucho catálogo y recepción bajo la mediana. Arriba a la izquierda, los que reciben mejor nota con una fracción del catálogo. El eje horizontal es logarítmico porque drama (5.737 títulos) quintuplica a bélico (381).</figcaption>
+</figure>
+<p>Terror y suspenso concentran <strong>5.431 títulos</strong> —más de un tercio del catálogo de películas con votación suficiente— y tienen las dos notas más bajas. Documental, musical e histórico suman 1.705 títulos y promedian 6,88: casi un punto más de nota con menos de un tercio del volumen.</p>
+<p>Los cortes son las medianas del propio conjunto (1.331 títulos y nota 6,51) y no valores elegidos a conveniencia. Se usa la mediana y no la media porque drama, con 5.737 títulos, desplaza cualquier promedio de volumen y dejaría casi todos los géneros del mismo lado del corte.</p>
+<p>Drama merece una nota aparte: es el género más producido del catálogo con diferencia y su nota (6,55) queda justo sobre la mediana. No está ni sobreinvertido ni desatendido — es el piso del catálogo, y la decisión sobre drama es de escala y no de dirección.</p>
+
+<h3>6.5 · Pero la brecha de recepción no es automáticamente una brecha de negocio</h3>
+<p>Antes de convertir la figura 4 en una recomendación hay que comprobar si esos géneros además devuelven la inversión. No la devuelven de la misma manera, y decirlo cambia la recomendación.</p>
+<figure>
+  <img src="IMG/21_recepcion_vs_retorno.png" alt="Nota contra ROI mediano por género">
+  <figcaption><b>Figura 5.</b> Nota contra ROI mediano por género, sobre las 3.540 películas con datos financieros. El tamaño del punto es el volumen. Los cuatro cuadrantes tienen lectura de negocio propia.</figcaption>
+</figure>
+<div class="hallazgo limitacion">
+  <span class="rotulo">Dos correcciones a la lectura ingenua</span>
+  <p><strong>Terror tiene el presupuesto mediano más bajo del catálogo: 7 millones de dólares</strong>, contra 50 de animación o 60 de aventura. Su ROI mediano es 2,03×, sobre la mediana del conjunto. Su volumen no es un descuido de calidad: es una apuesta deliberada de costo, y la nota baja es el precio conocido de esa apuesta.</p>
+  <p><strong>Histórico y bélico tienen las mejores notas del catálogo (6,92 y 6,85) y los peores retornos (1,16× y 1,27×).</strong> Recomendarlos solo por su nota sería recomendar prestigio de catálogo, no un caso de negocio — y conviene usar esa palabra al presentarlo.</p>
+</div>
+<p>El cuadrante que sí sostiene una recomendación de inversión es el superior derecho: <strong>animación, familiar, aventura y musical</strong>, por sobre la mediana en las dos dimensiones a la vez.</p>
+
+<h3>6.6 · Las series se reciben mejor que las películas en todo género comparable</h3>
+<figure>
+  <img src="IMG/20_peliculas_vs_series.png" alt="Nota por tipo en los géneros comunes">
+  <figcaption><b>Figura 6.</b> En los siete géneros que ambos tipos comparten con volumen suficiente, la serie supera a la película. La distancia va de +0,36 en documental a +1,02 en misterio.</figcaption>
+</figure>
+<p>La brecha es más grande justamente en los géneros de trama larga —misterio (+1,02), policial (+0,92), comedia (+0,90)—, donde el formato serie permite desarrollar lo que una película de noventa minutos tiene que comprimir. Es la lectura más natural del patrón, pero es una interpretación nuestra y no algo que los datos demuestren: con este dataset no se puede separar el efecto del formato del efecto de quién califica cada cosa.</p>
+<div class="hallazgo limitacion">
+  <span class="rotulo">Limitación de esta comparación</span>
+  <p>La ventaja sobrevive a un umbral común de votos —6,37 contra 7,45 con <code>vote_count ≥ 30</code>, y crece al exigir más—, así que no es un artefacto de nuestro método. Pero la mediana de votos de una serie es 32 contra 190 de una película: quien vota una serie ya invirtió varias horas en ella, mientras que quien vota una película pudo haberla abandonado a los veinte minutos. <strong>Las dos notas no miden exactamente la misma conducta</strong>, y la diferencia debe leerse con esa reserva.</p>
+</div>
+
+<h2 class="salto"><span class="num">7</span>Justificación de las representaciones</h2>
+<p>Cada visual se eligió por la naturaleza de la variable y la pregunta que responde, no por apariencia. El detalle completo —alternativa evaluada y motivo del descarte, gráfico por gráfico— está en <code>docs/decisiones_diseno.md</code>.</p>
+<table>
+  <tr><th>Figura</th><th>Tipo elegido</th><th>Por qué ese y no otro</th></tr>
+  <tr><td>1 y 2</td><td>Gráfico de puntos ordenado</td><td>El rango de notas es estrecho (5,89–7,01). La barra exige origen en cero: o se trunca el eje, que exagera, o las barras quedan iguales. El punto codifica por posición y no necesita cero</td></tr>
+  <tr><td>3</td><td>Dos paneles de barras, misma escala</td><td>Aquí el cero sí es significativo. El segundo panel es el <em>control</em>: sin él, «invertir en calidad» no se distingue de «invertir más». Nunca un doble eje: la escala elegida decidiría la conclusión</td></tr>
+  <tr><td>4 y 5</td><td>Dispersión con cuadrantes</td><td>La pregunta es de posición conjunta — qué género está en el cuadrante equivocado. Solo una dispersión muestra dos dimensiones a la vez y hace visible el desalineamiento</td></tr>
+  <tr><td>6</td><td>Gráfico de mancuerna</td><td>Lo que importa es la <em>distancia</em> entre dos valores emparejados. La mancuerna la dibuja como longitud; dos barras agrupadas obligarían a restar mentalmente</td></tr>
+</table>
+
+<h3>Lo que deliberadamente no se graficó</h3>
+<p>Demostrar que algo no se graficó porque la variable no lo permite también es selección correcta de representación.</p>
+<ul>
+  <li><strong>Duración contra popularidad:</strong> <code>duration</code> no tiene varianza.</li>
+  <li><strong>Desempeño por clasificación etaria:</strong> la columna no existe en el dataset.</li>
+  <li><strong>Evolución del catálogo en el tiempo:</strong> saldría plana por construcción del muestreo.</li>
+  <li><strong>Mapa coroplético:</strong> el dato es «país que aparece en la ficha», no producción ni consumo. Un mapa invita a leer cobertura geográfica, que es más de lo que el dato dice.</li>
+  <li><strong>Torta de participación por género:</strong> con 18 géneros es ilegible, y la pregunta es de orden, no de parte-todo.</li>
+</ul>
+
+<h2><span class="num">8</span>Narrativa visual</h2>
+<p>Informe, dashboard y presentación siguen <strong>la misma secuencia</strong>, para que quien pase de uno a otro no tenga que reorientarse: <strong>contexto → hallazgo → implicancia → recomendación</strong>.</p>
+<table>
+  <tr><th>Paso</th><th>Qué dice</th><th>Figura</th></tr>
+  <tr><td>Contexto</td><td>Qué hay en el catálogo y cómo se reparte</td><td>KPIs y figuras 1 y 2</td></tr>
+  <tr><td>Hallazgo</td><td>Lo que más se produce no es lo que mejor se recibe</td><td>Figura 4</td></tr>
+  <tr><td>Implicancia</td><td>La recepción predice el retorno; el presupuesto no. Pero no todo lo bien recibido paga</td><td>Figuras 3 y 5</td></tr>
+  <tr><td>Recomendación</td><td>Tres decisiones concretas y medibles</td><td>Sección 11</td></tr>
+</table>
+<p>El sistema visual es uno solo en las tres piezas: misma paleta, misma tipografía y <strong>color semántico fijo</strong> —película siempre azul, serie siempre naranja— para que una categoría no cambie de color al pasar de página. La paleta se verificó con un validador de contraste y visión cromática deficiente, no a ojo, y ningún gráfico depende del color como único canal: todos llevan etiqueta directa y la distinción por tipo se refuerza con la forma.</p>
+
+<h2><span class="num">9</span>Diseño del dashboard</h2>
+<p>Tres páginas que siguen la misma secuencia del informe: <strong>Visión general → Desempeño por contenido → Recomendaciones</strong>. Cuatro KPIs de cabecera, cinco filtros en una sola fila siempre visible y un máximo de cinco visuales por página.</p>
+<p>Dos reglas evitan errores de lectura previsibles. El KPI de ROI lleva su base pegada al número —<em>sobre 3.540 películas con datos financieros</em>— porque un indicador financiero sin su base invita a leerlo como si aplicara a todo el catálogo, series incluidas. Y el filtro de años acota el universo pero <strong>nunca grafica evolución</strong>, porque con 1.000 títulos exactos por año cualquier serie de tiempo saldría plana por construcción y se leería como un hallazgo.</p>
+<p>La nota de alcance aparece en las tres páginas y no solo en la primera, porque se puede llegar a la tercera desde un enlace directo. La especificación completa está en <code>docs/dashboard_spec.md</code>.</p>
+
+<h2><span class="num">10</span>Evaluación crítica</h2>
+<h3>La mayor debilidad de esta solución</h3>
+<p>Sin datos de consumo real, todas las conclusiones son sobre <strong>composición del catálogo</strong> y no sobre comportamiento de audiencia. Sabemos qué títulos reciben mejor nota de quienes los calificaron; no sabemos cuántas personas los vieron, cuántas los terminaron ni cuántas se suscribieron por ellos. Un género puede recibir notas altas de un público pequeño y fiel y aportar poco a la retención — y este dataset no permite distinguir ese caso.</p>
+<h3>Otras limitaciones que conviene declarar</h3>
+<ul>
+  <li><strong>El ROI cubre el 22% de las películas y ninguna serie.</strong> Toda conclusión financiera se refiere a ese subconjunto y no al catálogo.</li>
+  <li><strong>Los títulos coproducidos cuentan en cada país</strong> que los lista, así que las participaciones por país no suman 100%.</li>
+  <li><strong>La nota es un promedio de calificaciones voluntarias</strong>, con el sesgo de autoselección que eso implica: quien califica ya eligió ver el título.</li>
+  <li><strong>El muestreo de 1.000 títulos por año</strong> no representa el volumen real del catálogo en cada año, solo su composición.</li>
+</ul>
+<h3>Qué haríamos con más datos</h3>
+<p>Con reproducciones y suscripciones se podría medir si la recepción alta se traduce en retención, que es la pregunta que el negocio realmente quiere responder. Con fechas reales de incorporación se podría medir el efecto de un estreno sobre las altas del mes. Nada de eso está en estos datos, y por eso nada de eso se afirma aquí.</p>
+
+<h2 class="salto"><span class="num">11</span>Conclusiones y recomendaciones</h2>
+<p>Tres decisiones, cada una con la evidencia que la respalda y una meta que permite comprobar en doce meses si se cumplió.</p>
+
+<div class="reco">
+  <h3><span class="numero">1</span>Reequilibrar la adquisición de películas hacia los géneros que ganan en las dos dimensiones</h3>
+  <p><strong>Animación, familiar, aventura y musical</strong> son los únicos cuatro géneros por sobre la mediana tanto en recepción como en retorno: animación 2,39× con nota 6,88; familiar 2,19× con 6,69; aventura 2,02× con 6,62; musical 1,88× con 6,84. Hoy representan el <strong>22,4%</strong> del catálogo de películas.</p>
+  <p>Esta recomendación <em>no</em> es «dejar de producir terror». Terror tiene el presupuesto mediano más bajo del catálogo y un retorno sobre la mediana: cumple una función de eficiencia de costo que conviene mantener consciente. Lo que se propone es mover el margen de crecimiento, no desmantelar la base.</p>
+  <div class="meta-fila"><b>Meta medible:</b> llevar esos cuatro géneros del 22,4% al 30% de las nuevas adquisiciones de películas en 12 meses, sin aumentar el presupuesto total de adquisición. &nbsp;·&nbsp; <b>Evidencia:</b> figuras 4 y 5.</div>
+</div>
+
+<div class="reco">
+  <h3><span class="numero">2</span>Abrir una línea de adquisición dedicada a Japón y Corea del Sur</h3>
+  <p>Japón (7,21) y Corea del Sur (7,11) encabezan la recepción por país con 2.147 y 1.241 títulos. Estados Unidos aporta 9.773 títulos —el 48,5% del catálogo de películas— con una nota de 6,56, bajo la media de los mercados asiáticos y por debajo de siete países más. Japón y Corea juntos son hoy el <strong>11,6%</strong> del catálogo de películas.</p>
+  <p>El desbalance no es una conclusión sobre calidad nacional: es una observación sobre <em>dónde el catálogo está subrepresentando contenido que su propia audiencia califica mejor</em>.</p>
+  <div class="meta-fila"><b>Meta medible:</b> pasar del 11,6% al 18% de participación de títulos japoneses y coreanos en las adquisiciones de películas en 12 meses. &nbsp;·&nbsp; <b>Evidencia:</b> figura 2.</div>
+</div>
+
+<div class="reco">
+  <h3><span class="numero">3</span>Condicionar el presupuesto a la recepción esperada, y no al revés</h3>
+  <p>El retorno sube de forma sostenida con la nota (0,83× bajo 5,5; 3,23× sobre 7,0) y no sigue ningún patrón con el presupuesto. El <strong>53% de las películas con nota bajo 6,0 no recupera lo invertido</strong>; entre las de nota sobre 7,0 ese porcentaje cae al 21%. En el conjunto, el 36,7% no recupera.</p>
+  <p>En la práctica: ningún proyecto nuevo del cuartil superior de presupuesto debería aprobarse sin evidencia de recepción comparable —equipo, género o antecedentes con nota histórica sobre 6,5—, porque el presupuesto por sí solo no compra retorno en estos datos.</p>
+  <div class="meta-fila"><b>Meta medible:</b> reducir del 36,7% al 30% la proporción de películas nuevas que no recuperan su presupuesto, midiendo a 12 meses del estreno. &nbsp;·&nbsp; <b>Evidencia:</b> figura 3.</div>
+</div>
+
+<h3>Lo que este informe deliberadamente no recomienda</h3>
+<p class="nota-pie">No se recomienda una duración óptima de contenido, porque <code>duration</code> no tiene varianza en el dataset. No se recomienda nada sobre clasificación por edad, porque esa columna fue sobrescrita y no existe. No se afirma nada sobre retención, engagement ni reproducciones, porque esas fuentes nunca llegaron. Las tres son preguntas legítimas del negocio y ninguna se puede responder con estos datos: responderlas igual habría sido el error más caro de este trabajo.</p>
