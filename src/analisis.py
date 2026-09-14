@@ -30,7 +30,7 @@ def cargar_procesado(dir_processed: Path | str = DIR_PROCESSED):
 
 
 def _unir(tabla_larga: pd.DataFrame, catalogo: pd.DataFrame) -> pd.DataFrame:
-    metricas = ["show_id", "score_ponderado", "votos_suficientes", "popularity", "roi"]
+    metricas = ["show_id", "score_ponderado", "votos_suficientes", "popularity", "roi", "budget"]
     return tabla_larga.merge(catalogo[metricas], on="show_id")
 
 
@@ -156,3 +156,49 @@ def comparar_tipos_en_generos_comunes(
     ]
     tabla["brecha"] = tabla["nota_Serie"] - tabla["nota_Película"]
     return tabla.sort_values("brecha")
+
+
+def retorno_y_nota_por_genero(
+    genero_largo: pd.DataFrame, catalogo: pd.DataFrame, minimo_titulos: int = 80
+) -> pd.DataFrame:
+    """
+    Cruce de recepción y retorno por género, sobre las películas con datos financieros.
+
+    Es el cruce que decide inversión: el volumen dice qué se produce y la nota
+    qué se recibe bien, pero solo aquí se ve si un género además devuelve la
+    plata. Los cuatro cuadrantes tienen lectura de negocio propia:
+
+      - nota alta + ROI alto → priorizar
+      - nota alta + ROI bajo → prestigio de catálogo, no caso financiero
+      - nota baja + ROI alto → eficiencia de costo (género barato de producir)
+      - nota baja + ROI bajo → revisar
+
+    `minimo_titulos` es más bajo que en el resto del proyecto (80 y no 200)
+    porque el subconjunto financiero es de 3.540 películas y no de 13.217:
+    exigir 200 dejaría fuera géneros que sí tienen una mediana informativa.
+    """
+    datos = _unir(genero_largo, catalogo)
+    datos = datos[(datos["tipo"] == "Película") & datos["votos_suficientes"] & datos["roi"].notna()]
+
+    resumen = (
+        datos.groupby("genero")
+        .agg(
+            titulos=("show_id", "nunique"),
+            nota=("score_ponderado", "mean"),
+            roi=("roi", "median"),
+            presupuesto=("budget", "median"),
+        )
+        .query("titulos >= @minimo_titulos")
+    )
+
+    corte_roi, corte_nota = resumen["roi"].median(), resumen["nota"].median()
+
+    def segmento(fila):
+        if fila["nota"] >= corte_nota:
+            return "priorizar" if fila["roi"] >= corte_roi else "prestigio"
+        return "eficiencia" if fila["roi"] >= corte_roi else "revisar"
+
+    resumen["segmento"] = resumen.apply(segmento, axis=1)
+    resumen.attrs["corte_roi"] = corte_roi
+    resumen.attrs["corte_nota"] = corte_nota
+    return resumen.sort_values("roi", ascending=False)

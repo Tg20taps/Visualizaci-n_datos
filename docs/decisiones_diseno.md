@@ -108,6 +108,22 @@ Las categorías se muestran traducidas al español (`src/etiquetas.py`): `Horror
 - **Limitación declarada:** la ventaja de las series sobrevive a un umbral común de votos (6,37 contra 7,45 con `vote_count ≥ 30`), pero la mediana de votos de una serie es 32 contra 190 de una película. Las dos notas no miden exactamente la misma conducta. Se declara en el informe y en la defensa.
 - **Archivo:** `images/finales/20_peliculas_vs_series.png`
 
+## 21 · Recepción contra retorno por género
+
+**El visual que cierra la recomendación.** El 19 abre la pregunta; este la decide.
+
+- **Pregunta de negocio que responde:** de los géneros bien recibidos, ¿cuáles además devuelven la inversión?
+- **Naturaleza de las variables:** dos continuas emparejadas por categoría (nota × ROI mediano), más una tercera (volumen) codificada en el tamaño.
+- **Tipo de gráfico elegido:** dispersión con cuadrantes en las medianas y tamaño de marca proporcional al volumen.
+- **Por qué este y no otro:** la decisión de inversión necesita las dos dimensiones **a la vez**. Un ranking por nota recomendaría histórico y bélico, que tienen las mejores notas del catálogo (6,92 y 6,85) y los peores retornos (1,16× y 1,27×). Un ranking por ROI recomendaría terror, que tiene la peor nota. Solo el cruce separa "prestigio de catálogo" de "caso de negocio".
+- **Por qué tres variables y no dos:** el tamaño codifica volumen porque la magnitud de la apuesta cambia la lectura — Drama con 1.628 películas y ROI 1,28× es un problema de escala distinto al de Bélico con 125. El tamaño es un canal impreciso y por eso lleva solo la variable de contexto, nunca una de las dos que deciden.
+- **Alternativa descartada y motivo:** *tabla ordenada por ROI.* Ordena bien pero no muestra el cruce: los cuatro cuadrantes, que son la conclusión, hay que reconstruirlos mentalmente fila por fila.
+- **Por qué el umbral baja a 80 títulos:** el subconjunto financiero es de 3.540 películas y no de 13.217. Exigir 200 dejaría fuera musical y bélico, que sí tienen una mediana informativa. El umbral se relaja de forma declarada y solo para este visual.
+- **Principio de percepción aplicado:** agrupación por región con los cuatro cuadrantes rotulados en texto, y color redundante con el cuadrante — el color nunca es la única señal.
+- **Atributo visual que codifica el dato principal:** posición en dos ejes; tamaño solo para el contexto.
+- **Hallazgo que corrige la lectura del visual 19:** terror tiene el presupuesto mediano más bajo del catálogo (7 millones de dólares contra 50 de animación). Su volumen es una apuesta de costo deliberada, no un descuido de calidad. Decirlo así es más honesto y más defendible que "terror está sobreinvertido".
+- **Archivo:** `images/finales/21_recepcion_vs_retorno.png`
+
 ---
 
 ## Análisis que NO se graficaron
@@ -124,3 +140,4 @@ Demostrar que algo no se graficó porque la variable no lo permite **es selecci�
 | Top de directores | 68,5% de nulos en series; además no responde ninguna de las cinco preguntas del Gerente | notebook 01, Hallazgo 7 |
 | Mapa coroplético | El dato es "país en la ficha", no producción ni consumo; el mapa haría leer más de lo que el dato soporta | decisión de diseño, visual 17 |
 | Torta de participación por género | 18 géneros en una torta es ilegible, y la pregunta es de orden, no de parte-todo | decisión de diseño, visual 16 |
+| Tabla ordenada por ROI en vez del visual 21 | Ordena bien pero esconde el cruce: los cuatro cuadrantes habría que reconstruirlos fila por fila | decisión de diseño, visual 21 |
