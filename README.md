@@ -31,9 +31,10 @@ streamview-analytics/
 │   ├── 02_limpieza_integracion.ipynb
 │   └── 03_analisis_exploratorio.ipynb
 ├── src/
-│   ├── limpieza.py          # funciones de carga, limpieza e integración
-│   ├── auditoria.py         # genera la tabla de nulos y el reporte de calidad
-│   └── graficos.py          # paleta, tipografía y helpers de estilo
+│   ├── limpieza.py          # carga, limpieza e integración (pipeline completo)
+│   ├── analisis.py          # agregaciones del exploratorio
+│   ├── graficos.py          # paleta, tipografía y helpers de estilo
+│   └── etiquetas.py         # traducción de géneros, países e idiomas al español
 ├── dashboard/               # archivo .pbix / .twb / app
 ├── images/
 │   ├── exploratorio/        # gráficos de trabajo
@@ -93,6 +94,12 @@ jupyter notebook notebooks/03_analisis_exploratorio.ipynb  # exporta a images/
 
 # 4. Abrir dashboard/streamview_dashboard.pbix y refrescar la fuente
 #    apuntando a data/processed/catalogo_unificado.csv
+```
+
+También se puede regenerar el catálogo sin abrir Jupyter:
+
+```bash
+python src/limpieza.py   # escribe data/processed/ desde data/raw/
 ```
 
 Todo notebook corre de arriba a abajo sin intervención manual. Si uno requiere editar una ruta a mano, está mal y hay que arreglarlo: el entregable 5 exige que el proyecto se pueda ejecutar de nuevo sin modificaciones adicionales.

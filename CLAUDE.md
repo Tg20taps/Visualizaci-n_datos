@@ -70,13 +70,13 @@ Va primero y completo antes de cualquier gráfico. Es lo que separa este proyect
 
 Cada gráfico se guarda en `images/exploratorio/` **y** genera su entrada en `docs/decisiones_diseno.md` en el mismo momento. Si se deja para el final, no se escribe nunca.
 
-- [ ] **15.** Definir la paleta y la tipografía del proyecto en `src/graficos.py`. Una sola, usada después en el 100% de los gráficos y replicada en el dashboard.
-- [ ] **16.** Desempeño por género: volumen vs nota media ponderada. Responde "qué géneros priorizar".
-- [ ] **17.** Contenidos por país y por idioma. Responde "qué países priorizar".
-- [ ] **18.** ROI vs nota, sobre el subconjunto de 3.540 películas con datos financieros válidos. Declarar el subconjunto en el propio título o subtítulo del gráfico.
-- [ ] **19.** Brecha oferta/recepción: géneros con mucho volumen y baja nota (sobreinvertido) contra poco volumen y alta nota. **Este es el hallazgo que vende la presentación** — es la oportunidad desatendida que el Gerente no ve hoy.
-- [ ] **20.** Comparar Películas vs Series en las dimensiones que apliquen (no en ROI, que series no tiene).
-- [ ] **21.** Revisar los gráficos de los pasos 16 a 20 y eliminar los que no respondan ninguna de las preguntas del Gerente de Contenidos. Por bonito que esté, si no responde nada, fuera. Esto es IE9.
+- [x] **15.** Definir la paleta y la tipografía del proyecto en `src/graficos.py`. Una sola, usada después en el 100% de los gráficos y replicada en el dashboard.
+- [x] **16.** Desempeño por género: volumen vs nota media ponderada. Responde "qué géneros priorizar".
+- [x] **17.** Contenidos por país y por idioma. Responde "qué países priorizar".
+- [x] **18.** ROI vs nota, sobre el subconjunto de 3.540 películas con datos financieros válidos. Declarar el subconjunto en el propio título o subtítulo del gráfico.
+- [x] **19.** Brecha oferta/recepción: géneros con mucho volumen y baja nota (sobreinvertido) contra poco volumen y alta nota. **Este es el hallazgo que vende la presentación** — es la oportunidad desatendida que el Gerente no ve hoy.
+- [x] **20.** Comparar Películas vs Series en las dimensiones que apliquen (no en ROI, que series no tiene).
+- [x] **21.** Revisar los gráficos de los pasos 16 a 20 y eliminar los que no respondan ninguna de las preguntas del Gerente de Contenidos. Por bonito que esté, si no responde nada, fuera. Esto es IE9.
 
 ## Bloque D — Dashboard (tareas 22 a 27)
 
