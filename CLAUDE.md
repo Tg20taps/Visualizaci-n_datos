@@ -58,13 +58,13 @@ Va primero y completo antes de cualquier gráfico. Es lo que separa este proyect
 
 ## Bloque B — Limpieza e integración (tareas 8 a 14)
 
-- [ ] **8.** Crear `src/limpieza.py` con una función de carga que lea ambos CSV desde `data/raw/`.
-- [ ] **9.** Prefijar los IDs: `MOV_` y `TV_`. Sin esto, al concatenar se mezclan 397 registros.
-- [ ] **10.** Eliminar `rating` (copia de `vote_average`) y `duration` (inservible). Dejar comentado en el código por qué se eliminan.
-- [ ] **11.** Agregar columna `tipo` con valores Película / Serie y concatenar los dos archivos en una sola tabla. *(Ojo: la columna `type` ya existe con `Movie` / `TV Show` — es traducir/normalizar, no crear una columna nueva.)*
-- [ ] **12.** Explotar `genres`, `country` y `cast` a formato largo (una fila por título-género, etc.) para poder agregar por esas dimensiones. Guardar como tablas aparte, no reemplazar la principal.
-- [ ] **13.** Crear las métricas derivadas: `roi = revenue / budget` solo donde ambos sean mayores a cero, y un `score_ponderado` estilo IMDb que castigue los títulos con pocos votos.
-- [ ] **14.** Exportar `data/processed/catalogo_unificado.csv` desde `notebooks/02_limpieza_integracion.ipynb`, importando las funciones de `src/limpieza.py` — no copiando el código dentro del notebook.
+- [x] **8.** Crear `src/limpieza.py` con una función de carga que lea ambos CSV desde `data/raw/`.
+- [x] **9.** Prefijar los IDs: `MOV_` y `TV_`. Sin esto, al concatenar se mezclan 397 registros.
+- [x] **10.** Eliminar `rating` (copia de `vote_average`) y `duration` (inservible). Dejar comentado en el código por qué se eliminan.
+- [x] **11.** Agregar columna `tipo` con valores Película / Serie y concatenar los dos archivos en una sola tabla. *(Ojo: la columna `type` ya existe con `Movie` / `TV Show` — es traducir/normalizar, no crear una columna nueva.)*
+- [x] **12.** Explotar `genres`, `country` y `cast` a formato largo (una fila por título-género, etc.) para poder agregar por esas dimensiones. Guardar como tablas aparte, no reemplazar la principal.
+- [x] **13.** Crear las métricas derivadas: `roi = revenue / budget` solo donde ambos sean mayores a cero, y un `score_ponderado` estilo IMDb que castigue los títulos con pocos votos.
+- [x] **14.** Exportar `data/processed/catalogo_unificado.csv` desde `notebooks/02_limpieza_integracion.ipynb`, importando las funciones de `src/limpieza.py` — no copiando el código dentro del notebook.
 
 ## Bloque C — Análisis exploratorio (tareas 15 a 21)
 

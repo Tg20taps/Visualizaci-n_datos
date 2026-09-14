@@ -72,6 +72,8 @@ Dos archivos CSV, 16.000 filas cada uno.
 | `show_id` repetido: 9 dentro de series, 397 entre ambos archivos | Al concatenar se mezclan registros | Se prefija `MOV_` / `TV_` antes de unir |
 | `vote_count`=0 en 5,6% de películas y 23% de series | `vote_average` baja hasta 0.0 y ensucia rankings | Umbral mínimo de votos en todo ranking, justificado en `docs/calidad_datos.md` |
 | Nulos en series: director 68,5%, description 20%, country 11,2% | Limita análisis por director en series | Análisis de director solo sobre películas |
+| Películas y series usan taxonomías de género distintas: solo 8 de 28 etiquetas son comunes | Un ranking de géneros que mezcle ambos tipos compara dos vocabularios y sugiere ausencias falsas | Análisis por género separado por tipo; comparación película vs serie solo sobre los 8 géneros comunes |
+| `Unknown` aparece como si fuera un género en 99 series | Inventaría una categoría inexistente en los rankings | Se trata como nulo en la limpieza |
 
 Detalle completo en `docs/calidad_datos.md`.
 
