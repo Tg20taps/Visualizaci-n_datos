@@ -1,10 +1,10 @@
 """
-Genera `docs/informe_ejecutivo.pdf` desde el contenido HTML y la hoja de estilo.
+Genera `docs/informe_ejecutivo.pdf` y `docs/presentacion.pdf` desde HTML + CSS.
 
-El informe se arma en HTML + CSS y no a mano en un procesador de texto por dos
+Las dos piezas se arman en HTML + CSS y no a mano en un procesador de texto por dos
 razones: es reproducible (se regenera con un comando cuando cambia una cifra) y
-la paleta se importa de `src/graficos.py`, de modo que el informe y los gráficos
-no pueden desincronizarse de color.
+la paleta es la misma de `src/graficos.py`, de modo que informe, presentación y
+gráficos no pueden desincronizarse de color.
 
 Uso:
     python src/informe/generar.py
@@ -23,10 +23,11 @@ from weasyprint import CSS, HTML  # noqa: E402
 DIR_INFORME = RAIZ / "src" / "informe"
 DIR_IMAGENES = RAIZ / "images" / "finales"
 SALIDA = RAIZ / "docs" / "informe_ejecutivo.pdf"
+SALIDA_PRESENTACION = RAIZ / "docs" / "presentacion.pdf"
 
 
-def construir_html() -> str:
-    cuerpo = (DIR_INFORME / "contenido.html").read_text(encoding="utf-8")
+def construir_html(archivo: str = "contenido.html") -> str:
+    cuerpo = (DIR_INFORME / archivo).read_text(encoding="utf-8")
     # Las rutas de imagen se resuelven contra images/finales/ en el momento de
     # generar: así el HTML fuente no depende de dónde se ejecute el script.
     cuerpo = cuerpo.replace('src="IMG/', f'src="{DIR_IMAGENES.as_uri()}/')
@@ -58,10 +59,15 @@ def main() -> None:
         )
 
     SALIDA.parent.mkdir(parents=True, exist_ok=True)
-    HTML(string=construir_html(), base_url=str(DIR_INFORME)).write_pdf(
-        SALIDA, stylesheets=[CSS(filename=str(DIR_INFORME / "estilo.css"))]
-    )
-    print(f"→ {SALIDA.relative_to(RAIZ)}  ({SALIDA.stat().st_size / 1024:.0f} KB)")
+
+    for archivo_html, hoja, salida in (
+        ("contenido.html", "estilo.css", SALIDA),
+        ("presentacion.html", "estilo_presentacion.css", SALIDA_PRESENTACION),
+    ):
+        HTML(string=construir_html(archivo_html), base_url=str(DIR_INFORME)).write_pdf(
+            salida, stylesheets=[CSS(filename=str(DIR_INFORME / hoja))]
+        )
+        print(f"→ {salida.relative_to(RAIZ)}  ({salida.stat().st_size / 1024:.0f} KB)")
 
 
 if __name__ == "__main__":

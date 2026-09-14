@@ -1,0 +1,118 @@
+/* Láminas 16:9 para la defensa. Misma paleta que los gráficos y el informe:
+   una categoría conserva su color en las tres piezas.
+
+   Regla de contenido: la lámina APOYA, la voz explica (IE11). Por eso ninguna
+   lámina lleva párrafos para leer en voz alta — llevan la idea y el dato. */
+
+@page { size: 338.7mm 190.5mm; margin: 0; }
+
+:root {
+  --azul: #2a78d6; --naranja: #eb6834; --verde: #0ca30c; --rojo: #d03b3b;
+  --tinta: #0b0b0b; --tinta2: #52514e; --tenue: #898781;
+  --grilla: #e1e0d9; --fondo: #fcfcfb;
+}
+
+body { font-family: "DejaVu Sans", sans-serif; color: var(--tinta2); margin: 0; }
+
+.lamina {
+  width: 338.7mm; height: 190.5mm; box-sizing: border-box;
+  padding: 15mm 18mm 13mm 18mm; page-break-after: always;
+  background: var(--fondo); position: relative; overflow: hidden;
+}
+.lamina:last-child { page-break-after: auto; }
+
+.numero-lamina {
+  position: absolute; bottom: 7mm; right: 18mm;
+  font-size: 8pt; color: var(--tenue);
+}
+.pie-alcance {
+  position: absolute; bottom: 7mm; left: 18mm;
+  font-size: 7.5pt; color: var(--tenue);
+}
+
+h1 { font-size: 30pt; line-height: 1.18; color: var(--tinta); margin: 0 0 5mm 0; max-width: 250mm; }
+h2 {
+  font-size: 24pt; line-height: 1.25; color: var(--tinta);
+  margin: 0 0 3mm 0; max-width: 275mm;
+}
+h2 .resalte { color: var(--azul); }
+.bajada { font-size: 13pt; color: var(--tinta2); margin: 0 0 6mm 0; max-width: 250mm; }
+.rotulo {
+  font-size: 8.5pt; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--azul); font-weight: bold; margin-bottom: 4mm;
+}
+
+/* Portada */
+.portada { background: var(--fondo); }
+.portada .regla { height: 4px; width: 60mm; background: var(--azul); margin: 6mm 0 8mm 0; }
+.portada .autores { font-size: 12pt; color: var(--tinta2); line-height: 1.8; }
+.portada .autores b { color: var(--tinta); }
+
+/* Figura protagonista */
+.figura-plena { text-align: center; margin-top: 2mm; }
+.figura-plena img { max-height: 132mm; max-width: 100%; }
+
+.dos-columnas { display: flex; gap: 10mm; align-items: center; height: 152mm; }
+.dos-columnas .col-figura { flex: 2.2; display: flex; align-items: center; justify-content: center; }
+.dos-columnas .col-figura img { max-width: 100%; max-height: 150mm; }
+.dos-columnas .col-texto { flex: 1; }
+.dos-columnas .col-texto h2 { font-size: 20pt; }
+.dos-columnas .col-texto ul.ideas li { font-size: 12.5pt; margin-bottom: 6mm; padding-left: 8mm; }
+.dos-columnas .col-texto ul.ideas { margin-top: 5mm; }
+/* Cuando la lámina ya tiene título arriba, la fila dispone de menos alto. */
+.dos-columnas.bajo-titulo { height: 128mm; }
+.dos-columnas.bajo-titulo .col-figura img { max-height: 126mm; }
+
+/* KPIs */
+.kpis { display: flex; gap: 6mm; margin-top: 14mm; }
+.kpi {
+  flex: 1; background: #fff; border: 1px solid var(--grilla);
+  border-top: 4px solid var(--azul); padding: 11mm 6mm;
+}
+.kpi .valor { font-size: 40pt; font-weight: bold; color: var(--tinta); line-height: 1; }
+.kpi .rotulo-kpi { font-size: 10pt; color: var(--tinta2); margin-top: 4mm; line-height: 1.35; }
+.kpi .base { font-size: 8pt; color: var(--tenue); margin-top: 2mm; }
+
+/* Listas de ideas */
+ul.ideas { list-style: none; padding: 0; margin: 8mm 0 0 0; }
+ul.ideas li {
+  font-size: 15pt; line-height: 1.5; color: var(--tinta2);
+  padding-left: 10mm; margin-bottom: 9mm; position: relative; max-width: 240mm;
+}
+ul.ideas li::before {
+  content: "→"; position: absolute; left: 0; color: var(--azul); font-weight: bold;
+}
+ul.ideas li b { color: var(--tinta); }
+
+ul.no-ideas li::before { content: "✕"; color: var(--naranja); }
+
+/* Recomendaciones */
+.recos { display: flex; gap: 6mm; margin-top: 9mm; height: 115mm; align-items: stretch; }
+.reco {
+  flex: 1; background: #fff; border: 1px solid var(--grilla);
+  border-top: 4px solid var(--verde); padding: 7mm 6mm;
+  display: flex; flex-direction: column;
+}
+.reco .n {
+  display: inline-block; background: var(--verde); color: #fff;
+  font-size: 10pt; font-weight: bold; padding: 1mm 3.5mm; border-radius: 1.5mm; margin-bottom: 4mm;
+}
+.reco h3 { font-size: 13pt; color: var(--tinta); margin: 0 0 3mm 0; line-height: 1.3; }
+.reco p { font-size: 9.8pt; line-height: 1.5; margin: 0 0 3mm 0; }
+.reco .meta {
+  font-size: 9pt; color: var(--tinta2); border-top: 1px solid var(--grilla);
+  padding-top: 3mm; margin-top: auto; /* la meta se ancla abajo: las tres tarjetas
+  terminan a la misma altura aunque el texto tenga largos distintos */
+}
+.reco .meta b { color: var(--tinta); }
+
+.cita-fuerte {
+  font-size: 15pt; line-height: 1.5; color: var(--tinta);
+  border-left: 4px solid var(--naranja); padding: 5mm 0 5mm 8mm;
+  margin: 8mm 0 0 0; max-width: 235mm;
+}
+.dato-clave {
+  font-size: 46pt; font-weight: bold; color: var(--azul); line-height: 1;
+  margin-bottom: 3mm;
+}
+.dato-clave.malo { color: var(--rojo); }

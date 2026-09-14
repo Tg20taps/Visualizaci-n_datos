@@ -95,7 +95,7 @@ Cada gráfico se guarda en `images/exploratorio/` **y** genera su entrada en `do
 
 ## Bloque F — Presentación y defensa (tareas 31 a 34)
 
-- [ ] **31.** Armar ~10 láminas para 10 minutos, una idea por lámina, siguiendo la secuencia: qué está pasando → por qué ocurre → qué implica para el negocio → qué recomendamos.
+- [x] **31.** Armar ~10 láminas para 10 minutos, una idea por lámina, siguiendo la secuencia: qué está pasando → por qué ocurre → qué implica para el negocio → qué recomendamos. *(Hecho: `docs/presentacion.pdf`, se regenera con `python src/informe/generar.py`.)*
 - [ ] **32.** Repasar juntos el banco de preguntas de más abajo hasta que **los dos** respondan las ocho sin dudar.
 - [ ] **33.** Ensayo cruzado: Matías presenta las láminas de la segunda mitad y Claudio las de la primera, al revés de como quedaron redactadas. Si alguno se traba, esa parte no está entendida.
 - [ ] **34.** Ensayo final con cronómetro, 10 minutos reales. Si se pasa, se cortan láminas, no se habla más rápido.
@@ -128,7 +128,7 @@ Antes de entregar, cada línea tiene que poder señalarse con el dedo en un arch
 
 ## Banco de preguntas difíciles (tarea 32)
 
-Los dos tienen que responder estas sin dudar.
+Los dos tienen que responder estas sin dudar. Las cuatro últimas salieron de hallazgos que aparecieron construyendo el análisis, y son justamente las que más fácil descolocan.
 
 1. ¿Por qué su gráfico de evolución temporal es plano? *(Porque el dataset tiene exactamente 1.000 títulos por año: es un artefacto del muestreo, no un hallazgo. Por eso no lo usamos para conteo.)*
 2. La infografía pedía duración vs popularidad. ¿Dónde está? *(`duration` viene 100% nula en películas y constante en series. Está documentado y descartado.)*
@@ -138,6 +138,10 @@ Los dos tienen que responder estas sin dudar.
 6. ¿Por qué eligieron ese tipo de gráfico y no otro? *(Para cualquier visual del dashboard.)*
 7. ¿Qué haría distinto el Gerente de Contenidos mañana gracias a esto? *(Las tres recomendaciones, de memoria.)*
 8. ¿Cuál es la mayor debilidad de su solución? *(Con honestidad: sin datos de consumo real, las recomendaciones son sobre composición del catálogo, no sobre comportamiento. Esta respuesta suma en IE12, no resta.)*
+9. Dicen que terror está sobreinvertido. ¿No es simplemente que es barato de producir? *(Es exactamente eso, y está en el informe: terror tiene el presupuesto mediano más bajo del catálogo —7 millones contra 50 de animación— y un ROI mediano de 2,03×, sobre la mediana. Por eso la recomendación 1 dice explícitamente que **no** es dejar de producir terror, sino mover el margen de crecimiento. El visual 21 existe justamente para no cometer ese error.)*
+10. Si histórico tiene la mejor nota del catálogo, ¿por qué no lo recomiendan? *(Porque tiene el peor retorno: 1,16×. Recomendarlo sería recomendar prestigio de catálogo y no un caso de negocio. Lo decimos con esa palabra en el informe.)*
+11. ¿Cómo saben que la ventaja de las series no la fabricó su propio umbral por tipo? *(Lo comprobamos: con un umbral común de 30 votos para ambos, películas 6,37 y series 7,45; con 100, 6,46 contra 7,63. La brecha crece al exigir más votos, así que no es artefacto del método. Lo que sí declaramos es que la mediana de votos de una serie es 32 contra 190 de una película: las dos notas no miden la misma conducta.)*
+12. ¿Por qué no comparan géneros entre películas y series directamente? *(Porque usan taxonomías distintas: de 28 etiquetas solo 8 son comunes. Las películas tienen `Action` y `Adventure` por separado y las series las agrupan en `Action & Adventure`. Mezclarlas sugeriría que no hay series de suspenso, cuando lo que pasa es que la taxonomía de TV no usa esa etiqueta.)*
 
 ---
 

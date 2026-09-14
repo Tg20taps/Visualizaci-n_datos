@@ -1,0 +1,154 @@
+<section class="lamina portada">
+  <div class="rotulo">StreamView Analytics · ADY1104 Visualización de Datos</div>
+  <h1>Qué produce el catálogo,<br>qué recibe bien la audiencia<br>y dónde no coinciden</h1>
+  <div class="regla"></div>
+  <div class="autores">
+    <b>Matías Retamal · Claudio González</b><br>
+    Para el Gerente de Contenidos de StreamView Analytics
+  </div>
+  <div class="numero-lamina">1 / 10</div>
+</section>
+
+<section class="lamina">
+  <div class="rotulo">Audiencia y propósito</div>
+  <h2>Que el Gerente de Contenidos responda tres preguntas<br><span class="resalte">en menos de un minuto y sin ayuda técnica</span></h2>
+  <ul class="ideas">
+    <li><b>¿Qué está funcionando</b> hoy en el catálogo?</li>
+    <li><b>¿Dónde hay una oportunidad</b> que hoy no ve?</li>
+    <li><b>¿Qué se recomienda hacer</b> al respecto?</li>
+  </ul>
+  <p class="bajada" style="margin-top:8mm">Decide adquisiciones cada pocas semanas. Tiene criterio de negocio, no perfil técnico. Lo que necesita no es un dato: es una lista corta de decisiones que pueda defender ante su jefatura.</p>
+  <div class="numero-lamina">2 / 10</div>
+</section>
+
+<section class="lamina">
+  <div class="rotulo">Antes de cualquier resultado</div>
+  <h2>Auditamos los datos primero, y eso <span class="resalte">cambió el proyecto</span></h2>
+  <p class="bajada">El enunciado pedía cosas que estos datos no permiten responder. Decirlo es parte del trabajo.</p>
+  <ul class="ideas no-ideas">
+    <li><b>Duración óptima:</b> <code>duration</code> es 100% nula en películas y constante en las 16.000 series.</li>
+    <li><b>Clasificación por edad:</b> la columna <code>rating</code> es copia exacta de <code>vote_average</code>. No existe en el dataset.</li>
+    <li><b>Evolución del catálogo:</b> hay 1.000 títulos exactos por año. Cualquier serie de tiempo sale plana por construcción del muestreo.</li>
+    <li><b>Retención y engagement:</b> las fuentes de usuarios nunca llegaron. Usamos proxies de recepción y lo declaramos.</li>
+  </ul>
+  <div class="pie-alcance">Los ocho hallazgos están verificados en código, celda por celda, en el notebook 01.</div>
+  <div class="numero-lamina">3 / 10</div>
+</section>
+
+<section class="lamina">
+  <div class="rotulo">Qué está pasando · el catálogo</div>
+  <h2>31.991 títulos, y casi la mitad del catálogo es drama</h2>
+  <div class="kpis">
+    <div class="kpi"><div class="valor">31.991</div><div class="rotulo-kpi">Títulos en el catálogo</div><div class="base">16.000 películas · 15.991 series</div></div>
+    <div class="kpi"><div class="valor">6,71</div><div class="rotulo-kpi">Nota media ponderada</div><div class="base">sobre 20.980 con votación suficiente</div></div>
+    <div class="kpi"><div class="valor">1,70×</div><div class="rotulo-kpi">ROI mediano</div><div class="base">sobre 3.540 películas con datos financieros</div></div>
+    <div class="kpi"><div class="valor">46,2%</div><div class="rotulo-kpi">Del catálogo es drama</div><div class="base">14.773 títulos</div></div>
+  </div>
+  <p class="bajada" style="margin-top:10mm">La nota está ponderada: sin eso, el ranking del catálogo lo encabezan títulos con un solo voto y nota 10,0.</p>
+  <div class="numero-lamina">4 / 10</div>
+</section>
+
+<section class="lamina">
+  <div class="dos-columnas">
+    <div class="col-figura"><img src="IMG/19_brecha_oferta_recepcion.png" alt="Volumen contra nota por género"></div>
+    <div class="col-texto">
+      <div class="rotulo">El hallazgo</div>
+      <h2>Lo que más se produce<br>no es lo que mejor se recibe</h2>
+      <ul class="ideas">
+        <li><b>Terror y suspenso:</b> 5.431 títulos, las dos notas más bajas.</li>
+        <li><b>Documental, musical e histórico:</b> 1.705 títulos y casi un punto más de nota.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="pie-alcance">Cortes en las medianas del conjunto. Eje horizontal logarítmico. Datos de catálogo, no de usuarios.</div>
+  <div class="numero-lamina">5 / 10</div>
+</section>
+
+<section class="lamina">
+  <div class="dos-columnas">
+    <div class="col-figura"><img src="IMG/21_recepcion_vs_retorno.png" alt="Nota contra ROI mediano por género"></div>
+    <div class="col-texto">
+      <div class="rotulo">Por qué ocurre</div>
+      <h2>Terror no es un error:<br>es <span class="resalte">una apuesta de costo</span></h2>
+      <ul class="ideas">
+        <li>Presupuesto mediano de <b>7 millones</b>, contra 50 de animación. ROI 2,03×, sobre la mediana.</li>
+        <li>Histórico y bélico: las <b>mejores notas</b> del catálogo y los <b>peores retornos</b>.</li>
+        <li>Solo <b>cuatro géneros</b> ganan en las dos dimensiones.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="pie-alcance">Sobre las 3.540 películas con presupuesto y recaudación positivos.</div>
+  <div class="numero-lamina">6 / 10</div>
+</section>
+
+<section class="lamina">
+  <div class="rotulo">Qué implica para el negocio</div>
+  <h2>La recepción predice el retorno. El presupuesto no.</h2>
+  <div class="dos-columnas bajo-titulo" style="margin-top:2mm">
+    <div class="col-figura"><img src="IMG/18_roi_nota_presupuesto.png" alt="ROI por nota y por presupuesto"></div>
+    <div class="col-texto">
+      <div class="dato-clave malo">53%</div>
+      <p class="bajada">de las películas con nota bajo 6,0 <b>no recupera lo invertido</b>.</p>
+      <div class="dato-clave" style="margin-top:8mm">21%</div>
+      <p class="bajada">entre las de nota sobre 7,0.</p>
+    </div>
+  </div>
+  <div class="pie-alcance">Correlación de Spearman con el ROI: 0,33 para la nota; 0,07 para el presupuesto.</div>
+  <div class="numero-lamina">7 / 10</div>
+</section>
+
+<section class="lamina">
+  <div class="dos-columnas">
+    <div class="col-figura"><img src="IMG/17_paises_nota.png" alt="Nota por país de origen"></div>
+    <div class="col-texto">
+      <div class="rotulo">Qué implica · mercados</div>
+      <h2>Japón y Corea reciben mejor nota<br>con una fracción del catálogo</h2>
+      <ul class="ideas">
+        <li><b>Japón 7,21</b> · <b>Corea 7,11</b></li>
+        <li><b>Estados Unidos 6,56</b>, con el 48,5% de las películas.</li>
+        <li>El corte por idioma ordena igual: es el mismo patrón visto dos veces.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="pie-alcance">Países con ≥150 títulos con votación suficiente. Un título coproducido cuenta en cada país que lo lista.</div>
+  <div class="numero-lamina">8 / 10</div>
+</section>
+
+<section class="lamina">
+  <div class="rotulo">Qué recomendamos</div>
+  <h2>Tres decisiones, cada una con su meta y su evidencia</h2>
+  <div class="recos">
+    <div class="reco">
+      <span class="n">1</span>
+      <h3>Reequilibrar hacia los géneros que ganan dos veces</h3>
+      <p>Animación, familiar, aventura y musical: los únicos sobre la mediana en recepción <em>y</em> en retorno.</p>
+      <p><b>No</b> es dejar de producir terror: es mover el margen de crecimiento.</p>
+      <div class="meta"><b>Del 22,4% al 30%</b> en 12 meses.<br>Evidencia: láminas 5 y 6.</div>
+    </div>
+    <div class="reco">
+      <span class="n">2</span>
+      <h3>Abrir línea de adquisición en Japón y Corea del Sur</h3>
+      <p>Encabezan la recepción y hoy son el 11,6% del catálogo de películas.</p>
+      <p>No es una conclusión sobre calidad nacional: es subrepresentación relativa.</p>
+      <div class="meta"><b>Del 11,6% al 18%</b> en 12 meses.<br>Evidencia: lámina 8.</div>
+    </div>
+    <div class="reco">
+      <span class="n">3</span>
+      <h3>Condicionar el presupuesto a la recepción esperada</h3>
+      <p>Ningún proyecto del cuartil superior de presupuesto sin evidencia de recepción comparable.</p>
+      <p>El presupuesto por sí solo no compra retorno en estos datos.</p>
+      <div class="meta"><b>Del 36,7% al 30%</b> que no recupera.<br>Evidencia: lámina 7.</div>
+    </div>
+  </div>
+  <div class="numero-lamina">9 / 10</div>
+</section>
+
+<section class="lamina">
+  <div class="rotulo">La mayor debilidad de nuestra solución</div>
+  <h2>Sabemos qué se recibe bien.<br>No sabemos <span class="resalte">qué se ve</span>.</h2>
+  <div class="cita-fuerte">
+    Sin datos de consumo real, todas nuestras conclusiones son sobre <b>composición del catálogo</b>, no sobre comportamiento de audiencia. Un género puede recibir notas altas de un público pequeño y fiel y aportar poco a la retención — y estos datos no permiten distinguir ese caso.
+  </div>
+  <p class="bajada" style="margin-top:9mm">Con reproducciones y suscripciones se podría medir si la recepción alta se traduce en retención, que es la pregunta que el negocio realmente quiere responder. Nada de eso está en estos datos, y por eso nada de eso afirmamos.</p>
+  <div class="numero-lamina">10 / 10</div>
+</section>
