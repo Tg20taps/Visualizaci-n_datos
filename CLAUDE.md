@@ -48,20 +48,20 @@ Esto define dónde poner el esfuerzo. No son la misma nota con distinto peso.
 
 Va primero y completo antes de cualquier gráfico. Es lo que separa este proyecto del resto del curso.
 
-- [ ] **1.** Copiar los dos CSV a `data/raw/`. No se tocan nunca más: toda transformación se hace en código y sale a `data/processed/`.
-- [ ] **2.** Crear `notebooks/01_auditoria_datos.ipynb`. Cargar ambos archivos e imprimir `shape`, `dtypes` y `head()` de cada uno.
-- [ ] **3.** Calcular y guardar el % de nulos por columna de ambos archivos (`df.isna().mean()`). Pegar la salida en `docs/calidad_datos.md`, sección 2.
-- [ ] **4.** Verificar en código los ocho hallazgos de la tabla del README, uno por uno, con una celda cada uno. Que se vea el cálculo, no la afirmación. Los tres críticos: `duration` 100% nula, `rating` idéntica a `vote_average`, y exactamente 1.000 títulos por año.
-- [ ] **5.** Contar duplicados: `show_id` dentro de cada archivo y colisiones entre ambos. Confirmar los 9 internos en series y los 397 cruzados.
-- [ ] **6.** Definir el umbral mínimo de `vote_count` para rankings. Mirar la distribución, elegir un número y **escribir el motivo en una frase**. Sin motivo escrito, la tarea no está lista.
-- [ ] **7.** Completar `docs/calidad_datos.md` entero: tabla brief vs dataset, tabla de nulos, análisis descartados con la celda que lo demuestra, decisiones de limpieza y cierre de impacto.
+- [x] **1.** Copiar los dos CSV a `data/raw/`. No se tocan nunca más: toda transformación se hace en código y sale a `data/processed/`.
+- [x] **2.** Crear `notebooks/01_auditoria_datos.ipynb`. Cargar ambos archivos e imprimir `shape`, `dtypes` y `head()` de cada uno.
+- [x] **3.** Calcular y guardar el % de nulos por columna de ambos archivos (`df.isna().mean()`). Pegar la salida en `docs/calidad_datos.md`, sección 2.
+- [x] **4.** Verificar en código los ocho hallazgos de la tabla del README, uno por uno, con una celda cada uno. Que se vea el cálculo, no la afirmación. Los tres críticos: `duration` 100% nula, `rating` idéntica a `vote_average`, y exactamente 1.000 títulos por año.
+- [x] **5.** Contar duplicados: `show_id` dentro de cada archivo y colisiones entre ambos. Confirmar los 9 internos en series y los 397 cruzados.
+- [x] **6.** Definir el umbral mínimo de `vote_count` para rankings. Mirar la distribución, elegir un número y **escribir el motivo en una frase**. Sin motivo escrito, la tarea no está lista.
+- [x] **7.** Completar `docs/calidad_datos.md` entero: tabla brief vs dataset, tabla de nulos, análisis descartados con la celda que lo demuestra, decisiones de limpieza y cierre de impacto.
 
 ## Bloque B — Limpieza e integración (tareas 8 a 14)
 
 - [ ] **8.** Crear `src/limpieza.py` con una función de carga que lea ambos CSV desde `data/raw/`.
 - [ ] **9.** Prefijar los IDs: `MOV_` y `TV_`. Sin esto, al concatenar se mezclan 397 registros.
 - [ ] **10.** Eliminar `rating` (copia de `vote_average`) y `duration` (inservible). Dejar comentado en el código por qué se eliminan.
-- [ ] **11.** Agregar columna `tipo` con valores Película / Serie y concatenar los dos archivos en una sola tabla.
+- [ ] **11.** Agregar columna `tipo` con valores Película / Serie y concatenar los dos archivos en una sola tabla. *(Ojo: la columna `type` ya existe con `Movie` / `TV Show` — es traducir/normalizar, no crear una columna nueva.)*
 - [ ] **12.** Explotar `genres`, `country` y `cast` a formato largo (una fila por título-género, etc.) para poder agregar por esas dimensiones. Guardar como tablas aparte, no reemplazar la principal.
 - [ ] **13.** Crear las métricas derivadas: `roi = revenue / budget` solo donde ambos sean mayores a cero, y un `score_ponderado` estilo IMDb que castigue los títulos con pocos votos.
 - [ ] **14.** Exportar `data/processed/catalogo_unificado.csv` desde `notebooks/02_limpieza_integracion.ipynb`, importando las funciones de `src/limpieza.py` — no copiando el código dentro del notebook.

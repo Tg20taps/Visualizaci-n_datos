@@ -1,7 +1,7 @@
 # Calidad y limitaciones de los datos
 
 > Esta sección va íntegra en el informe ejecutivo, antes del análisis exploratorio.
-> Responsable: Matías. Estado: pendiente de completar con la salida de `01_auditoria_datos.ipynb`.
+> Responsable: Matías. Estado: **completa**. Todas las cifras de este documento provienen de la ejecución de `notebooks/01_auditoria_datos.ipynb`.
 
 ## 1. Qué prometía el brief vs qué llegó
 
@@ -59,7 +59,7 @@ Fuente: `notebooks/01_auditoria_datos.ipynb`.
 |---|---|
 | Prefijo `MOV_` / `TV_` en el ID | 397 IDs colisionan entre archivos, 9 duplicados dentro de series |
 | Eliminar `rating` | Redundante con `vote_average` |
-| Umbral mínimo de `vote_count`: **≥30 en películas, ≥5 en series** (por tipo, no un valor único) | La distribución de votos es muy distinta entre archivos: mediana de 138 en películas vs. mediana de 4 en series. Un umbral único de 30 excluiría 17,4% de las películas pero 75% de las series, vaciando la muestra de series. Se fija un umbral por tipo, cercano al percentil 25 de cada distribución: quedan 13.148 películas y 6.719 series con votación suficiente para ranking. |
+| Umbral mínimo de `vote_count`: **≥30 en películas, ≥5 en series** (por tipo, no un valor único) | El umbral existe para sacar de los rankings la cola de votación anecdótica: el 5,6% de las películas y el 23% de las series tienen `vote_count` = 0, lo que arrastra su `vote_average` a 0.0 y ensucia cualquier orden por nota. El umbral es **por tipo** porque las dos distribuciones no son comparables — mediana de 138 votos en películas contra 4 en series: un umbral único de 30 excluiría el 17,4% de las películas pero el 75,0% de las series, vaciando la muestra. Con el umbral por tipo quedan **13.217 películas (82,6%) y 7.763 series (48,5%)** con votación suficiente para ranking. |
 | ROI solo sobre 3.540 películas | 70% tiene `budget` = 0 y 65% `revenue` = 0 |
 | Análisis por director solo en películas | 68,5% de nulos en series |
 
