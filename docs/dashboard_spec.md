@@ -1,8 +1,7 @@
 # Especificación del dashboard
 
-> Documento de construcción. Define **qué** muestra el dashboard y **por qué**, sin depender de la herramienta.
-> Escrito así a propósito: la tarea 22 (confirmar herramienta con el profesor) sigue abierta, y todo lo de aquí
-> se implementa igual en Power BI, Tableau o una app. Cubre las tareas 23 a 27.
+> Documento de construcción. Define **qué** muestra el dashboard y **por qué**, con independencia de la herramienta.
+> La tarea 22 quedó resuelta: se implementó como app HTML (ver sección 6). Cubre las tareas 22 a 27.
 
 **Audiencia:** Gerente de Contenidos de StreamView Analytics.
 **Fuente única:** `data/processed/catalogo_unificado.csv` (31.991 títulos) más las tres tablas largas.
@@ -100,8 +99,30 @@ Visible en **las tres páginas**, no solo en la primera, porque el Gerente puede
 
 > Datos de catálogo, no de usuarios. `popularity`, `vote_count` y `vote_average` se usan como proxies declarados de recepción de audiencia. Este dashboard no mide retención, engagement ni reproducciones. ROI calculado sobre 3.540 películas con datos financieros. Ver `docs/calidad_datos.md`.
 
-## 6. Recomendación de herramienta (tarea 22, pendiente de confirmar)
+## 6. Herramienta elegida (tarea 22, resuelta)
 
-Si el profesor deja elegir: **Power BI**. La rúbrica paga por filtros, KPIs y navegación entre páginas, y en Power BI eso sale casi gratis; en Streamlit o Dash se gastan horas programando interacciones que valen exactamente los mismos puntos.
+El profesor dejó la elección al equipo. **Se descartó Power BI** y el dashboard se construyó como **app HTML autocontenida** en `dashboard/streamview_dashboard.html`.
 
-Lo único que hay que cuidar en Power BI: aplicar la paleta de arriba como tema personalizado (`Ver → Temas → Personalizar`) antes de crear el primer visual. Si se deja para después, hay que repintar cada gráfico a mano y ahí es donde se rompe la consistencia de color que evalúa IE5.
+El argumento a favor de Power BI era de economía de esfuerzo: filtros, KPIs y navegación salen sin programar. Ese argumento deja de aplicar una vez que las interacciones ya están escritas, y a cambio la app HTML gana tres cosas que importan para la entrega:
+
+- **Se abre de un doble clic**, sin instalar nada y sin depender de una licencia que el evaluador pueda no tener.
+- **Comparte el código de la paleta y las reglas de forma** con los gráficos del informe, así que no pueden desincronizarse. En Power BI la paleta se replica a mano y ahí es donde se rompe la consistencia de color que evalúa IE5.
+- **Las agregaciones son las mismas de `src/analisis.py`**, hasta el detalle de que los intervalos de nota se cierran por la derecha igual que el `pd.cut` del informe. La banda de nota viaja precalculada desde Python justamente para que el navegador no pueda llegar a un número distinto.
+
+### Cómo se regenera
+
+```bash
+python src/dashboard_datos.py   # reescribe dashboard/datos.js desde data/processed/
+```
+
+El payload lleva los 31.991 títulos a nivel de fila —no agregados— porque el dashboard filtra en el navegador y un agregado precalculado no se puede volver a cortar por país. Van en columnas paralelas y con índices en vez de texto repetido: 3,2 MB en total.
+
+### Decisiones de implementación que conviene poder explicar
+
+| Decisión | Motivo |
+|---|---|
+| Tema claro único, sin modo oscuro | El informe se imprime y la presentación se proyecta. Las tres piezas tienen que verse iguales; un tema oscuro rompería esa identidad justo donde la rúbrica la evalúa |
+| Desplegables con casillas en vez de `<select multiple>` | El nativo obliga a ctrl+clic y desborda el texto largo. Cada opción muestra además cuántos títulos tiene con los otros filtros aplicados, para ver antes de hacer clic si va a dejar la selección vacía |
+| Sin filtro de tipo, el ranking de géneros se limita a los 8 comunes | Mezclar taxonomías pondría «Ciencia ficción y fantasía» —etiqueta que solo existe en series— a competir con «Comedia», y el lector concluiría que es el mejor género del catálogo cuando lo que ve es que las series puntúan más alto en general |
+| El ROI muestra «sin datos» y no cero cuando el filtro lo deja sin base | Un cero es un valor; la ausencia de dato no lo es |
+| La forma distingue los segmentos además del color | Verde y rojo miden ΔE 4,1 bajo deuteranopía: para ese lector son el mismo color. Es resultado del validador, no una sospecha |

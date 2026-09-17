@@ -1,0 +1,189 @@
+/* Dashboard StreamView Analytics.
+   Los colores son exactamente los de src/graficos.py: una categoría conserva su
+   color en el dashboard, en el informe y en la presentación (IE5).
+
+   Tema claro único y deliberado: el informe se imprime y la presentación se
+   proyecta, y las tres piezas tienen que verse iguales. Un tema oscuro aquí
+   rompería esa identidad justo donde la rúbrica la evalúa. */
+
+:root {
+  --azul: #2a78d6; --naranja: #eb6834; --verde: #0ca30c;
+  --rojo: #d03b3b; --ambar: #eda100;
+  --tinta: #0b0b0b; --tinta2: #52514e; --tenue: #898781;
+  --grilla: #e1e0d9; --eje: #c3c2b7; --fondo: #fcfcfb; --plano: #f4f3ee;
+  --borde: rgba(11,11,11,.10);
+  --seq1: #cde2fb; --seq3: #6da7ec; --seq5: #2a78d6; --seq7: #0d366b;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--plano); color: var(--tinta2);
+  font: 14px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3 { color: var(--tinta); margin: 0; }
+
+/* ── Cabecera ─────────────────────────────────────────────────────────────── */
+header {
+  background: var(--fondo); border-bottom: 1px solid var(--borde);
+  padding: 16px 24px 0 24px; position: sticky; top: 0; z-index: 20;
+}
+.titulo-fila { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+.titulo-fila h1 { font-size: 17px; letter-spacing: -.01em; }
+.titulo-fila .sub { font-size: 12px; color: var(--tenue); }
+
+nav { display: flex; gap: 4px; margin-top: 14px; }
+nav button {
+  font: inherit; font-size: 13px; background: none; border: none;
+  border-bottom: 2.5px solid transparent; color: var(--tinta2);
+  padding: 8px 14px; cursor: pointer; border-radius: 4px 4px 0 0;
+}
+nav button:hover { background: var(--plano); }
+nav button[aria-current="page"] { color: var(--azul); border-bottom-color: var(--azul); font-weight: 600; }
+nav .paso { color: var(--tenue); font-size: 11px; display: block; font-weight: 400; }
+
+/* ── Filtros ──────────────────────────────────────────────────────────────── */
+.filtros {
+  background: var(--fondo); border-bottom: 1px solid var(--borde);
+  padding: 12px 24px; display: flex; gap: 14px; align-items: flex-end;
+  flex-wrap: wrap; position: sticky; top: 0; z-index: 19;
+}
+.filtro { display: flex; flex-direction: column; gap: 5px; }
+.filtro > label { font-size: 10.5px; text-transform: uppercase; letter-spacing: .08em; color: var(--tenue); font-weight: 600; }
+.segmentado { display: flex; border: 1px solid var(--eje); border-radius: 6px; overflow: hidden; }
+.segmentado button {
+  font: inherit; font-size: 12.5px; background: var(--fondo); border: none;
+  padding: 6px 13px; cursor: pointer; color: var(--tinta2);
+}
+.segmentado button + button { border-left: 1px solid var(--eje); }
+.segmentado button[aria-pressed="true"] { background: var(--azul); color: #fff; font-weight: 600; }
+/* Desplegable con casillas. Un <select multiple> nativo obliga a ctrl+clic para
+   varias opciones y desborda el texto largo; esto se comporta como el filtro que
+   el usuario espera. */
+.menu { position: relative; }
+.menu > summary {
+  list-style: none; cursor: pointer; user-select: none;
+  font-size: 12.5px; padding: 6px 26px 6px 10px; min-width: 136px;
+  border: 1px solid var(--eje); border-radius: 6px; background: var(--fondo);
+  color: var(--tinta); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.menu > summary::-webkit-details-marker { display: none; }
+.menu > summary::after {
+  content: "▾"; position: absolute; right: 9px; top: 6px; color: var(--tenue); pointer-events: none;
+}
+.menu[open] > summary { border-color: var(--azul); box-shadow: 0 0 0 2px rgba(42,120,214,.14); }
+.menu .panel {
+  position: absolute; z-index: 30; top: calc(100% + 4px); left: 0; min-width: 232px;
+  max-height: 268px; overflow-y: auto; background: var(--fondo);
+  border: 1px solid var(--eje); border-radius: 7px; padding: 6px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.12);
+}
+.menu .panel label {
+  display: flex; align-items: center; gap: 8px; padding: 5px 7px;
+  font-size: 12.5px; border-radius: 4px; cursor: pointer; color: var(--tinta2);
+}
+.menu .panel label:hover { background: var(--plano); }
+.menu .panel input { accent-color: var(--azul); margin: 0; }
+.menu .panel .cuenta { margin-left: auto; color: var(--tenue); font-size: 11px; font-variant-numeric: tabular-nums; }
+.rango { display: flex; align-items: center; gap: 7px; font-size: 12.5px; }
+.rango input { width: 118px; accent-color: var(--azul); }
+.rango output { font-variant-numeric: tabular-nums; color: var(--tinta); min-width: 30px; }
+.limpiar {
+  font: inherit; font-size: 12.5px; padding: 6px 13px; cursor: pointer;
+  border: 1px solid var(--eje); border-radius: 6px; background: var(--fondo); color: var(--tinta2);
+}
+.limpiar:hover { background: var(--plano); }
+.recuento { font-size: 12px; color: var(--tenue); margin-left: auto; padding-bottom: 6px; }
+.recuento b { color: var(--tinta); font-variant-numeric: tabular-nums; }
+
+/* ── Cuerpo ───────────────────────────────────────────────────────────────── */
+main { padding: 20px 24px 8px 24px; max-width: 1560px; margin: 0 auto; }
+.pagina[hidden] { display: none !important; }
+.intro { font-size: 13.5px; color: var(--tinta2); margin: 0 0 16px 0; max-width: 920px; }
+
+.rejilla { display: grid; gap: 14px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.rejilla .ancho { grid-column: 1 / -1; }
+
+.tarjeta {
+  background: var(--fondo); border: 1px solid var(--borde); border-radius: 9px;
+  padding: 15px 17px 13px 17px; min-width: 0;
+}
+.tarjeta h3 { font-size: 14px; line-height: 1.35; }
+.tarjeta .nota { font-size: 11.5px; color: var(--tenue); margin-top: 3px; }
+.tarjeta .cuerpo { margin-top: 12px; }
+
+/* KPIs */
+.kpis { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 14px; margin-bottom: 16px; }
+.kpi {
+  background: var(--fondo); border: 1px solid var(--borde);
+  border-top: 3px solid var(--azul); border-radius: 9px; padding: 15px 17px;
+}
+.kpi .valor { font-size: 30px; font-weight: 700; color: var(--tinta); line-height: 1.05; font-variant-numeric: tabular-nums; }
+.kpi .rotulo { font-size: 12.5px; color: var(--tinta2); margin-top: 7px; }
+.kpi .base { font-size: 11px; color: var(--tenue); margin-top: 4px; }
+.kpi.sin-datos .valor { color: var(--tenue); font-size: 20px; }
+
+/* Leyenda */
+.leyenda { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 10px; font-size: 11.5px; color: var(--tinta2); }
+.leyenda span { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+.leyenda span.libre { white-space: normal; }
+
+/* Tabla */
+table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+th { text-align: left; color: var(--tinta); font-weight: 600; border-bottom: 1.5px solid var(--tinta2); padding: 7px 9px; position: sticky; top: 0; background: var(--fondo); }
+td { padding: 6px 9px; border-bottom: 1px solid var(--grilla); }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.tabla-scroll { max-height: 360px; overflow-y: auto; overflow-x: auto; }
+
+/* Recomendaciones */
+.recos { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 14px; }
+.reco { background: var(--fondo); border: 1px solid var(--borde); border-top: 3px solid var(--verde); border-radius: 9px; padding: 15px 17px; }
+.reco .n { display: inline-block; background: var(--verde); color: #fff; font-size: 11.5px; font-weight: 700; padding: 2px 8px; border-radius: 4px; }
+.reco h3 { font-size: 13.5px; margin: 9px 0 7px 0; }
+.reco p { font-size: 12.5px; margin: 0 0 7px 0; }
+.reco .meta { font-size: 12px; border-top: 1px solid var(--grilla); padding-top: 8px; margin-top: 10px; color: var(--tinta2); }
+.reco .meta b { color: var(--tinta); }
+
+/* Vacío */
+.vacio { padding: 26px 8px; text-align: center; color: var(--tenue); font-size: 13px; }
+
+/* Pie de alcance — va en las TRES páginas, no solo en la primera */
+.alcance {
+  margin: 18px 0 26px 0; padding: 12px 16px; background: var(--fondo);
+  border-left: 3px solid var(--naranja); border-radius: 0 7px 7px 0;
+  font-size: 11.5px; color: var(--tinta2); line-height: 1.55;
+}
+.alcance b { color: var(--tinta); }
+
+/* SVG */
+/* El SVG nunca crece más allá de su tamaño natural: escalado a 2× en una
+   tarjeta ancha, un gráfico de diez filas se vuelve un cartel. */
+svg { display: block; width: 100%; height: auto; overflow: visible; margin: 0 auto; }
+.cuerpo > svg { max-width: 680px; }
+.cuerpo.estirar > svg { max-width: none; }
+/* La dispersión tiene su propio tope: a 1.300 px el texto del gráfico se
+   agranda más que el de la página y deja de leerse como parte de ella. */
+.cuerpo.dispersion > svg { max-width: 900px; }
+.eje-linea { stroke: var(--eje); stroke-width: 1; }
+.grilla-linea { stroke: var(--grilla); stroke-width: 1; }
+.eje-texto { fill: var(--tenue); font-size: 10.5px; }
+.cat-texto { fill: var(--tinta2); font-size: 11.5px; }
+.valor-texto { fill: var(--tinta); font-size: 11px; font-weight: 700; }
+.ctx-texto { fill: var(--tenue); font-size: 10.5px; }
+.marca { cursor: pointer; }
+.marca:hover { opacity: .78; }
+
+#tooltip {
+  position: fixed; pointer-events: none; z-index: 60; opacity: 0;
+  transition: opacity .09s; background: var(--tinta); color: #fff;
+  padding: 7px 10px; border-radius: 6px; font-size: 12px; line-height: 1.45;
+  max-width: 260px; box-shadow: 0 3px 12px rgba(0,0,0,.2);
+}
+#tooltip b { color: #fff; }
+#tooltip .t-val { font-variant-numeric: tabular-nums; }
+
+@media (max-width: 1000px) {
+  .kpis { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .rejilla, .recos { grid-template-columns: minmax(0, 1fr); }
+  .recuento { margin-left: 0; }
+}

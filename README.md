@@ -35,8 +35,12 @@ streamview-analytics/
 │   ├── analisis.py          # agregaciones del exploratorio
 │   ├── graficos.py          # paleta, tipografía y helpers de estilo
 │   ├── etiquetas.py         # traducción de géneros, países e idiomas al español
+│   ├── dashboard_datos.py   # genera el payload del dashboard
 │   └── informe/             # contenido, estilo y generador del PDF ejecutivo
-├── dashboard/               # archivo .pbix / .twb / app
+├── dashboard/
+│   ├── streamview_dashboard.html   # app autocontenida, se abre de un doble clic
+│   ├── estilo.css / graficos.js / app.js
+│   └── datos.js             # payload generado por src/dashboard_datos.py
 ├── images/
 │   ├── exploratorio/        # gráficos de trabajo
 │   └── finales/             # los que van al informe y a la presentación
@@ -94,8 +98,9 @@ jupyter notebook notebooks/01_auditoria_datos.ipynb
 jupyter notebook notebooks/02_limpieza_integracion.ipynb   # genera data/processed/catalogo_unificado.csv
 jupyter notebook notebooks/03_analisis_exploratorio.ipynb  # exporta a images/
 
-# 4. Abrir dashboard/streamview_dashboard.pbix y refrescar la fuente
-#    apuntando a data/processed/catalogo_unificado.csv
+# 4. Abrir dashboard/streamview_dashboard.html en cualquier navegador.
+#    Si cambian los datos, regenerar su payload:
+#    python src/dashboard_datos.py
 ```
 
 También se puede regenerar el catálogo sin abrir Jupyter:
@@ -114,7 +119,7 @@ Todo notebook corre de arriba a abajo sin intervención manual. Si uno requiere 
 | # | Entregable | Formato | Ubicación |
 |---|---|---|---|
 | 1 | Informe ejecutivo | PDF | `docs/informe_ejecutivo.pdf` |
-| 2 | Dashboard interactivo | .pbix / .twb / app | `dashboard/` |
+| 2 | Dashboard interactivo | App HTML | `dashboard/streamview_dashboard.html` |
 | 3 | Resumen / presentación ejecutiva | PDF o PPTX | `docs/presentacion.pdf` |
 | 4 | Archivos del proyecto documentados | — | todo el repo |
 | 5 | Dataset y complementarios | CSV | `data/` |

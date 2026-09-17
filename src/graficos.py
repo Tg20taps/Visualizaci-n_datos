@@ -57,12 +57,30 @@ COLOR_TIPO = {"Película": CATEGORICA[0], "Serie": CATEGORICA[1]}
 # Rampa secuencial de un solo tono (claro → oscuro) para magnitud continua.
 SECUENCIAL = ["#cde2fb", "#9ec5f4", "#6da7ec", "#3987e5", "#2a78d6", "#1c5cab", "#104281"]
 
-# Acentos de lectura para el gráfico de brecha oferta/recepción (tarea 19).
-# Nunca se usan como "un color más" de una serie.
+# Acentos de lectura para los gráficos de cuadrantes (visuales 19 y 21).
+# Son colores de ESTADO (bueno / malo), no "un color más" de una serie, y por eso
+# no entran nunca en la rotación categórica.
 ACENTO = {
     "oportunidad": "#0ca30c",  # poco volumen, buena nota → invertir
     "sobreinvertido": "#d03b3b",  # mucho volumen, nota baja → revisar
     "neutro": "#898781",  # el resto, en gris: contexto, no protagonista
+}
+
+# El verde y el rojo de arriba miden ΔE 4,1 bajo deuteranopía: para un lector con
+# esa condición son el mismo color. Es el resultado del validador, no una
+# sospecha. Como el par verde/rojo comunica "bueno / malo" mejor que cualquier
+# alternativa que sí pase, se conserva el color Y se agrega un segundo canal:
+# cada segmento tiene su propia FORMA de marca. Quien no distinga los tonos
+# sigue leyendo el gráfico por la forma, por la posición en el cuadrante y por
+# la etiqueta directa.
+MARCA = {
+    "oportunidad": "o",  # círculo
+    "priorizar": "o",
+    "sobreinvertido": "v",  # triángulo hacia abajo
+    "revisar": "v",
+    "prestigio": "D",  # rombo
+    "eficiencia": "s",  # cuadrado
+    "neutro": "o",
 }
 
 # Tinta y cromo del gráfico. El dato lleva el contraste; el andamiaje se apaga.
@@ -230,6 +248,7 @@ def puntos_ordenados(
     valores,
     colores,
     formato="{:.2f}",
+    marcas=None,
     etiqueta_derecha=None,
     titulo_derecha="",
 ) -> None:
@@ -249,13 +268,19 @@ def puntos_ordenados(
 
     `etiqueta_derecha` agrega una segunda columna de contexto (el volumen), de
     modo que el lector vea nota y cantidad sin cambiar de gráfico.
+
+    `marcas` da a cada punto su propia forma. Es obligatorio cuando los colores
+    vienen de `ACENTO`: verde y rojo son indistinguibles bajo deuteranopía y la
+    forma es lo que sostiene la lectura en ese caso.
     """
     posiciones = range(len(etiquetas))
     minimo = min(valores)
 
-    for y, valor, color in zip(posiciones, valores, colores):
+    marcas = list(marcas) if marcas is not None else ["o"] * len(valores)
+
+    for y, valor, color, marca in zip(posiciones, valores, colores, marcas):
         ax.plot([minimo, valor], [y, y], color=GRILLA, lw=1.2, zorder=1, solid_capstyle="round")
-        ax.plot([valor], [y], "o", color=color, markersize=11, zorder=3,
+        ax.plot([valor], [y], marca, color=color, markersize=11, zorder=3,
                 markeredgecolor=FONDO, markeredgewidth=1.5)
         ax.annotate(formato(valor) if callable(formato) else formato.format(valor),
                     xy=(valor, y), xytext=(13, 0),
@@ -282,6 +307,8 @@ def leyenda_segmentos(ax, entradas: dict[str, str], **kwargs) -> None:
     Con `abajo=True` se ubica bajo el área de datos, para no tapar marcas.
     `marcadores` permite que el símbolo de la leyenda sea el mismo que el del
     gráfico (círculo, cuadrado): si no coinciden, la leyenda deja de ser leyenda.
+    Es obligatorio pasarlo cuando el gráfico usa los colores de `ACENTO`, porque
+    ahí la forma es la que carga la distinción para un lector con daltonismo.
     """
     from matplotlib.lines import Line2D
 

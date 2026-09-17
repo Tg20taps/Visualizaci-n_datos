@@ -80,12 +80,12 @@ Cada gráfico se guarda en `images/exploratorio/` **y** genera su entrada en `do
 
 ## Bloque D — Dashboard (tareas 22 a 27)
 
-- [ ] **22.** Confirmar con el profe la herramienta. Si deja elegir: **Power BI**. La rúbrica paga por filtros, KPIs y navegación, y en Power BI eso sale casi gratis; en Streamlit o Dash se gastan horas programando interacciones que valen los mismos puntos.
-- [ ] **23.** Cargar `data/processed/catalogo_unificado.csv` y armar los 4 KPIs de cabecera: total de títulos, nota media ponderada, ROI mediano, % del catálogo en el género líder.
-- [ ] **24.** Agregar los filtros: tipo, género, país, idioma, rango de años.
-- [ ] **25.** Distribuir los visuales en 3 páginas con navegación: Visión general → Desempeño por contenido → Recomendaciones. Máximo 5 o 6 visuales por página; si no cabe, es otra página, no letra más chica.
-- [ ] **26.** Aplicar la paleta de la tarea 15 y revisar contraste. Una categoría conserva su color en todos los visuales, en el dashboard y en el informe.
-- [ ] **27.** Poner una nota al pie visible con el alcance declarado: datos de catálogo, no de usuarios.
+- [x] **22.** Confirmar con el profe la herramienta. *(Respondió que la elegimos nosotros. Se descarta Power BI: ese argumento era de economía de esfuerzo, y como las interacciones ya están programadas, deja de aplicar. Va como **app HTML autocontenida**, formato que el enunciado acepta —`.pbix / .twb / app`— y que corre de un doble clic sin instalar nada ni depender de una licencia.)*
+- [x] **23.** Cargar `data/processed/catalogo_unificado.csv` y armar los 4 KPIs de cabecera: total de títulos, nota media ponderada, ROI mediano, % del catálogo en el género líder.
+- [x] **24.** Agregar los filtros: tipo, género, país, idioma, rango de años.
+- [x] **25.** Distribuir los visuales en 3 páginas con navegación: Visión general → Desempeño por contenido → Recomendaciones. Máximo 5 o 6 visuales por página; si no cabe, es otra página, no letra más chica.
+- [x] **26.** Aplicar la paleta de la tarea 15 y revisar contraste. Una categoría conserva su color en todos los visuales, en el dashboard y en el informe.
+- [x] **27.** Poner una nota al pie visible con el alcance declarado: datos de catálogo, no de usuarios.
 
 ## Bloque E — Informe ejecutivo (tareas 28 a 30)
 
@@ -147,6 +147,6 @@ Los dos tienen que responder estas sin dudar. Las cuatro últimas salieron de ha
 
 ## Dudas para el profe
 
-- [ ] ¿Hay herramienta obligatoria para el dashboard o se puede elegir? (bloquea la tarea 22)
+- [x] ¿Hay herramienta obligatoria para el dashboard o se puede elegir? **Respondida: la elegimos nosotros.** Se fue por app HTML.
 - [ ] Los tiempos están cruzados entre los PDF: la tabla de EP1 dice 2 h y el texto 3 horas; la de EP2 dice 3 h y el texto 2 horas. ¿Cuál vale?
 - [ ] ¿El informe ejecutivo tiene extensión máxima?
