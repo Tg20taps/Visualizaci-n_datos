@@ -1,5 +1,8 @@
 # CLAUDE.md — Plan de trabajo y checklist de rúbrica
 
+> **¿Retomando el trabajo? Lee primero [`ESTADO.md`](ESTADO.md).** Ahí está en qué punto va todo,
+> qué falta, dónde está cada archivo y cómo se presenta. Este documento es el plan tarea por tarea.
+
 Documento de trabajo interno del equipo. **No se entrega.** Sirve para (a) avanzar tarea a tarea sin perderse y (b) verificar que cada punto de las dos rúbricas quedó cubierto con evidencia.
 
 **Equipo:** Matías Retamal · Claudio González

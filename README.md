@@ -5,6 +5,9 @@
 **Equipo:** Matías Retamal · Claudio González
 **Audiencia objetivo:** Gerente de Contenidos de StreamView Analytics
 
+> **Estado del proyecto:** 31 de las 34 tareas completadas. Solo faltan los tres ensayos de la defensa.
+> El detalle de qué falta, dónde está cada archivo y cómo se presenta está en **[`ESTADO.md`](ESTADO.md)**.
+
 ---
 
 ## 1. Problema de negocio
@@ -118,9 +121,9 @@ Todo notebook corre de arriba a abajo sin intervención manual. Si uno requiere 
 
 | # | Entregable | Formato | Ubicación |
 |---|---|---|---|
-| 1 | Informe ejecutivo | PDF | `docs/informe_ejecutivo.pdf` |
+| 1 | Informe ejecutivo | PDF, 14 páginas | `docs/informe_ejecutivo.pdf` |
 | 2 | Dashboard interactivo | App HTML | `dashboard/streamview_dashboard.html` |
-| 3 | Resumen / presentación ejecutiva | PDF o PPTX | `docs/presentacion.pdf` |
+| 3 | Resumen / presentación ejecutiva | PDF, 10 láminas | `docs/presentacion.pdf` |
 | 4 | Archivos del proyecto documentados | — | todo el repo |
 | 5 | Dataset y complementarios | CSV | `data/` |
 | 6 | Carpeta con estructura profesional | — | este README |
