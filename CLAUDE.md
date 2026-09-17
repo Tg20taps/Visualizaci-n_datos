@@ -96,9 +96,9 @@ Cada gráfico se guarda en `images/exploratorio/` **y** genera su entrada en `do
 ## Bloque F — Presentación y defensa (tareas 31 a 34)
 
 - [x] **31.** Armar ~10 láminas para 10 minutos, una idea por lámina, siguiendo la secuencia: qué está pasando → por qué ocurre → qué implica para el negocio → qué recomendamos. *(Hecho: `docs/presentacion.pdf`, se regenera con `python src/informe/generar.py`.)*
-- [ ] **32.** Repasar juntos el banco de preguntas de más abajo hasta que **los dos** respondan las ocho sin dudar.
-- [ ] **33.** Ensayo cruzado: Matías presenta las láminas de la segunda mitad y Claudio las de la primera, al revés de como quedaron redactadas. Si alguno se traba, esa parte no está entendida.
-- [ ] **34.** Ensayo final con cronómetro, 10 minutos reales. Si se pasa, se cortan láminas, no se habla más rápido.
+- [ ] **32.** Repasar juntos el banco de preguntas de más abajo hasta que **los dos** respondan las doce sin dudar. *(En `docs/guion_defensa.md` está en qué lámina se responde cada una y quién contesta. Las preguntas 11 y 12 no tienen lámina: van de memoria.)*
+- [ ] **33.** Ensayo cruzado: Matías presenta las láminas de la segunda mitad y Claudio las de la primera, al revés de como quedaron redactadas. Si alguno se traba, esa parte no está entendida. *(Reparto y tiempos por lámina en `docs/guion_defensa.md`.)*
+- [ ] **34.** Ensayo final con cronómetro, 10 minutos reales. Si se pasa, se cortan láminas, no se habla más rápido. *(El orden de corte está decidido en `docs/guion_defensa.md`: primero la 4, después la 8, después fundir la 2 con la 1. Nunca se cortan la 3, la 5, la 6, la 9 ni la 10.)*
 
 ---
 
@@ -106,23 +106,25 @@ Cada gráfico se guarda en `images/exploratorio/` **y** genera su entrada en `do
 
 Antes de entregar, cada línea tiene que poder señalarse con el dedo en un archivo concreto.
 
+**Auditado y verificado en `docs/auditoria_rubrica.md`** — ahí está la evidencia archivo por archivo, las comprobaciones que se corrieron y las cinco correcciones que salieron de la revisión.
+
 ### EP1
 
-- [ ] **IE4 (14%) Percepción visual.** Jerarquía clara en cada visual: lo más importante arriba a la izquierda, tamaño proporcional a la relevancia, agrupación por proximidad. Evidencia: `docs/decisiones_diseno.md`.
-- [ ] **IE5 (16%) Atributos visuales.** Paleta única de la tarea 15 aplicada en todo. Color con función semántica. Contraste verificado y sin depender solo del color para distinguir series.
-- [ ] **IE6 (20%) Carga cognitiva.** Sin 3D, sin torta con más de 5 categorías, sin ejes truncados, sin dobles ejes. Títulos redactados como conclusión (tarea 29).
-- [ ] **IE7 (12%) Tipo de gráfico.** Justificación por gráfico en `docs/decisiones_diseno.md`. **Los tres análisis descartados cuentan como evidencia aquí**: demostrar que no se graficó algo porque la variable no lo permite es selección correcta.
-- [ ] **IE9 (20%) Coherencia.** Tarea 21. Todo visual responde a una pregunta del Gerente de Contenidos.
-- [ ] **IE10 (18%) Narrativa.** Informe y presentación siguen la misma secuencia: contexto → hallazgo → implicancia → recomendación.
+- [x] **IE4 (14%) Percepción visual.** Jerarquía clara en cada visual: lo más importante arriba a la izquierda, tamaño proporcional a la relevancia, agrupación por proximidad. Evidencia: `docs/decisiones_diseno.md`.
+- [x] **IE5 (16%) Atributos visuales.** Paleta única de la tarea 15 aplicada en todo. Color con función semántica. Contraste verificado y sin depender solo del color para distinguir series.
+- [x] **IE6 (20%) Carga cognitiva.** Sin 3D, sin torta con más de 5 categorías, sin ejes truncados, sin dobles ejes. Títulos redactados como conclusión (tarea 29).
+- [x] **IE7 (12%) Tipo de gráfico.** Justificación por gráfico en `docs/decisiones_diseno.md`. **Los tres análisis descartados cuentan como evidencia aquí**: demostrar que no se graficó algo porque la variable no lo permite es selección correcta.
+- [x] **IE9 (20%) Coherencia.** Tarea 21. Todo visual responde a una pregunta del Gerente de Contenidos.
+- [x] **IE10 (18%) Narrativa.** Informe y presentación siguen la misma secuencia: contexto → hallazgo → implicancia → recomendación.
 
 ### EP2
 
-- [ ] **IE1 (12%) Audiencia.** Caracterizar al Gerente de Contenidos: qué decide, con qué frecuencia, qué no sabe hoy, qué nivel técnico tiene. Dos o tres frases, no una etiqueta.
-- [ ] **IE2 (16%) Propósito comunicacional.** Enunciado explícito y ligado al problema de negocio. Debe aparecer igual en el informe, en la lámina 2 y en la boca de los dos.
-- [ ] **IE3 (22%) Estrategia de comunicación.** El indicador que más pesa de los doce. Por qué dashboard **y** informe: el dashboard para exploración recurrente del Gerente, el informe para respaldar la decisión ante su jefatura. Por qué ese nivel de agregación, por qué ese orden de láminas, por qué se omitió lo que se omitió.
-- [ ] **IE8 (18%) Justificación técnica.** Por cada visual: naturaleza de la variable, qué alternativa se evaluó, por qué se descartó. Aquí entran el umbral de votos (tarea 6) y el subconjunto de ROI (tarea 18).
-- [ ] **IE11 (14%) Recursos integrados.** No leer la lámina. La lámina apoya, la voz explica. Tareas 33 y 34.
-- [ ] **IE12 (18%) Conclusiones con evidencia.** Ninguna recomendación sin su gráfico detrás. Ninguna afirmación que el dataset no soporte — en particular, **nada sobre duración óptima ni sobre clasificación por edad**, que es donde va a caer el resto del curso.
+- [x] **IE1 (12%) Audiencia.** Caracterizar al Gerente de Contenidos: qué decide, con qué frecuencia, qué no sabe hoy, qué nivel técnico tiene. Dos o tres frases, no una etiqueta.
+- [x] **IE2 (16%) Propósito comunicacional.** Enunciado explícito y ligado al problema de negocio. Debe aparecer igual en el informe, en la lámina 2 y en la boca de los dos.
+- [x] **IE3 (22%) Estrategia de comunicación.** El indicador que más pesa de los doce. Por qué dashboard **y** informe: el dashboard para exploración recurrente del Gerente, el informe para respaldar la decisión ante su jefatura. Por qué ese nivel de agregación, por qué ese orden de láminas, por qué se omitió lo que se omitió.
+- [x] **IE8 (18%) Justificación técnica.** Por cada visual: naturaleza de la variable, qué alternativa se evaluó, por qué se descartó. Aquí entran el umbral de votos (tarea 6) y el subconjunto de ROI (tarea 18).
+- [ ] **IE11 (14%) Recursos integrados.** No leer la lámina. La lámina apoya, la voz explica. **Material listo en `docs/guion_defensa.md`**; queda abierto hasta hacer los ensayos (tareas 33 y 34).
+- [x] **IE12 (18%) Conclusiones con evidencia.** Ninguna recomendación sin su gráfico detrás. Ninguna afirmación que el dataset no soporte — en particular, **nada sobre duración óptima ni sobre clasificación por edad**, que es donde va a caer el resto del curso.
 
 ---
 
@@ -149,4 +151,4 @@ Los dos tienen que responder estas sin dudar. Las cuatro últimas salieron de ha
 
 - [x] ¿Hay herramienta obligatoria para el dashboard o se puede elegir? **Respondida: la elegimos nosotros.** Se fue por app HTML.
 - [ ] Los tiempos están cruzados entre los PDF: la tabla de EP1 dice 2 h y el texto 3 horas; la de EP2 dice 3 h y el texto 2 horas. ¿Cuál vale?
-- [ ] ¿El informe ejecutivo tiene extensión máxima?
+- [ ] ¿El informe ejecutivo tiene extensión máxima? *(El actual son 16 páginas. Si hay tope y lo pasa, lo primero que sale es la sección 7 —justificación de las representaciones— porque está completa en `docs/decisiones_diseno.md`.)*
