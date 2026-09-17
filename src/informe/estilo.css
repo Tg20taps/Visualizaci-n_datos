@@ -4,7 +4,7 @@
 
 @page {
   size: A4;
-  margin: 22mm 20mm 20mm 20mm;
+  margin: 18mm 18mm 17mm 18mm;
   @bottom-center {
     content: counter(page) " / " counter(pages);
     font-family: "DejaVu Sans", sans-serif;
@@ -28,7 +28,7 @@
 
 body {
   font-family: "DejaVu Sans", sans-serif;
-  font-size: 9.6pt; line-height: 1.55; color: var(--tinta2);
+  font-size: 9.5pt; line-height: 1.5; color: var(--tinta2);
   hyphens: auto;
 }
 
@@ -63,17 +63,17 @@ body {
 
 /* ── Jerarquía ───────────────────────────────────────────────────────────── */
 h2 {
-  font-size: 14.5pt; color: var(--tinta); margin: 9mm 0 1.5mm 0;
+  font-size: 14pt; color: var(--tinta); margin: 7mm 0 1.5mm 0;
   padding-bottom: 2mm; border-bottom: 2px solid var(--grilla);
   page-break-after: avoid; font-weight: bold;
 }
 h2 .num { color: var(--azul); margin-right: 3mm; }
 h3 {
-  font-size: 10.8pt; color: var(--tinta); margin: 6mm 0 1.5mm 0;
+  font-size: 10.6pt; color: var(--tinta); margin: 4.5mm 0 1.5mm 0;
   page-break-after: avoid; font-weight: bold;
 }
 h4 { font-size: 9.8pt; color: var(--tinta2); margin: 4mm 0 1mm 0; page-break-after: avoid; }
-p { margin: 0 0 2.6mm 0; text-align: justify; orphans: 2; widows: 2; }
+p { margin: 0 0 2.4mm 0; text-align: justify; orphans: 2; widows: 2; }
 ul, ol { margin: 0 0 3mm 0; padding-left: 5mm; }
 li { margin-bottom: 1.4mm; }
 strong { color: var(--tinta); }
@@ -87,19 +87,22 @@ code {
 
 /* ── Tablas ──────────────────────────────────────────────────────────────── */
 table {
-  width: 100%; border-collapse: collapse; margin: 3mm 0 4mm 0;
+  width: 100%; border-collapse: collapse; margin: 2.5mm 0 3.5mm 0;
   font-size: 8.6pt; page-break-inside: avoid;
 }
 th {
   text-align: left; color: var(--tinta); font-weight: bold;
-  border-bottom: 1.5px solid var(--tinta2); padding: 1.8mm 2mm; vertical-align: bottom;
+  border-bottom: 1.5px solid var(--tinta2); padding: 1.6mm 2mm; vertical-align: bottom;
 }
-td { padding: 1.6mm 2mm; border-bottom: 1px solid var(--grilla); vertical-align: top; }
+td { padding: 1.4mm 2mm; border-bottom: 1px solid var(--grilla); vertical-align: top; }
 td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 tr:last-child td { border-bottom: none; }
 
 /* ── Figuras ─────────────────────────────────────────────────────────────── */
-figure { margin: 4mm 0 4.5mm 0; page-break-inside: avoid; }
+figure { margin: 3.5mm 0 4mm 0; page-break-inside: avoid; text-align: center; }
+/* 92% del ancho: nueve puntos porcentuales menos no se notan en la legibilidad
+   del gráfico y ahorran cerca de una página en total. */
+figure img { max-width: 92%; }
 figure img { width: 100%; display: block; }
 figcaption {
   font-size: 8.2pt; color: var(--tenue); margin-top: 1.5mm;
@@ -110,7 +113,7 @@ figcaption b { color: var(--tinta2); }
 /* ── Bloques destacados ──────────────────────────────────────────────────── */
 .hallazgo {
   background: #fff; border-left: 3px solid var(--azul);
-  padding: 4mm 5mm; margin: 4mm 0; page-break-inside: avoid;
+  padding: 3.5mm 5mm; margin: 3.5mm 0; page-break-inside: avoid;
 }
 .hallazgo .rotulo {
   font-size: 7.6pt; letter-spacing: 0.16em; text-transform: uppercase;
@@ -123,7 +126,7 @@ figcaption b { color: var(--tinta2); }
 
 .reco {
   border: 1px solid var(--grilla); border-top: 3px solid var(--verde);
-  padding: 4.5mm 5mm; margin: 4mm 0; page-break-inside: avoid; background: #fff;
+  padding: 4mm 5mm; margin: 3.5mm 0; page-break-inside: avoid; background: #fff;
 }
 .reco h3 { margin-top: 0; color: var(--tinta); font-size: 11pt; }
 .reco .numero {
@@ -138,7 +141,7 @@ figcaption b { color: var(--tinta2); }
 .reco .meta-fila b { color: var(--tinta); }
 .reco p:last-child { margin-bottom: 0; }
 
-.kpi-fila { display: flex; gap: 3mm; margin: 4mm 0; page-break-inside: avoid; }
+.kpi-fila { display: flex; gap: 3mm; margin: 3.5mm 0; page-break-inside: avoid; }
 .kpi {
   flex: 1; background: #fff; border: 1px solid var(--grilla);
   border-top: 2.5px solid var(--azul); padding: 3.5mm 3mm;

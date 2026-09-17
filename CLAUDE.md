@@ -151,4 +151,4 @@ Los dos tienen que responder estas sin dudar. Las cuatro últimas salieron de ha
 
 - [x] ¿Hay herramienta obligatoria para el dashboard o se puede elegir? **Respondida: la elegimos nosotros.** Se fue por app HTML.
 - [ ] Los tiempos están cruzados entre los PDF: la tabla de EP1 dice 2 h y el texto 3 horas; la de EP2 dice 3 h y el texto 2 horas. ¿Cuál vale?
-- [ ] ¿El informe ejecutivo tiene extensión máxima? *(El actual son 16 páginas. Si hay tope y lo pasa, lo primero que sale es la sección 7 —justificación de las representaciones— porque está completa en `docs/decisiones_diseno.md`.)*
+- [x] ¿El informe ejecutivo tiene extensión máxima? **Respondida: no hay tope.** Igual se recortó de 16 a 14 páginas por decisión propia: se sacaron los párrafos de relleno de la sección 6 y los saltos de página que no se ganaban el lugar. Las 11 secciones que exige el enunciado y las 6 figuras se conservan enteras.
