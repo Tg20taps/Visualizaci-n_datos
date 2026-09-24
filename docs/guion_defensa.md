@@ -72,7 +72,7 @@
 
 > "Aquí está el hallazgo. Cada punto es un género: a la derecha los que más se producen, arriba los que mejor nota reciben.
 >
-> Abajo a la derecha, terror y suspenso: 4.387 títulos distintos, un tercio del catálogo de películas, y las dos peores notas. Arriba a la izquierda, documental, musical e histórico: 1.546 títulos y 0,83 puntos más de nota.
+> Abajo a la derecha, terror y suspenso: 4.387 títulos distintos, un tercio del catálogo de películas, y las dos peores notas. Arriba a la izquierda, documental, musical e histórico: 1.546 títulos y 0,77 puntos más de nota.
 >
 > Los cortes son las medianas del propio conjunto, no números que elegimos. Y el eje horizontal es logarítmico porque drama quintuplica a bélico; en escala lineal el cuadrante de la izquierda se aplasta contra el margen y el hallazgo no se ve."
 

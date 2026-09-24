@@ -87,14 +87,21 @@ MARCA = {
 FONDO = "#fcfcfb"
 TINTA = "#0b0b0b"
 TINTA_SECUNDARIA = "#52514e"
-TINTA_TENUE = "#898781"
+# Gris de texto secundario. Era #898781, que da 3,5:1 sobre el fondo: bajo el
+# 4,5:1 que WCAG AA exige para texto chico, y justo se usaba en ejes, notas y
+# pies. #6e6d68 da 5,05:1. El gris claro sigue existiendo, pero solo para
+# MARCAS (ACENTO["neutro"]), donde el mínimo para objetos gráficos es 3:1.
+TINTA_TENUE = "#6e6d68"
 GRILLA = "#e1e0d9"
 EJE = "#c3c2b7"
 
 # Gris de de-énfasis: el resto de las categorías cuando una es el punto.
 GRIS_CONTEXTO = "#c3c2b7"
 
-TIPOGRAFIA = ["DejaVu Sans", "Liberation Sans", "Helvetica", "Arial", "sans-serif"]
+# Inter: diseñada para pantallas y cifras, con dígitos tabulares y una x alta
+# que se lee bien en tamaños chicos. Es la misma familia del dashboard y del
+# informe. DejaVu queda de respaldo si Inter no está instalada.
+TIPOGRAFIA = ["Inter", "DejaVu Sans", "Liberation Sans", "Helvetica", "Arial", "sans-serif"]
 
 
 def aplicar_estilo() -> None:
@@ -350,10 +357,25 @@ def limpiar_ejes(ax, eje_valor: str = "x") -> None:
     ax.set_axisbelow(True)
 
 
-def guardar(fig, nombre: str, carpeta: Path = DIR_EXPLORATORIO) -> Path:
-    """Guarda el gráfico como PNG. Devuelve la ruta para citarla en la documentación."""
+def guardar(fig, nombre: str, carpeta: Path = DIR_EXPLORATORIO, mostrar: bool = True) -> Path:
+    """
+    Guarda el gráfico como PNG y, dentro de un notebook, lo muestra.
+
+    Muestra el ARCHIVO guardado y no la figura en memoria: lo que se ve en el
+    notebook es exactamente lo que va al informe. Antes la figura se cerraba sin
+    mostrarse, y el notebook de análisis quedaba sin un solo gráfico visible.
+    """
     carpeta.mkdir(parents=True, exist_ok=True)
     ruta = carpeta / (nombre if nombre.endswith(".png") else f"{nombre}.png")
     fig.savefig(ruta)
     plt.close(fig)
+    if mostrar:
+        try:
+            from IPython import get_ipython
+            from IPython.display import Image, display
+
+            if get_ipython() is not None:
+                display(Image(filename=str(ruta), width=920))
+        except ImportError:
+            pass
     return ruta

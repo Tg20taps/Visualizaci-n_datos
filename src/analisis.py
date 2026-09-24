@@ -202,3 +202,95 @@ def retorno_y_nota_por_genero(
     resumen.attrs["corte_roi"] = corte_roi
     resumen.attrs["corte_nota"] = corte_nota
     return resumen.sort_values("roi", ascending=False)
+
+
+def cifras_clave(catalogo: pd.DataFrame, largos: dict[str, pd.DataFrame]) -> dict:
+    """
+    Todas las cifras que el proyecto cita en voz alta, calculadas en un solo lugar.
+
+    El informe narrativo, el guion de defensa y las láminas leen de aquí. Existe
+    porque ya pasó una vez que una cifra escrita a mano («5.431 títulos») sumaba
+    dos géneros que se superponen y contaba dos veces los títulos etiquetados
+    con ambos. Una cifra que se calcula no se puede desincronizar de los datos.
+
+    Los conteos de géneros son siempre de títulos DISTINTOS, nunca sumas.
+    """
+    cat, gen, pais = catalogo, largos["genero"], largos["pais"]
+    peliculas = cat[cat["tipo"] == "Película"]
+    pel_votos = peliculas[peliculas["votos_suficientes"]]
+    g = gen.merge(cat[["show_id", "score_ponderado", "votos_suficientes"]], on="show_id")
+    gp = g[(g["tipo"] == "Película") & g["votos_suficientes"]]
+
+    def distintos(generos):
+        sub = gp[gp["genero"].isin(generos)]
+        return sub["show_id"].nunique(), sub.drop_duplicates("show_id")["score_ponderado"].mean()
+
+    n_ts, nota_ts = distintos(["Horror", "Thriller"])
+    n_dmh, nota_dmh = distintos(["Documentary", "Music", "History"])
+
+    por_genero = desempeno_por_dimension(gen, cat, "genero", tipo="Película")
+    por_pais = desempeno_por_dimension(pais, cat, "pais", minimo_titulos=150)
+    retorno = retorno_y_nota_por_genero(gen, cat)
+
+    roi = cat[cat["roi"].notna()]
+    no_recupera = lambda d: float((d["roi"] < 1).mean() * 100)
+
+    prioridad = ["Animation", "Family", "Adventure", "Music"]
+    pel_gen = gen[gen["tipo"] == "Película"]
+    pel_pais = pais[pais["tipo"] == "Película"]
+    n_pel = peliculas["show_id"].nunique()
+
+    volumen_genero = gen["genero"].value_counts()
+
+    return {
+        "titulos": len(cat),
+        "peliculas": int((cat["tipo"] == "Película").sum()),
+        "series": int((cat["tipo"] == "Serie").sum()),
+        "con_votos": int(cat["votos_suficientes"].sum()),
+        "peliculas_con_votos": len(pel_votos),
+        "nota_media": float(cat.loc[cat["votos_suficientes"], "score_ponderado"].mean()),
+        "roi_mediano": float(roi["roi"].median()),
+        "con_roi": len(roi),
+        "drama_titulos": int(volumen_genero["Drama"]),
+        "drama_pct": float(volumen_genero["Drama"] / len(cat) * 100),
+        # Terror y suspenso: títulos distintos, no la suma de los dos géneros.
+        "terror_suspenso_titulos": int(n_ts),
+        "terror_suspenso_pct": float(n_ts / len(pel_votos) * 100),
+        "terror_nota": float(por_genero.loc["Horror", "nota"]),
+        "suspenso_nota": float(por_genero.loc["Thriller", "nota"]),
+        "terror_suspenso_nota": float(nota_ts),
+        "doc_mus_hist_titulos": int(n_dmh),
+        "doc_mus_hist_nota": float(nota_dmh),
+        # Diferencia entre los dos grupos, ambos promediados sobre títulos
+        # distintos. Promediar sobre las filas explotadas contaba dos veces a
+        # los títulos que están en dos de los géneros y daba 0,83 en vez de 0,77.
+        "brecha_nota_grupos": float(nota_dmh - nota_ts),
+        "japon_nota": float(por_pais.loc["Japan", "nota"]),
+        "japon_titulos": int(por_pais.loc["Japan", "titulos"]),
+        "corea_nota": float(por_pais.loc["South Korea", "nota"]),
+        "eeuu_nota": float(por_pais.loc["United States of America", "nota"]),
+        "eeuu_titulos": int(por_pais.loc["United States of America", "titulos"]),
+        "eeuu_puesto": int(list(por_pais.index).index("United States of America") + 1),
+        "paises_ranking": len(por_pais),
+        "presupuesto_terror": float(retorno.loc["Horror", "presupuesto"]),
+        "presupuesto_animacion": float(retorno.loc["Animation", "presupuesto"]),
+        "presupuesto_aventura": float(retorno.loc["Adventure", "presupuesto"]),
+        "roi_terror": float(retorno.loc["Horror", "roi"]),
+        "roi_historico": float(retorno.loc["History", "roi"]),
+        "nota_historico": float(retorno.loc["History", "nota"]),
+        "roi_belico": float(retorno.loc["War", "roi"]),
+        "nota_belico": float(retorno.loc["War", "nota"]),
+        "prioridad": {
+            gname: (float(retorno.loc[gname, "roi"]), float(retorno.loc[gname, "nota"]))
+            for gname in prioridad
+        },
+        "no_recupera_total": no_recupera(roi),
+        "no_recupera_nota_baja": no_recupera(roi[roi["score_ponderado"] < 6]),
+        "no_recupera_nota_alta": no_recupera(roi[roi["score_ponderado"] > 7]),
+        "roi_banda_baja": float(roi[roi["score_ponderado"] <= 5.5]["roi"].median()),
+        "roi_banda_alta": float(roi[roi["score_ponderado"] > 7]["roi"].median()),
+        "meta1_actual": float(pel_gen[pel_gen["genero"].isin(prioridad)]["show_id"].nunique() / n_pel * 100),
+        "meta2_actual": float(pel_pais[pel_pais["pais"].isin(["Japan", "South Korea"])]["show_id"].nunique() / n_pel * 100),
+        "series_superan": int((comparar_tipos_en_generos_comunes(gen, cat)["brecha"] > 0).sum()),
+        "generos_comparables": len(comparar_tipos_en_generos_comunes(gen, cat)),
+    }
