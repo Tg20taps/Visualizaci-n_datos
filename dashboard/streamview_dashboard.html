@@ -1,3 +1,5 @@
+<!doctype html>
+<html lang="es">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Desempeño del catálogo · StreamView</title>
@@ -5,13 +7,17 @@
 
 <header>
   <div class="titulo-fila">
+    <div class="marca" aria-hidden="true">S<span>V</span></div>
     <h1>Desempeño del catálogo</h1>
-    <span class="sub">StreamView Analytics · 31.991 títulos, 2010–2025 · para el Gerente de Contenidos</span>
+    <span class="sub">31.991 títulos · 2010–2025 · para el Gerente de Contenidos</span>
+    <div class="acciones">
+      <button class="boton-sec" id="pantalla" title="Pantalla completa (F)">⛶ Pantalla completa</button>
+    </div>
   </div>
   <nav>
-    <button data-pagina="p1" aria-current="page"><span class="paso">contexto</span>Visión general</button>
-    <button data-pagina="p2"><span class="paso">hallazgo e implicancia</span>Desempeño por contenido</button>
-    <button data-pagina="p3"><span class="paso">recomendación</span>Recomendaciones</button>
+    <button data-pagina="p1" aria-current="page"><span class="paso">1 · contexto</span>Visión general</button>
+    <button data-pagina="p2"><span class="paso">2 · hallazgo</span>Desempeño por contenido</button>
+    <button data-pagina="p3"><span class="paso">3 · decisión</span>Recomendaciones</button>
   </nav>
 </header>
 
@@ -24,27 +30,9 @@
       <button data-tipo="1" aria-pressed="false">Series</button>
     </div>
   </div>
-  <div class="filtro">
-    <label>Género</label>
-    <details class="menu" id="f-genero">
-      <summary>Todos</summary>
-      <div class="panel"></div>
-    </details>
-  </div>
-  <div class="filtro">
-    <label>País</label>
-    <details class="menu" id="f-pais">
-      <summary>Todos</summary>
-      <div class="panel"></div>
-    </details>
-  </div>
-  <div class="filtro">
-    <label>Idioma</label>
-    <details class="menu" id="f-idioma">
-      <summary>Todos</summary>
-      <div class="panel"></div>
-    </details>
-  </div>
+  <div class="filtro"><label>Género</label><details class="menu" id="f-genero"><summary>Todos</summary><div class="panel"></div></details></div>
+  <div class="filtro"><label>País</label><details class="menu" id="f-pais"><summary>Todos</summary><div class="panel"></div></details></div>
+  <div class="filtro"><label>Idioma</label><details class="menu" id="f-idioma"><summary>Todos</summary><div class="panel"></div></details></div>
   <div class="filtro">
     <label>Años</label>
     <div class="rango">
@@ -54,146 +42,126 @@
       <output id="sal-max">2025</output>
     </div>
   </div>
-  <div class="filtro"><label>&nbsp;</label><button class="limpiar" id="limpiar">Limpiar filtros</button></div>
+  <div class="filtro"><label>&nbsp;</label><button class="boton-sec" id="limpiar">↺ Limpiar filtros</button></div>
   <div class="recuento" id="recuento"></div>
 </div>
 
 <main>
   <div class="kpis">
-    <div class="kpi" id="kpi-total"><div class="valor">—</div><div class="rotulo">Títulos en la selección</div><div class="base"></div></div>
-    <div class="kpi" id="kpi-nota"><div class="valor">—</div><div class="rotulo">Nota media ponderada</div><div class="base"></div></div>
-    <div class="kpi" id="kpi-roi"><div class="valor">—</div><div class="rotulo">ROI mediano</div><div class="base"></div></div>
-    <div class="kpi" id="kpi-genero"><div class="valor">—</div><div class="rotulo">Género líder</div><div class="base"></div></div>
+    <div class="kpi" id="kpi-total"><div class="rotulo">Títulos en la selección</div><div class="valor">—</div><div class="base"></div>
+      <div class="mini-barra"><span id="mb-pel" style="background:#2a78d6"></span><span id="mb-ser" style="background:#eb6834"></span></div>
+      <div class="mini-leyenda"><span><i style="background:#2a78d6"></i><b id="ml-pel"></b></span><span><i style="background:#eb6834"></i><b id="ml-ser"></b></span></div>
+    </div>
+    <div class="kpi" id="kpi-nota"><div class="rotulo">Nota media ponderada</div><div class="valor">—</div><div class="base"></div><span class="delta" hidden></span></div>
+    <div class="kpi" id="kpi-roi"><div class="rotulo">Retorno de la película típica</div><div class="valor">—</div><div class="base"></div><span class="delta" hidden></span></div>
+    <div class="kpi" id="kpi-genero"><div class="rotulo">Género más presente</div><div class="valor">—</div><div class="base"></div></div>
   </div>
 
-  <!-- ── Página 1 ───────────────────────────────────────────────────────── -->
+  <!-- ── Página 1 · contexto ───────────────────────────────────────────── -->
   <section class="pagina" id="p1">
-    <p class="intro">Qué hay en el catálogo y cómo se reparte. Todavía sin juicio: esta página solo describe la selección activa.</p>
+    <div class="intro"><span class="paso-num">Paso 1 de 3</span><p>Qué hay en el catálogo y cómo se reparte. Todavía sin juicio: esta página solo describe la selección activa.</p></div>
     <div class="rejilla">
-      <div class="tarjeta ancho">
-        <h3>Composición por tipo</h3>
-        <div class="nota">El catálogo está partido casi en mitades entre películas y series.</div>
-        <div class="cuerpo estirar" id="g-composicion"></div>
-      </div>
       <div class="tarjeta">
-        <h3>Volumen por género</h3>
+        <div class="sobre">Volumen por género</div><h3 id="t-vol-genero"></h3>
         <div class="nota">Un título con varios géneros cuenta en cada uno: la suma no da el total.</div>
         <div class="cuerpo" id="g-vol-genero"></div>
       </div>
       <div class="tarjeta">
-        <h3>Volumen por país de origen</h3>
+        <div class="sobre">Volumen por país de origen</div><h3 id="t-vol-pais"></h3>
         <div class="nota">Un título coproducido cuenta en cada país que lo lista.</div>
         <div class="cuerpo" id="g-vol-pais"></div>
       </div>
-      <div class="tarjeta">
-        <h3>Volumen por idioma original</h3>
-        <div class="nota">Aquí sí hay un valor por título, así que la suma da el total de la selección.</div>
+      <div class="tarjeta ancho">
+        <div class="sobre">Volumen por idioma original</div><h3 id="t-vol-idioma"></h3>
+        <div class="nota">Un idioma por título: aquí la suma sí da el total de la selección.</div>
         <div class="cuerpo" id="g-vol-idioma"></div>
       </div>
     </div>
-    <div class="alcance">
-      <b>Alcance declarado.</b> Datos de catálogo, no de usuarios. <code>popularity</code>, <code>vote_count</code> y <code>vote_average</code> se usan como proxies declarados de recepción de audiencia: este dashboard <b>no mide retención, engagement ni reproducciones</b>. El ROI se calcula sobre 3.540 películas con datos financieros. El filtro de años acota el universo pero no grafica evolución: hay 1.000 títulos exactos por año y cualquier serie de tiempo saldría plana por construcción del muestreo. Detalle en <code>docs/calidad_datos.md</code>.
-    </div>
+    <div class="alcance"><b>Alcance declarado.</b> Datos de catálogo, no de usuarios. <code>popularity</code>, <code>vote_count</code> y <code>vote_average</code> se usan como proxies declarados de recepción: este dashboard <b>no mide retención, engagement ni reproducciones</b>. El retorno se calcula sobre 3.540 películas con datos financieros. El filtro de años acota el universo pero no grafica evolución: hay 1.000 títulos exactos por año y cualquier serie de tiempo saldría plana por construcción del muestreo.</div>
   </section>
 
-  <!-- ── Página 2 ───────────────────────────────────────────────────────── -->
+  <!-- ── Página 2 · hallazgo ───────────────────────────────────────────── -->
   <section class="pagina" id="p2" hidden>
-    <p class="intro">Qué se recibe bien y dónde el gasto vuelve. Las notas se leen en gráficos de puntos y no de barras: el rango útil es estrecho y una barra obligaría a truncar el eje.</p>
+    <div class="intro"><span class="paso-num">Paso 2 de 3</span><p>Qué se recibe bien y dónde el gasto vuelve. Las notas van en puntos y no en barras: el rango útil es estrecho y una barra obligaría a truncar el eje.</p></div>
     <div class="rejilla">
       <div class="tarjeta">
-        <h3>Nota ponderada por género</h3>
+        <div class="sobre">Nota ponderada por género</div><h3 id="t-nota-genero"></h3>
         <div class="nota" id="nota-genero-min"></div>
         <div class="cuerpo" id="g-nota-genero"></div>
       </div>
       <div class="tarjeta">
-        <h3>Nota ponderada por país de origen</h3>
+        <div class="sobre">Nota ponderada por país de origen</div><h3 id="t-nota-pais"></h3>
         <div class="nota" id="nota-pais-min"></div>
         <div class="cuerpo" id="g-nota-pais"></div>
       </div>
       <div class="tarjeta">
-        <h3>Película contra serie, en los géneros comunes</h3>
-        <div class="nota">Restringido a los 8 géneros que ambos tipos comparten: usan taxonomías distintas y comparar el resto sería comparar dos vocabularios.</div>
+        <div class="sobre">Película contra serie · géneros comunes</div><h3 id="t-tipo"></h3>
+        <div class="nota">Solo los géneros que ambos tipos comparten: usan taxonomías distintas y comparar el resto sería comparar dos vocabularios.</div>
         <div class="cuerpo" id="g-tipo"></div>
         <div class="leyenda">
-          <span><svg width="12" height="12"><circle cx="6" cy="6" r="5" fill="#2a78d6"></circle></svg> Película</span>
-          <span><svg width="12" height="12"><rect x="1" y="1" width="10" height="10" fill="#eb6834"></rect></svg> Serie</span>
+          <span><svg width="12" height="12"><circle cx="6" cy="6" r="5" fill="#2a78d6"/></svg> Película</span>
+          <span><svg width="12" height="12"><rect x="1" y="1" width="10" height="10" fill="#eb6834"/></svg> Serie</span>
         </div>
       </div>
       <div class="tarjeta">
-        <h3>ROI mediano por banda de nota</h3>
+        <div class="sobre">Retorno según la nota</div><h3 id="t-roi"></h3>
         <div class="nota" id="roi-base"></div>
         <div class="cuerpo" id="g-roi"></div>
-        <div class="leyenda"><span>Mediana y no media: el ROI medio (781×) lo distorsiona un puñado de títulos de presupuesto mínimo.</span></div>
+        <div class="leyenda">
+          <span><svg width="22" height="8"><line x1="0" y1="4" x2="22" y2="4" stroke="#d03b3b" stroke-width="1.6" stroke-dasharray="5 3"/></svg> Punto de equilibrio: recupera lo invertido</span>
+          <span class="libre">Mediana y no promedio: el promedio (781×) lo distorsiona un puñado de títulos de presupuesto mínimo.</span>
+        </div>
       </div>
     </div>
-    <div class="alcance">
-      <b>Alcance declarado.</b> Datos de catálogo, no de usuarios. Ninguna cifra de esta página mide consumo real. Toda nota excluye los títulos con votación insuficiente (menos de 30 votos en películas, menos de 5 en series), porque su nota de 0,0 ensuciaría cualquier promedio. El ROI aplica solo a películas: las series no traen datos financieros.
-    </div>
+    <div class="alcance"><b>Alcance declarado.</b> Ninguna cifra de esta página mide consumo real. Toda nota excluye los títulos con votación insuficiente (menos de 30 votos en películas, menos de 5 en series). El retorno aplica solo a películas: las series no traen datos financieros.</div>
   </section>
 
-  <!-- ── Página 3 ───────────────────────────────────────────────────────── -->
+  <!-- ── Página 3 · decisión ───────────────────────────────────────────── -->
   <section class="pagina" id="p3" hidden>
-    <p class="intro">Dónde la oferta del catálogo y la recepción de la audiencia no coinciden, y qué hacer al respecto.</p>
+    <div class="intro"><span class="paso-num">Paso 3 de 3</span><p>Dónde la oferta del catálogo y la recepción de la audiencia no coinciden, y qué hacer al respecto.</p></div>
     <div class="rejilla">
       <div class="tarjeta ancho">
-        <h3>Brecha entre lo que se produce y lo que se recibe bien</h3>
+        <div class="sobre">Brecha entre lo que se produce y lo que se recibe bien</div><h3 id="t-brecha"></h3>
         <div class="nota" id="brecha-cortes"></div>
-        <div class="cuerpo dispersion" id="g-brecha"></div>
+        <div class="cuerpo" id="g-brecha"></div>
         <div class="leyenda">
-          <span><svg width="12" height="12"><circle cx="6" cy="6" r="5" fill="#0ca30c"></circle></svg> Oportunidad desatendida</span>
-          <span><svg width="13" height="12"><polygon points="1,2 12,2 6.5,11" fill="#d03b3b"></polygon></svg> Sobreinvertido</span>
-          <span><svg width="12" height="12"><circle cx="6" cy="6" r="4" fill="#898781"></circle></svg> Resto</span>
+          <span><svg width="12" height="12"><circle cx="6" cy="6" r="5" fill="#0ca30c"/></svg> Oportunidad desatendida</span>
+          <span><svg width="13" height="12"><polygon points="1,2 12,2 6.5,11" fill="#d03b3b"/></svg> Sobreinvertido</span>
+          <span><svg width="12" height="12"><circle cx="6" cy="6" r="4" fill="#898781"/></svg> Resto</span>
           <span class="libre">La forma distingue los segmentos además del color: verde y rojo son indistinguibles bajo deuteranopía.</span>
         </div>
       </div>
     </div>
-
-    <div class="recos" style="margin-top:14px">
-      <div class="reco">
-        <span class="n">1</span>
-        <h3>Reequilibrar hacia los géneros que ganan dos veces</h3>
+    <div class="recos" style="margin-top:16px">
+      <div class="reco"><span class="n">1</span><h3>Reequilibrar hacia los géneros que ganan dos veces</h3>
         <p>Animación, familiar, aventura y musical son los únicos cuatro por sobre la mediana en recepción <em>y</em> en retorno.</p>
         <p><b>No</b> es dejar de producir terror: es mover el margen de crecimiento.</p>
-        <div class="meta"><b>Del 22,4% al 30%</b> en 12 meses.</div>
-      </div>
-      <div class="reco">
-        <span class="n">2</span>
-        <h3>Abrir línea de adquisición en Japón y Corea del Sur</h3>
+        <div class="meta">Meta: <b>del 22,4% al 30%</b> de las nuevas adquisiciones en 12 meses.</div></div>
+      <div class="reco"><span class="n">2</span><h3>Abrir línea de adquisición en Japón y Corea del Sur</h3>
         <p>Encabezan la recepción y hoy son el 11,6% del catálogo de películas.</p>
         <p>No es una conclusión sobre calidad nacional: es subrepresentación relativa.</p>
-        <div class="meta"><b>Del 11,6% al 18%</b> en 12 meses.</div>
-      </div>
-      <div class="reco">
-        <span class="n">3</span>
-        <h3>Condicionar el presupuesto a la recepción esperada</h3>
-        <p>El 53% de las películas con nota bajo 6,0 no recupera lo invertido; sobre 7,0 son el 21%.</p>
+        <div class="meta">Meta: <b>del 11,6% al 18%</b> en 12 meses.</div></div>
+      <div class="reco"><span class="n">3</span><h3>Condicionar el presupuesto a la recepción esperada</h3>
+        <p>53 de cada 100 películas con nota bajo 6 no recuperan lo invertido; sobre 7, son 21.</p>
         <p>El presupuesto por sí solo no compra retorno en estos datos.</p>
-        <div class="meta"><b>Del 36,7% al 30%</b> que no recupera.</div>
-      </div>
+        <div class="meta">Meta: <b>del 36,7% al 30%</b> que no recupera.</div></div>
     </div>
-
-    <div class="tarjeta" style="margin-top:14px">
-      <h3>Títulos del cuadrante de oportunidad</h3>
+    <div class="tarjeta" style="margin-top:16px">
+      <div class="sobre">Títulos del cuadrante de oportunidad</div><h3 id="t-tabla"></h3>
       <div class="nota" id="tabla-resumen"></div>
       <div class="cuerpo tabla-scroll">
         <table id="tabla-oportunidad">
-          <thead><tr>
-            <th>Título</th><th>Tipo</th><th>Género de oportunidad</th>
-            <th class="num">Año</th><th class="num">Nota</th><th class="num">ROI</th>
-          </tr></thead>
+          <thead><tr><th>Título</th><th>Tipo</th><th>Género de oportunidad</th><th class="num">Año</th><th class="num">Nota</th><th class="num">Retorno</th></tr></thead>
           <tbody></tbody>
         </table>
       </div>
     </div>
-
-    <div class="alcance">
-      <b>Alcance declarado.</b> Datos de catálogo, no de usuarios. Las tres recomendaciones son sobre <b>composición del catálogo</b>, no sobre comportamiento de audiencia: sin datos de consumo real no se puede afirmar que un género bien evaluado retenga suscriptores. Las metas están calculadas sobre el catálogo completo, no sobre la selección filtrada. Respaldo completo en <code>docs/informe_ejecutivo.pdf</code>.
-    </div>
+    <div class="alcance"><b>Alcance declarado.</b> Las tres recomendaciones son sobre <b>composición del catálogo</b>, no sobre comportamiento de audiencia. Las metas están calculadas sobre el catálogo completo, no sobre la selección filtrada. Respaldo completo en <code>docs/informe_narrativo.html</code> y <code>docs/informe_ejecutivo.pdf</code>.</div>
   </section>
 </main>
 
 <div id="tooltip" role="status" aria-live="polite"></div>
-
 <script src="datos.js"></script>
 <script src="graficos.js"></script>
 <script src="app.js"></script>
+</html>

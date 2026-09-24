@@ -104,7 +104,7 @@
 
 ### 8 · Japón y Corea — *Matías* — 0:50
 
-> "Por origen: Japón 7,21 y Corea del Sur 7,11 encabezan la recepción. Estados Unidos aporta casi la mitad del catálogo de películas con nota 6,56: es el último de los quince países con más de 150 títulos.
+> "Por origen: Japón 7,21 y Corea del Sur 7,11 encabezan la recepción. Estados Unidos aporta casi la mitad del catálogo de películas con nota 6,56: de los 24 países con más de 150 títulos, catorce reciben mejor nota.
 >
 > El corte por idioma ordena igual —japonés, turco, coreano y chino por sobre el inglés—, y que dos cortes independientes den el mismo orden es lo que nos da confianza en la lectura.
 >
