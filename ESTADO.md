@@ -1,123 +1,89 @@
 # Estado del proyecto
 
-> **Lee esto primero.** Documento de traspaso: dónde está cada cosa, qué falta y cómo se presenta.
-> Sirve para los dos del equipo, y para retomar el trabajo en otra sesión sin reconstruir el contexto.
+> **Lee esto primero.** Es el documento de traspaso: dónde está cada cosa, qué falta y cómo se presenta.
+> Sirve para los dos del equipo y para retomar el trabajo en otra sesión sin tener que reconstruir el contexto.
 >
-> Última actualización: septiembre 2026 · rama `claude/relaxed-ride-h19xgd`
+> Última actualización: septiembre 2026 · rama `main` (idéntica a `claude/relaxed-ride-h19xgd`)
 
 ---
 
 ## En una línea
 
-**El trabajo está terminado.** Las 34 tareas del plan están hechas salvo tres, y esas tres son ensayos: nadie las puede hacer por ustedes. Los seis entregables existen, están verificados y están subidos.
+**El trabajo está terminado.** De las 34 tareas del plan, 31 están hechas. Las tres que faltan son ensayos, y esos solo los pueden hacer ustedes. Todos los entregables existen, están verificados y están en `main`.
 
 | | |
 |---|---|
 | Tareas completadas | **31 de 34** |
-| Pendientes | **32, 33 y 34** — los ensayos |
+| Pendientes | **32, 33 y 34** (los ensayos) |
 | Indicadores de rúbrica con evidencia | **11 de 12** (IE11 queda abierto hasta ensayar) |
-| Cambios sin subir a git | **ninguno** |
+| Auditorías de rúbrica hechas | **2** (ver `docs/auditoria_rubrica.md`) |
 
 ---
 
-## Los seis entregables
+## Cómo se presenta (formato actual)
+
+**10 minutos en dos partes: primero el informe narrativo y después la demo del dashboard.**
+
+1. **Informe narrativo:** `docs/informe_narrativo.html`, abierto en Chrome a pantalla completa y recorrido con scroll. Es el notebook 04 exportado sin código. Cuenta la historia en cinco capítulos: la pregunta → lo que revisamos primero → el desajuste → el giro (dónde está la plata) → tres decisiones. Las cifras aparecen animadas al llegar a cada sección. Dura unos 7 minutos.
+2. **Demo del dashboard:** `dashboard/streamview_dashboard.html`. Tiene tres movimientos: la vista general, el filtro Japón (la nota y el retorno suben, con flechas contra el catálogo) y la página 3 con Películas (cuadrantes y lista de títulos en oportunidad). Dura unos 2 minutos y 15 segundos.
+3. **Cierre** en la frase ancla: *«La nota predice la plata. El presupuesto, no.»*
+
+**Los diálogos, palabra por palabra, están en `docs/guion_defensa.md`.** Ahí también están el reparto (Matías abre y cierra y hace los capítulos 1, 3 y 5; Claudio hace los capítulos 2 y 4 y la demo), los tiempos, el orden de corte, el plan B, la tarjeta de cifras y la tabla de técnicas de persuasión con sus referencias. Esa tabla es la evidencia para IE3, el indicador que más pesa.
+
+**Plan B**, si falla el navegador o el proyector: `docs/presentacion.pdf`, o su versión editable `docs/presentacion.pptx`. Son las mismas 10 láminas, y la .pptx trae el guion de cada una en las notas del orador.
+
+---
+
+## Los entregables
 
 | # | Entregable | Formato | Archivo | Estado |
 |---|---|---|---|---|
 | 1 | Informe ejecutivo | PDF, 14 páginas | `docs/informe_ejecutivo.pdf` | ✅ |
+| 1b | Informe narrativo (con el que se presenta) | HTML animado, sin código | `docs/informe_narrativo.html` ← `notebooks/04_informe_narrativo.ipynb` | ✅ |
 | 2 | Dashboard interactivo | App HTML | `dashboard/streamview_dashboard.html` | ✅ |
-| 3 | Presentación ejecutiva | PDF, 10 láminas 16:9 | `docs/presentacion.pdf` | ✅ |
+| 3 | Presentación ejecutiva | PDF + PPTX editable, 10 láminas 16:9 | `docs/presentacion.pdf` · `docs/presentacion.pptx` | ✅ |
 | 4 | Archivos del proyecto documentados | — | todo el repositorio | ✅ |
 | 5 | Dataset y complementarios | CSV | `data/raw/` y `data/processed/` | ✅ |
 | 6 | Carpeta con estructura profesional | — | `README.md` | ✅ |
 
-**Sobre el formato PDF del informe:** lo pide así el enunciado. Está escrito en el `README.md` desde el primer commit del proyecto, antes de cualquier trabajo: *«Informe ejecutivo · PDF»*. La presentación admite PDF o PPTX y se entregó en PDF.
+**Por qué el informe es PDF y no Word:** así lo pide el enunciado. Está en el `README.md` desde el primer commit: *«Informe ejecutivo · PDF»*. La presentación admite PDF o PPTX, así que se entregan las dos.
 
 ---
 
 ## Lo único que falta: tareas 32, 33 y 34
 
-Las tres son de ensayo. **El material está listo; lo que falta es hacerlo en voz alta.** Todo lo que necesitan está en `docs/guion_defensa.md`.
+El material está listo. Lo que falta es decirlo en voz alta. Conviene hacerlo en una sola sesión de unas dos horas.
 
-Conviene hacerlas en este orden, en una sola sesión de unas dos horas.
-
-### Tarea 32 · El banco de preguntas
-
-Son **doce preguntas** al final de `CLAUDE.md`, con su respuesta.
-
-**Cómo se hace:** se turnan. Uno pregunta, el otro responde **sin mirar**, y cambian. Se repite hasta que las doce salgan sin dudar.
-
-**La regla que importa:** no vale responder *«eso lo hizo el otro»*. EP2 se evalúa **individualmente y con preguntas cruzadas** — el profe le puede preguntar a cualquiera de los dos sobre cualquier parte, y ahí es donde se pierde la nota grande.
-
-**Ojo con la 11 y la 12.** Son las únicas dos que no tienen una lámina que las responda: van de memoria. Y son las más probables si el profe entró al repositorio, porque son las técnicas. Están transcritas completas en `docs/guion_defensa.md`, en la sección *«Preguntas que pueden caer»*.
-
-### Tarea 33 · Ensayo cruzado
-
-**Cada uno presenta la mitad que NO redactó.** El reparto está fijado en el guion:
-
-- **Claudio** presenta las láminas **1 a 5** (portada, propósito, auditoría, KPIs, el hallazgo)
-- **Matías** presenta las láminas **6 a 10** (la corrección, ROI, mercados, recomendaciones, debilidad)
-
-**Para qué sirve:** si alguno se traba, esa parte no está entendida — no es un problema de memoria, es que falta comprenderla. Se repasa y se vuelve a ensayar entera antes de seguir.
-
-### Tarea 34 · Ensayo con cronómetro
-
-**10 minutos reales, cronómetro corriendo.** Los tiempos por lámina del guion suman 10:00 exactos.
-
-**Si se pasan, se cortan láminas — no se habla más rápido.** El orden de corte ya está decidido para que no tengan que improvisarlo con los nervios encima:
-
-1. Primero sale la **lámina 4** (los KPIs). Es contexto, no argumento.
-2. Después la **lámina 8** (países). La recomendación 2 sobrevive citando el dato desde la lámina 9.
-3. Después se funde la **lámina 2** con la 1: el propósito se dice mientras está la portada.
-
-**Nunca se cortan la 3, la 5, la 6, la 9 ni la 10.** Esas cinco son el argumento completo.
-
-### Dos cosas más antes de la defensa
-
-- **La prueba de la lámina apagada.** Uno presenta una lámina sin que el otro vea la proyección. Si el que escucha entiende igual, la voz está cargando el peso — que es exactamente lo que evalúa IE11 (14%).
-- **Abrir el dashboard y filtrar una vez.** Para que si el profe pide verlo en vivo no sea la primera vez que lo usan delante de él.
+- **Tarea 32 · Banco de preguntas.** Son las doce preguntas al final de `CLAUDE.md`. Se turnan: uno pregunta, el otro responde sin mirar, y cambian, hasta que las doce salgan sin dudar. **No vale responder «eso lo hizo el otro»:** EP2 es individual y con preguntas cruzadas. La tabla del punto 6 del guion dice quién responde cada una y qué se muestra en pantalla.
+- **Tarea 33 · Ensayo cruzado.** Una pasada completa con los roles invertidos: Claudio hace los bloques A, C, E y G, y Matías hace B, D y F. Si alguno se traba, esa parte no está entendida.
+- **Tarea 34 · Ensayo final con cronómetro,** en el computador de la presentación, con el HTML y el dashboard reales. Si pasa de 10:00, se aplica el orden de corte del guion. No se habla más rápido.
 
 ---
 
-## Cómo vamos a presentar
+## Sobre la versión paralela del compañero (y por qué no se usó)
 
-**10 minutos, 10 láminas, una idea por lámina.** La secuencia es la misma del informe: **contexto → hallazgo → implicancia → recomendación**.
+Durante el trabajo, Claudio armó en paralelo una versión propia a partir de `main`, sin haber visto la rama de desarrollo donde estaba casi todo el avance. Esa versión llegó como un `.rar` y **nunca se subió al repositorio**. Se revisó completa y se decidió conservar esta rama como base, por razones verificables:
 
-| # | Lámina | Presenta | Tiempo |
-|---|---|---|---|
-| 1 | Portada | Claudio | 0:20 |
-| 2 | Audiencia y propósito | Claudio | 0:50 |
-| 3 | Auditamos los datos primero | Claudio | 1:15 |
-| 4 | 31.991 títulos | Claudio | 0:45 |
-| 5 | Lo que más se produce no es lo que mejor se recibe | Claudio | 1:10 |
-| 6 | Terror no es un error: es una apuesta de costo | Matías | 1:15 |
-| 7 | La recepción predice el retorno | Matías | 1:10 |
-| 8 | Japón y Corea | Matías | 0:50 |
-| 9 | Las tres recomendaciones | Matías | 1:35 |
-| 10 | La mayor debilidad de nuestra solución | Matías | 0:50 |
+| Problema en la versión paralela | Por qué importa |
+|---|---|
+| Mezcla las taxonomías de género de películas y series | De 28 etiquetas solo 8 son comunes. Mezclarlas compara dos vocabularios distintos (pregunta 12 del banco) |
+| Recomienda «Sci-Fi & Fantasy» | Esa etiqueta solo existe en series: no se puede adquirir como género de película |
+| Uno de sus títulos dice «Documentales… alta nota», pero su propio z-score es −0,44 | El título contradice el dato que muestra |
+| Trabaja con 32.000 filas | No elimina los 9 duplicados internos de series |
+| Incluye 4.568 títulos con cero votos en los promedios | Sin umbral ni ponderación, el ranking lo dominan títulos con 1 voto |
+| Ejes en z-score, géneros en inglés | Un gerente no técnico no puede leer ninguno de los dos |
+| El PDF es solo imágenes | No se puede buscar texto, y un lector de pantalla no lo puede leer |
 
-**Lo que se dice en cada lámina está escrito palabra por palabra en `docs/guion_defensa.md`.** No es lo que la lámina muestra: es lo que se dice *encima* de lo que la lámina muestra. Esa distinción es IE11.
-
-### El argumento, en cuatro frases
-
-Si tuvieran que resumir los diez minutos a cuatro frases, son estas:
-
-1. **Auditamos los datos antes de graficar, y eso cambió el proyecto:** cuatro de los análisis que el enunciado pedía no se pueden hacer con estos datos, y lo decimos en vez de fingir que sí.
-2. **Lo que el catálogo más produce no es lo que mejor se recibe:** terror y suspenso son un tercio del catálogo de películas y tienen las dos peores notas.
-3. **Pero terror no es un error — es barato:** 7 millones de presupuesto mediano contra 50 de animación. La nota baja es el precio de una apuesta de costo deliberada. Lo que sí importa es que **la nota predice el retorno y el presupuesto no**.
-4. **Tres recomendaciones medibles**, y cerramos diciendo qué *no* sabemos: sin datos de consumo, esto es sobre composición del catálogo, no sobre comportamiento de audiencia.
+**Lo que sí se aprovechó:** la idea de entregar la presentación también en **.pptx editable**. Por eso existe `docs/presentacion.pptx`, que se genera con código desde las mismas cifras (`src/informe/presentacion_pptx.js`).
 
 ---
 
-## Los tres hallazgos que nos diferencian del resto del curso
+## El argumento, en cuatro frases
 
-Estos no estaban en el enunciado. Salieron de auditar, y son los que hacen que el trabajo se sostenga bajo preguntas.
-
-1. **`duration` y `rating` son inservibles.** La infografía pedía «duración vs popularidad» y análisis por clasificación de edad. `duration` viene 100% nula en películas y constante en las 16.000 series; `rating` resultó ser copia exacta de `vote_average`, o sea que **no hay clasificación etaria en el dataset**. El resto del curso probablemente va a entregar esos dos análisis sin darse cuenta.
-
-2. **Películas y series usan taxonomías de género distintas.** De 28 etiquetas, solo 8 son comunes: las películas tienen `Action` y `Adventure` por separado y las series las agrupan en `Action & Adventure`. Un ranking que mezcle ambos tipos compara dos vocabularios y sugiere ausencias falsas.
-
-3. **Terror no está sobreinvertido, es barato.** Tiene el presupuesto mediano más bajo del catálogo y un ROI sobre la mediana. Si hubiéramos recomendado «producir menos terror» —que es la lectura obvia del gráfico de brecha— la recomendación habría estado mal fundada. Por eso existe el visual 21.
+1. **Auditamos los datos antes de graficar, y eso cambió el proyecto:** cuatro de los análisis que pedía el enunciado no se pueden hacer con estos datos, y lo decimos en vez de fingir que sí.
+2. **Lo que el catálogo más produce no es lo que mejor se recibe:** terror y suspenso son una de cada tres películas y tienen las dos peores notas.
+3. **Pero terror no es un error, es barato:** 7 millones de presupuesto mediano contra 50 de animación. Lo que sí importa es que **la nota predice la plata y el presupuesto no**: de cada 100 películas mal evaluadas, 53 no recuperan lo que costaron; de cada 100 bien evaluadas, solo 21.
+4. **Tres decisiones medibles a 12 meses.** Y cerramos diciendo lo que *no* sabemos: sin datos de consumo, esto es sobre composición del catálogo, no sobre comportamiento de la audiencia.
 
 ---
 
@@ -125,94 +91,92 @@ Estos no estaban en el enunciado. Salieron de auditar, y son los que hacen que e
 
 ```
 ├── data/
-│   ├── raw/                     los dos CSV originales — NUNCA se modifican
-│   └── processed/               generado por código, se puede borrar y rehacer
+│   ├── raw/                     los dos CSV originales. NUNCA se modifican
+│   └── processed/               generado por código (incluye cifras_clave.json)
 │
-├── notebooks/
+├── notebooks/                   narrados como historia: portadilla, mapa de pasos y cierre
 │   ├── 01_auditoria_datos       los 10 hallazgos verificados en código
 │   ├── 02_limpieza_integracion  el pipeline paso a paso
-│   └── 03_analisis_exploratorio los 6 visuales
+│   ├── 03_analisis_exploratorio los 6 visuales y por qué cada uno
+│   └── 04_informe_narrativo     EL INFORME CON EL QUE SE PRESENTA (sin código)
 │
 ├── src/
 │   ├── limpieza.py              carga, limpieza, integración, métricas
-│   ├── analisis.py              todas las agregaciones
-│   ├── graficos.py              paleta, tipografía, helpers  ← el sistema visual
-│   ├── etiquetas.py             traducción de géneros/países/idiomas
+│   ├── analisis.py              agregaciones + cifras_clave(): fuente única de cifras
+│   ├── graficos.py              paleta, tipografía (Inter), formas  ← sistema visual
+│   ├── narrativa.py             componentes HTML/CSS animados del notebook 04
+│   ├── etiquetas.py             traducción de géneros, países e idiomas
 │   ├── dashboard_datos.py       genera el payload del dashboard
-│   └── informe/                 fuente del informe y la presentación
+│   └── informe/                 fuente del informe, las láminas y la .pptx
 │
 ├── dashboard/
-│   └── streamview_dashboard.html  ← se abre de un doble clic
+│   └── streamview_dashboard.html  ← se abre con doble clic (necesita su carpeta)
+│
+├── assets/fuentes/              Inter en woff2 (la usan los gráficos y los notebooks)
 │
 ├── docs/
+│   ├── informe_narrativo.html   CON ESTO SE PRESENTA
 │   ├── informe_ejecutivo.pdf    ENTREGABLE
-│   ├── presentacion.pdf         ENTREGABLE
-│   ├── calidad_datos.md         la auditoría — el diferencial del proyecto
+│   ├── presentacion.pdf / .pptx ENTREGABLE (y plan B)
+│   ├── guion_defensa.md         diálogos, tiempos, técnicas, cifras  ← PARA ENSAYAR
+│   ├── calidad_datos.md         la auditoría de datos, el diferencial del proyecto
 │   ├── decisiones_diseno.md     por qué cada gráfico es ese gráfico (IE7, IE8)
 │   ├── dashboard_spec.md        qué muestra el dashboard y por qué
-│   ├── guion_defensa.md         qué dice cada uno en cada lámina  ← PARA ENSAYAR
 │   └── auditoria_rubrica.md     los 12 indicadores con su evidencia verificada
 │
-├── images/
-│   ├── exploratorio/            salida de los notebooks
-│   └── finales/                 los que van al informe y las láminas
-│
+├── images/finales/              los 6 gráficos del informe y las láminas
 ├── CLAUDE.md                    el plan de 34 tareas y el banco de preguntas
 ├── ESTADO.md                    este archivo
 └── README.md                    presentación del proyecto
 ```
 
-### Cuál es cuál, si hay que elegir uno
-
-- **¿Qué hicimos y qué recomendamos?** → `docs/informe_ejecutivo.pdf`
-- **¿Cómo lo presentamos?** → `docs/presentacion.pdf` + `docs/guion_defensa.md`
-- **¿Por qué este gráfico y no otro?** → `docs/decisiones_diseno.md`
-- **¿Por qué no analizaron X?** → `docs/calidad_datos.md`
-- **¿Está cubierta la rúbrica?** → `docs/auditoria_rubrica.md`
-
 ---
 
 ## Cómo regenerar todo
 
-El proyecto corre de punta a punta desde los CSV originales. Verificado borrando `data/processed/`, `images/` y el payload del dashboard.
+El proyecto corre de punta a punta a partir de los CSV originales.
 
 ```bash
 pip install -r requirements.txt
+npm install                     # opcional: solo para generar la .pptx
 
 python src/limpieza.py          # data/raw/ → data/processed/
-# luego los tres notebooks en orden, o directamente:
+jupyter nbconvert --to notebook --execute --inplace notebooks/0[123]*.ipynb
 python src/dashboard_datos.py   # regenera dashboard/datos.js
-python src/informe/generar.py   # regenera los DOS PDF
+python src/informe/generar.py   # los dos PDF, el informe narrativo HTML y la .pptx
 ```
 
-**Si cambia una cifra, no se edita el PDF a mano:** se corrige en el HTML de `src/informe/` y se vuelve a generar. Por eso el informe está hecho en HTML + CSS y no en Word — para que una cifra corregida se propague sola y el informe no pueda quedar diciendo algo distinto a los gráficos.
-
-**El dashboard necesita sus cuatro archivos juntos** (`streamview_dashboard.html`, `estilo.css`, `graficos.js`, `datos.js`). El HTML suelto no funciona.
+- **Si cambia una cifra, no se edita un documento a mano.** Se corrige en `src/analisis.py` o en el HTML de `src/informe/` y se vuelve a generar. Así el informe no puede quedar diciendo algo distinto de los gráficos.
+- **Los gráficos usan la fuente Inter.** Si no está instalada, matplotlib usa DejaVu Sans y los PNG cambian levemente. Los archivos woff2 están en `assets/fuentes/`.
+- **El dashboard necesita sus archivos juntos** (`streamview_dashboard.html`, `estilo.css`, `graficos.js`, `app.js`, `datos.js` y la carpeta `fuentes/`).
 
 ---
 
 ## Decisiones que hay que poder defender
 
-Si preguntan «¿por qué hicieron esto así?», estas son las respuestas. Las cuatro salen en `decisiones_diseno.md` con más detalle.
-
 | Decisión | Por qué |
 |---|---|
-| **Gráficos de puntos y no de barras** para las notas | El rango va de 5,89 a 7,01. Una barra codifica magnitud desde cero: habría que truncar el eje —prohibido— o dibujar barras indistinguibles. El punto codifica por posición y no necesita origen en cero |
-| **Umbral de votos por tipo** (30 películas / 5 series) | La mediana de votos es 138 en películas y 4 en series. Un umbral común de 30 dejaría fuera el 75% de las series |
+| **Presentar primero el informe narrativo y después el dashboard** | Primero un solo mensaje y después la prueba de que se sostiene. Abrir con el dashboard reparte la atención entre botones |
+| **Gráficos de puntos y no de barras** para las notas | El rango va de 5,89 a 7,01. Con barras habría que truncar el eje, y eso está prohibido. El punto codifica por posición y no necesita partir en cero |
+| **Umbral de votos por tipo** (30 películas / 5 series) | La mediana de votos es 138 en películas y 4 en series. Un umbral común de 30 dejaría fuera el 75 % de las series |
 | **Nota ponderada y no nota cruda** | Sin ponderar, el ranking lo encabezan títulos con un voto y nota 10,0 |
 | **Mediana y no media en el ROI** | El ROI medio es 781× por unos pocos títulos de presupuesto mínimo. No describe a ninguna película real |
-| **ROI solo sobre 3.540 películas** | El 70% tiene presupuesto en cero. Está declarado en el subtítulo del propio gráfico |
-| **Forma además de color** en los cuadrantes | El validador dio ΔE 4,1 entre el verde y el rojo bajo deuteranopía: para ese lector eran el mismo color |
-| **Dashboard en HTML y no Power BI** | El profe nos dejó elegir. Comparte paleta y agregaciones con el informe, así que no se pueden desincronizar — y de hecho eso detectó una diferencia real en el ROI antes de la entrega |
+| **ROI solo sobre 3.540 películas** | El 70 % tiene presupuesto en cero. Está declarado en el subtítulo del gráfico |
+| **Forma además de color** en los cuadrantes | El verde y el rojo tienen ΔE 4,1 bajo deuteranopía: para ese lector son el mismo color |
+| **«53 de cada 100» con 100 íconos, y no «53 %»** | Las frecuencias naturales se entienden sin estadística (Gigerenzer y Hoffrage, 1995) |
+| **Dashboard en HTML y no Power BI** | El profe nos dejó elegir. Comparte paleta y agregaciones con el informe, así que no se pueden desincronizar |
 
 ---
 
 ## Para retomar esto en otra sesión
 
-Si se retoma el trabajo con una IA, lo mínimo que hay que saber:
-
-- **El plan completo está en `CLAUDE.md`** con las 34 tareas marcadas y el banco de preguntas.
-- **Lo que falta son las tareas 32, 33 y 34**, y son ensayos presenciales. No hay nada de código ni de documento pendiente.
-- **Las cifras del proyecto están calculadas, no inventadas.** Cualquier número que aparezca en el informe, las láminas o el dashboard sale de `src/analisis.py` y se puede recalcular.
-- **Cuidado con tres errores que ya se cometieron una vez y se corrigieron:** sumar los conteos de géneros (un título puede tener varios y se contaría dos veces), mezclar las taxonomías de película y serie, y recalcular las bandas de nota en el navegador sobre la nota redondeada.
-- **Antes de tocar un gráfico**, leer `src/graficos.py`: ahí están la paleta, las formas y las reglas que hacen que las tres piezas se vean iguales.
+- **El plan completo está en `CLAUDE.md`,** con las 34 tareas marcadas y el banco de preguntas.
+- **Lo que falta son las tareas 32, 33 y 34,** y son ensayos presenciales. No queda código ni documento pendiente.
+- **Ninguna cifra está escrita a mano:** todas salen de `cifras_clave()` en `src/analisis.py`. El notebook 04 y la .pptx las leen de ahí.
+- **Errores que ya se cometieron una vez y se corrigieron:**
+  - Sumar conteos de géneros: un título puede tener varios géneros y se cuenta dos veces.
+  - Mezclar las taxonomías de películas y series.
+  - Recalcular bandas de nota en el navegador sobre la nota redondeada.
+  - Decir «la mejor nota del catálogo» para histórico, cuando lo es solo entre las películas con datos financieros.
+  - Escribir animaciones atadas al scroll dentro de un contenedor con `overflow`, lo que las congela a medio camino.
+- **Antes de tocar un gráfico, leer `src/graficos.py`.** Ahí están la paleta, las formas y las reglas que hacen que todas las piezas se vean iguales.

@@ -2,11 +2,23 @@
 pandas>=2.0
 numpy>=1.24
 
-# Gráficos
+# Gráficos (usan la fuente Inter: assets/fuentes/; sin ella caen a DejaVu Sans)
 matplotlib>=3.7
 
-# Notebooks
+# Notebooks: ejecución y exportación del informe narrativo a HTML
 jupyter>=1.0
+ipykernel>=6.0
+nbformat>=5.9
+nbconvert>=7.0
 
-# Generación del informe ejecutivo en PDF (src/informe/generar.py)
+# Generación del informe ejecutivo y las láminas en PDF (src/informe/generar.py)
 weasyprint>=60
+
+# Subconjunto de la fuente Inter a woff2 (solo si se regeneran assets/fuentes/)
+fonttools>=4.40
+brotli>=1.0
+
+# Opcional: capturas y verificación de animaciones del HTML en un navegador real
+# playwright>=1.40
+
+# Opcional, fuera de pip: Node + `npm install` para generar docs/presentacion.pptx

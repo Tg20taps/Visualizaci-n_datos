@@ -8,7 +8,7 @@
 
 :root {
   --azul: #2a78d6; --naranja: #eb6834; --verde: #0ca30c; --rojo: #d03b3b;
-  --tinta: #0b0b0b; --tinta2: #52514e; --tenue: #898781;
+  --tinta: #0b0b0b; --tinta2: #52514e; --tenue: #6e6d68;
   --grilla: #e1e0d9; --fondo: #fcfcfb;
 }
 
@@ -30,12 +30,12 @@ body { font-family: "DejaVu Sans", sans-serif; color: var(--tinta2); margin: 0; 
   font-size: 7.5pt; color: var(--tenue);
 }
 
-h1 { font-size: 30pt; line-height: 1.18; color: var(--tinta); margin: 0 0 5mm 0; max-width: 250mm; }
+h1 { font-size: 36pt; line-height: 1.18; color: var(--tinta); margin: 0 0 5mm 0; max-width: 250mm; }
 h2 {
   font-size: 24pt; line-height: 1.25; color: var(--tinta);
   margin: 0 0 3mm 0; max-width: 275mm;
 }
-h2 .resalte { color: var(--azul); }
+h1 .resalte, h2 .resalte { color: var(--azul); }
 .bajada { font-size: 13pt; color: var(--tinta2); margin: 0 0 6mm 0; max-width: 250mm; }
 .rotulo {
   font-size: 8.5pt; letter-spacing: 0.2em; text-transform: uppercase;
@@ -43,7 +43,8 @@ h2 .resalte { color: var(--azul); }
 }
 
 /* Portada */
-.portada { background: var(--fondo); }
+.portada { background: var(--fondo); padding-top: 42mm; }
+.portada h1 { font-size: 44pt; }
 .portada .regla { height: 4px; width: 60mm; background: var(--azul); margin: 6mm 0 8mm 0; }
 .portada .autores { font-size: 12pt; color: var(--tinta2); line-height: 1.8; }
 .portada .autores b { color: var(--tinta); }

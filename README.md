@@ -7,6 +7,8 @@
 
 > **Estado del proyecto:** 31 de las 34 tareas completadas. Solo faltan los tres ensayos de la defensa.
 > El detalle de qué falta, dónde está cada archivo y cómo se presenta está en **[`ESTADO.md`](ESTADO.md)**.
+>
+> **Cómo se presenta:** primero el informe narrativo [`docs/informe_narrativo.html`](docs/informe_narrativo.html) (el notebook 04, sin código) y después una demo en vivo del dashboard. Los diálogos están en [`docs/guion_defensa.md`](docs/guion_defensa.md).
 
 ---
 
@@ -32,14 +34,17 @@ streamview-analytics/
 ├── notebooks/
 │   ├── 01_auditoria_datos.ipynb
 │   ├── 02_limpieza_integracion.ipynb
-│   └── 03_analisis_exploratorio.ipynb
+│   ├── 03_analisis_exploratorio.ipynb
+│   └── 04_informe_narrativo.ipynb   # la historia completa, sin código, para presentar
 ├── src/
 │   ├── limpieza.py          # carga, limpieza e integración (pipeline completo)
-│   ├── analisis.py          # agregaciones del exploratorio
+│   ├── analisis.py          # agregaciones + cifras_clave(), la fuente única de cifras
 │   ├── graficos.py          # paleta, tipografía y helpers de estilo
+│   ├── narrativa.py         # componentes HTML/CSS animados del notebook 04
 │   ├── etiquetas.py         # traducción de géneros, países e idiomas al español
 │   ├── dashboard_datos.py   # genera el payload del dashboard
-│   └── informe/             # contenido, estilo y generador del PDF ejecutivo
+│   └── informe/             # fuente y generador del informe, las láminas y la .pptx
+├── assets/fuentes/          # tipografía Inter (woff2) de gráficos y notebooks
 ├── dashboard/
 │   ├── streamview_dashboard.html   # app autocontenida, se abre de un doble clic
 │   ├── estilo.css / graficos.js / app.js
@@ -51,8 +56,10 @@ streamview-analytics/
 │   ├── calidad_datos.md     # auditoría y limitaciones (sección clave)
 │   ├── decisiones_diseno.md # por qué cada gráfico es ese gráfico
 │   ├── dashboard_spec.md    # qué muestra el dashboard y por qué
+│   ├── guion_defensa.md     # diálogos, tiempos y técnicas de la defensa
+│   ├── informe_narrativo.html  # con esto se presenta
 │   ├── informe_ejecutivo.pdf
-│   └── presentacion.pdf
+│   └── presentacion.pdf / .pptx
 ├── CLAUDE.md                # plan de trabajo y checklist de rúbrica
 └── README.md
 ```
@@ -110,8 +117,10 @@ También se puede regenerar el catálogo sin abrir Jupyter:
 
 ```bash
 python src/limpieza.py        # escribe data/processed/ desde data/raw/
-python src/informe/generar.py # regenera docs/informe_ejecutivo.pdf
+python src/informe/generar.py # regenera los dos PDF, el informe narrativo HTML y la .pptx
 ```
+
+La `.pptx` es opcional y necesita Node: `npm install` una vez. Sin Node, `generar.py` la omite con un aviso y genera todo lo demás.
 
 Todo notebook corre de arriba a abajo sin intervención manual. Si uno requiere editar una ruta a mano, está mal y hay que arreglarlo: el entregable 5 exige que el proyecto se pueda ejecutar de nuevo sin modificaciones adicionales.
 
@@ -121,9 +130,9 @@ Todo notebook corre de arriba a abajo sin intervención manual. Si uno requiere 
 
 | # | Entregable | Formato | Ubicación |
 |---|---|---|---|
-| 1 | Informe ejecutivo | PDF, 14 páginas | `docs/informe_ejecutivo.pdf` |
+| 1 | Informe ejecutivo | PDF, 14 páginas + versión narrativa HTML | `docs/informe_ejecutivo.pdf` · `docs/informe_narrativo.html` |
 | 2 | Dashboard interactivo | App HTML | `dashboard/streamview_dashboard.html` |
-| 3 | Resumen / presentación ejecutiva | PDF, 10 láminas | `docs/presentacion.pdf` |
+| 3 | Resumen / presentación ejecutiva | PDF + PPTX editable, 10 láminas | `docs/presentacion.pdf` · `docs/presentacion.pptx` |
 | 4 | Archivos del proyecto documentados | — | todo el repo |
 | 5 | Dataset y complementarios | CSV | `data/` |
 | 6 | Carpeta con estructura profesional | — | este README |

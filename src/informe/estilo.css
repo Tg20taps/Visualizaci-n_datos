@@ -9,7 +9,7 @@
     content: counter(page) " / " counter(pages);
     font-family: "DejaVu Sans", sans-serif;
     font-size: 8pt;
-    color: #898781;
+    color: #6e6d68;
   }
   @bottom-right {
     content: "StreamView Analytics · Informe ejecutivo";
@@ -22,7 +22,7 @@
 
 :root {
   --azul: #2a78d6; --naranja: #eb6834; --verde: #0ca30c; --rojo: #d03b3b;
-  --tinta: #0b0b0b; --tinta2: #52514e; --tenue: #898781;
+  --tinta: #0b0b0b; --tinta2: #52514e; --tenue: #6e6d68;
   --grilla: #e1e0d9; --fondo: #fcfcfb;
 }
 

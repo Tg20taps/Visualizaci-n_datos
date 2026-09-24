@@ -1,0 +1,11 @@
+{
+  "name": "streamview-analytics",
+  "private": true,
+  "description": "Solo para generar docs/presentacion.pptx (opcional). El resto del proyecto es Python.",
+  "scripts": {
+    "pptx": "node src/informe/presentacion_pptx.js"
+  },
+  "devDependencies": {
+    "pptxgenjs": "^3.12.0"
+  }
+}

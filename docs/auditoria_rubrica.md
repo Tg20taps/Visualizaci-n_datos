@@ -109,7 +109,7 @@
 |---|---|---|
 | No leer la lámina | `docs/guion_defensa.md`: lo que se **dice** en cada lámina, distinto de lo que la lámina muestra | ✅ material listo |
 | Las láminas apoyan | Ninguna lámina lleva párrafos de lectura: idea, dato y gráfico | ✅ |
-| Ensayo cruzado (tarea 33) | Reparto asignado en el guion: cada uno presenta la mitad que **no** redactó | ⬜ **pendiente — lo hacen ustedes** |
+| Ensayo cruzado (tarea 33) | Reparto asignado en el guion; el ensayo cruzado invierte los roles de cada bloque | ⬜ **pendiente — lo hacen ustedes** |
 | Ensayo cronometrado (tarea 34) | Checklist al final del guion | ⬜ **pendiente — lo hacen ustedes** |
 
 ### IE12 · Conclusiones fundamentadas con evidencia — 18%
@@ -133,6 +133,37 @@ No todo estaba bien. Lo que se encontró revisando, y se arregló:
 3. **«por debajo de siete países más»** era falso: son **catorce**. Corregido a «el último de los quince países con más de 150 títulos».
 4. **El ROI por banda del dashboard no coincidía con el del informe** (241/533/954 contra 241/515/976): `pd.cut` cierra los intervalos por la derecha y el JavaScript los cerraba por la izquierda, y además la nota redondeada a dos decimales movía de banda a los títulos justo en el corte. La banda ahora viaja precalculada desde Python. Verificado: las cinco bandas dan idéntico.
 5. **El ranking de géneros del dashboard mezclaba las dos taxonomías** cuando no había filtro de tipo. Ahora se limita a los 8 géneros comunes y lo dice en el propio gráfico.
+
+---
+
+## Segunda auditoría: estética, narrativa y persuasión
+
+La segunda revisión se hizo con el cambio de formato de la defensa: ahora se presenta el **informe narrativo** (el notebook 04 exportado a HTML) y después una **demo del dashboard**. Se revisó cada pieza con capturas reales en Chromium (Playwright) y en LibreOffice, y cada cifra contra `cifras_clave()`.
+
+### Errores encontrados y corregidos
+
+1. **El notebook 03 no mostraba ningún gráfico.** `guardar()` escribía el PNG pero no lo mostraba en la celda, y quien abría el notebook veía texto sin figuras. Ahora `guardar()` hace `display()` y el notebook tiene sus 6 gráficos guardados en la salida.
+2. **El gris de texto secundario no pasaba contraste AA.** `#898781` da 3,5:1 sobre el fondo, y se usaba en ejes, pies y notas. Se cambió a `#6e6d68` (5,05:1) en gráficos, dashboard, informe y láminas. El gris claro queda solo para marcas, donde el mínimo es 3:1.
+3. **«0,83 puntos más de nota»** comparaba promedios de géneros y no de títulos distintos. El valor real es **0,77**. Además, bélico tenía nota **6,85**, no 6,88. Corregido en informe, láminas y guion.
+4. **La frase de Estados Unidos seguía siendo imprecisa** después de la primera corrección. Ahora dice: *«de los 24 países con más de 150 títulos, catorce reciben mejor nota»*, y se calcula sobre la lista completa.
+5. **«Histórico y bélico tienen las mejores notas del catálogo»** era falso en el catálogo completo: documental tiene 7,01. Solo es cierto entre las películas con datos financieros. Se precisó en informe, notebooks, láminas, decisiones de diseño y banco de preguntas.
+6. **Las láminas decían «ocho hallazgos» y el notebook 01 verifica diez.** Son los ocho del README más dos que aparecieron al auditar. Se unificó a diez.
+7. **El dashboard recortaba el ranking a los 14 mejores géneros**, así que escondía justamente a los peores, que son el hallazgo. Ahora se muestran todos.
+8. **Las animaciones del informe narrativo quedaban congeladas a medio camino** cuando un contenedor tenía `overflow`: la cifra mostraba 52 en vez de 53. La animación por scroll ahora se inyecta solo en la exportación, y los contenedores se liberan. Verificado con Playwright: 163 de 163 animaciones usan la línea de tiempo de scroll, 0 quedan incompletas y las 24 cifras terminan en su valor real.
+9. **Afirmaciones más fuertes que el dato:** «cada película recauda» pasó a «la película típica recauda» (es una mediana), y «peso» pasó a «dólar» (los montos están en USD).
+
+### Mejoras por indicador
+
+| IE | Qué se agregó | Dónde |
+|---|---|---|
+| IE4 · IE5 | Tipografía única (Inter) en gráficos, notebooks y dashboard. Títulos de tarjeta que son conclusiones calculadas y cambian con cada filtro | `src/graficos.py`, `dashboard/app.js` |
+| IE6 | Una idea por pantalla en el informe narrativo, código oculto, cifras grandes con su frase | `notebooks/04_informe_narrativo.ipynb` |
+| IE9 | El dashboard muestra la variación contra el catálogo (▲ +0,50 de nota con Japón), así que el Gerente compara sin memorizar la base | `dashboard/app.js` |
+| IE10 | Los cuatro notebooks narrados como historia, con portadilla, mapa de pasos y cierre. El 04 sigue la estructura pregunta → evidencia → giro → decisión | `notebooks/` |
+| IE3 | Formato de defensa justificado (contar y después demostrar), diálogos palabra por palabra y una tabla de 15 técnicas de persuasión con referencia académica | `docs/guion_defensa.md` |
+| IE8 | Resultados como «53 de cada 100» con 100 íconos (frecuencias naturales), no como porcentaje | notebook 04, lámina 7 |
+| IE11 | Presentación también en .pptx editable, con el guion en las notas del orador | `docs/presentacion.pptx` |
+| IE12 | Todas las cifras de notebook 04, .pptx y guion salen de `cifras_clave()`; ninguna está escrita a mano | `src/analisis.py`, `data/processed/cifras_clave.json` |
 
 ---
 

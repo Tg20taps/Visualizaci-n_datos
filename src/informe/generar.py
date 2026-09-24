@@ -4,6 +4,9 @@ Genera los tres documentos del proyecto:
 - `docs/informe_ejecutivo.pdf` y `docs/presentacion.pdf`, desde HTML + CSS.
 - `docs/informe_narrativo.html`, desde `notebooks/04_informe_narrativo.ipynb`:
   el notebook se ejecuta, se exporta sin código y se le agrega el estilo de página.
+- `data/processed/cifras_clave.json` y, si hay Node con `pptxgenjs` instalado,
+  `docs/presentacion.pptx`: la misma presentación en formato editable, armada
+  por `src/informe/presentacion_pptx.js` a partir de ese JSON.
 
 Las dos piezas se arman en HTML + CSS y no a mano en un procesador de texto por dos
 razones: es reproducible (se regenera con un comando cuando cambia una cifra) y
@@ -30,6 +33,8 @@ SALIDA = RAIZ / "docs" / "informe_ejecutivo.pdf"
 SALIDA_PRESENTACION = RAIZ / "docs" / "presentacion.pdf"
 NOTEBOOK_NARRATIVO = RAIZ / "notebooks" / "04_informe_narrativo.ipynb"
 SALIDA_NARRATIVA = RAIZ / "docs" / "informe_narrativo.html"
+SALIDA_CIFRAS = RAIZ / "data" / "processed" / "cifras_clave.json"
+SALIDA_PPTX = RAIZ / "docs" / "presentacion.pptx"
 
 # Estilo de página para el HTML exportado. Los componentes ya traen el suyo; esto
 # ajusta lo que nbconvert pone alrededor: las celdas de texto quedan con la misma
@@ -99,6 +104,57 @@ def exportar_narrativo() -> None:
     print(f"→ {SALIDA_NARRATIVA.relative_to(RAIZ)}  ({SALIDA_NARRATIVA.stat().st_size / 1024 / 1024:.1f} MB)")
 
 
+def exportar_cifras() -> None:
+    """
+    Escribe las cifras de `cifras_clave()` a JSON para la versión .pptx.
+
+    La .pptx se arma en JavaScript (pptxgenjs); este archivo es el puente para
+    que tampoco ahí haya una sola cifra escrita a mano. Se agregan las tres que
+    solo citan las láminas: las dos correlaciones de Spearman con el ROI y la
+    participación de Estados Unidos en el catálogo de películas.
+    """
+    import json
+
+    from analisis import cargar_procesado, cifras_clave
+
+    cat, largos = cargar_procesado()
+    k = cifras_clave(cat, largos)
+    con_roi = cat[cat["roi"].notna()]
+    pais = largos["pais"]
+    pel_pais = pais[pais["tipo"] == "Película"]
+    # Spearman = Pearson sobre rangos. Se calcula así para no depender de scipy.
+    rangos = con_roi[["roi", "score_ponderado", "budget"]].rank()
+    k["spearman_nota"] = rangos["roi"].corr(rangos["score_ponderado"])
+    k["spearman_presupuesto"] = rangos["roi"].corr(rangos["budget"])
+    k["eeuu_pct_peliculas"] = (
+        pel_pais.loc[pel_pais["pais"] == "United States of America", "show_id"].nunique()
+        / k["peliculas"] * 100
+    )
+    SALIDA_CIFRAS.write_text(
+        json.dumps(k, ensure_ascii=False, indent=1, default=float), encoding="utf-8"
+    )
+    print(f"→ {SALIDA_CIFRAS.relative_to(RAIZ)}")
+
+
+def exportar_pptx() -> None:
+    """Arma la .pptx si hay Node y pptxgenjs; si no, avisa y sigue (es opcional)."""
+    import shutil
+    import subprocess
+
+    if shutil.which("node") is None:
+        print("· presentacion.pptx omitida: no hay Node instalado")
+        return
+    r = subprocess.run(
+        ["node", str(DIR_INFORME / "presentacion_pptx.js")],
+        cwd=RAIZ, capture_output=True, text=True,
+    )
+    if r.returncode != 0:
+        print("· presentacion.pptx omitida: " + (r.stderr.strip().splitlines() or ["error"])[-1])
+        print("  (instalar con: npm install pptxgenjs)")
+        return
+    print(f"→ {SALIDA_PPTX.relative_to(RAIZ)}  ({SALIDA_PPTX.stat().st_size / 1024:.0f} KB)")
+
+
 def construir_html(archivo: str = "contenido.html") -> str:
     cuerpo = (DIR_INFORME / archivo).read_text(encoding="utf-8")
     # Las rutas de imagen se resuelven contra images/finales/ en el momento de
@@ -143,6 +199,8 @@ def main() -> None:
         print(f"→ {salida.relative_to(RAIZ)}  ({salida.stat().st_size / 1024:.0f} KB)")
 
     exportar_narrativo()
+    exportar_cifras()
+    exportar_pptx()
 
 
 if __name__ == "__main__":

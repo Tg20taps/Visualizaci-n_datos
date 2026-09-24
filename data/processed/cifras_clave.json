@@ -1,0 +1,65 @@
+{
+ "titulos": 31991,
+ "peliculas": 16000,
+ "series": 15991,
+ "con_votos": 20980,
+ "peliculas_con_votos": 13217,
+ "nota_media": 6.705535555212374,
+ "roi_mediano": 1.7000329225881312,
+ "con_roi": 3540,
+ "drama_titulos": 14773,
+ "drama_pct": 46.17861273483167,
+ "terror_suspenso_titulos": 4387,
+ "terror_suspenso_pct": 33.192101081939924,
+ "terror_nota": 5.891637603466998,
+ "suspenso_nota": 6.147999855012603,
+ "terror_suspenso_nota": 6.0830451033918935,
+ "doc_mus_hist_titulos": 1546,
+ "doc_mus_hist_nota": 6.849679695018349,
+ "brecha_nota_grupos": 0.7666345916264552,
+ "japon_nota": 7.209183868811541,
+ "japon_titulos": 2147,
+ "corea_nota": 7.111930443402861,
+ "eeuu_nota": 6.563191957425857,
+ "eeuu_titulos": 9773,
+ "eeuu_puesto": 15,
+ "paises_ranking": 24,
+ "presupuesto_terror": 7000000.0,
+ "presupuesto_animacion": 50000000.0,
+ "presupuesto_aventura": 60000000.0,
+ "roi_terror": 2.0310498,
+ "roi_historico": 1.1579304,
+ "nota_historico": 6.915787477933178,
+ "roi_belico": 1.2673074,
+ "nota_belico": 6.848031854667049,
+ "prioridad": {
+  "Animation": [
+   2.390566763809524,
+   6.884422711255101
+  ],
+  "Family": [
+   2.1921674552380956,
+   6.685754246762724
+  ],
+  "Adventure": [
+   2.0240042716666666,
+   6.615232920312295
+  ],
+  "Music": [
+   1.8815217391304349,
+   6.842573596365057
+  ]
+ },
+ "no_recupera_total": 36.666666666666664,
+ "no_recupera_nota_baja": 53.042328042328045,
+ "no_recupera_nota_alta": 21.2253829321663,
+ "roi_banda_baja": 0.8285714285714286,
+ "roi_banda_alta": 3.2313189463391367,
+ "meta1_actual": 22.35625,
+ "meta2_actual": 11.56875,
+ "series_superan": 7,
+ "generos_comparables": 7,
+ "spearman_nota": 0.3278128909238143,
+ "spearman_presupuesto": 0.07336024729638184,
+ "eeuu_pct_peliculas": 48.512499999999996
+}
