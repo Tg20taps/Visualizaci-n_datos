@@ -1,0 +1,215 @@
+🎬 *GUION DEFENSA · STREAMVIEW*
+_Presentación de 10 minutos + demo del dashboard_
+
+🔵 = *MATÍAS*
+🟠 = *CLAUDIO*
+
+━━━━━━━━━━━━━━━━━━━━
+
+📌 *REGLA DE ORO*
+👉 El que *NO* está hablando maneja el computador (pasa las diapos).
+👉 El que habla mira al profe, *no* a la pantalla.
+👉 No se lee la diapo: la diapo muestra, la voz explica.
+👉 Cuando uno termina, dice el nombre del otro ("…Claudio.") y ese es el pie para cambiar.
+
+━━━━━━━━━━━━━━━━━━━━
+
+🗺️ *RESUMEN: QUIÉN DICE QUÉ*
+
+1️⃣ Portada → 🔵 Matías · 0:20
+2️⃣ Audiencia y propósito → 🔵 Matías · 0:40
+3️⃣ Auditamos los datos → 🟠 Claudio · 1:00
+4️⃣ Los 4 números → 🟠 Claudio · 0:30
+5️⃣ El hallazgo → 🔵 Matías · 1:00
+6️⃣ Terror no es un error → 🟠 Claudio · 1:00
+7️⃣ La nota predice la plata → 🟠 Claudio · 1:00
+8️⃣ Japón y Corea → 🔵 Matías · 0:40
+9️⃣ Tres decisiones → 🔵 Matías · 1:20
+📊 *DEMO DASHBOARD* → 🟠 Claudio · 1:50
+🔟 Cierre → 🔵 Matías · 0:40
+
+⏱️ *Total: 10:00 exactos*
+
+━━━━━━━━━━━━━━━━━━━━
+
+🧰 *ANTES DE EMPEZAR (preparación)*
+
+✅ *Ventana 1:* `presentacion.pdf` abierto en Adobe Reader → *Ctrl + L* (pantalla completa). Se avanza con la flecha →
+_(alternativa: abrir `presentacion.pptx` en PowerPoint y apretar F5)_
+
+✅ *Ventana 2:* `streamview_dashboard_un_archivo.html` abierto en *Chrome*, en la página *1 · Contexto*, *sin filtros*. Apretar *F* para pantalla completa.
+
+✅ Probar *Alt + Tab* una vez para saltar de la presentación al dashboard y volver.
+
+✅ Dejar la presentación en la *diapo 1*.
+
+━━━━━━━━━━━━━━━━━━━━
+
+🎤 *EL GUION, DIAPO POR DIAPO*
+
+━━━━━━━━━━━━━━━━━━━━
+
+1️⃣ *DIAPO 1 · PORTADA*
+🔵 *Habla: MATÍAS* · ⏱️ 0:00 → 0:20
+🖱️ Pasa diapos: Claudio
+💡 _Esperar 2 segundos en silencio antes de hablar._
+
+🗣️ "Buenas. Somos Matías Retamal y Claudio González. Analizamos los casi treinta y dos mil títulos del catálogo de StreamView con una sola pregunta: ¿lo que más producimos es lo que la audiencia mejor recibe? La respuesta está en el título: no. Y esa diferencia tiene un costo que se puede medir."
+
+━━━━━━━━━━━━━━━━━━━━
+
+2️⃣ *DIAPO 2 · AUDIENCIA Y PROPÓSITO*
+🔵 *Habla: MATÍAS* · ⏱️ 0:20 → 1:00
+🖱️ Pasa diapos: Claudio
+
+🗣️ "Esto está hecho para una persona: el Gerente de Contenidos. Cada pocas semanas decide qué comprar, qué producir y qué promocionar. Tiene criterio de negocio, no perfil técnico, y hoy decide sin poder ver el catálogo completo. Nuestro objetivo fue que pueda responder estas tres preguntas en menos de un minuto. Por eso entregamos dos piezas: un informe, para defender la decisión ante su jefatura, y un dashboard, para revisarla cada semana. *Claudio.*"
+
+━━━━━━━━━━━━━━━━━━━━
+
+3️⃣ *DIAPO 3 · AUDITAMOS LOS DATOS*
+🟠 *Habla: CLAUDIO* · ⏱️ 1:00 → 2:00
+🖱️ Pasa diapos: Matías
+⭐ _Esta diapo NUNCA se corta._
+
+🗣️ "Antes de hacer un solo gráfico revisamos los datos, y eso cambió el proyecto. El encargo pedía cuatro análisis que estos datos no permiten hacer bien. La duración viene vacía en todas las películas. La clasificación por edad es, en realidad, una copia de la nota. Hay exactamente mil títulos por año, así que cualquier tendencia sería un efecto del muestreo. Y los datos de usuarios nunca llegaron. Podríamos haber hecho esos gráficos igual: se habrían visto bien y habrían estado mal. Preferimos responder menos preguntas, pero que cada respuesta se sostenga."
+
+━━━━━━━━━━━━━━━━━━━━
+
+4️⃣ *DIAPO 4 · LOS 4 NÚMEROS*
+🟠 *Habla: CLAUDIO* · ⏱️ 2:00 → 2:30
+🖱️ Pasa diapos: Matías
+✂️ _Si vamos atrasados, esta es la PRIMERA que se salta._
+
+🗣️ "El catálogo en cuatro números: casi treinta y dos mil títulos, mitad películas y mitad series. Nota media de seis coma siete, ponderada por votos, porque sin eso el primer lugar lo gana un título con un solo voto. Una película típica recauda uno coma siete veces lo que costó. Y casi la mitad del catálogo es drama. *Matías.*"
+
+━━━━━━━━━━━━━━━━━━━━
+
+5️⃣ *DIAPO 5 · EL HALLAZGO*
+🔵 *Habla: MATÍAS* · ⏱️ 2:30 → 3:30
+🖱️ Pasa diapos: Claudio
+👆 _Señalar con la mano: primero ABAJO A LA DERECHA (terror), después ARRIBA A LA IZQUIERDA (documental)._
+
+🗣️ "Aquí está el hallazgo. Cada punto es un género: a la derecha, lo que más se produce; arriba, lo mejor evaluado. Aquí abajo, terror y suspenso: una de cada tres películas, y las dos peores notas. Aquí arriba, documental, musical e histórico: un tercio del volumen y casi ocho décimas más de nota. Es la oportunidad que hoy nadie está mirando. Con esto, la recomendación parecía obvia: producir menos terror. Casi la hacemos. *Claudio.*"
+
+━━━━━━━━━━━━━━━━━━━━
+
+6️⃣ *DIAPO 6 · TERROR NO ES UN ERROR*
+🟠 *Habla: CLAUDIO* · ⏱️ 3:30 → 4:30
+🖱️ Pasa diapos: Matías
+
+🗣️ "Habría sido un error. Cruzamos la nota con la plata y apareció el giro. Terror es el género más barato de producir: siete millones de dólares la película típica, contra cincuenta de animación. Y aun así recauda dos veces lo que costó, más que el catálogo en general. No es un descuido: es una apuesta de costo. Al revés, histórico tiene muy buena nota y el peor retorno: eso es prestigio, no negocio. Lo que gana dos veces, en nota y en plata, son cuatro géneros: animación, familiar, aventura y musical. Arriba a la derecha."
+
+━━━━━━━━━━━━━━━━━━━━
+
+7️⃣ *DIAPO 7 · LA NOTA PREDICE LA PLATA*
+🟠 *Habla: CLAUDIO* (sigue él) · ⏱️ 4:30 → 5:30
+🖱️ Pasa diapos: Matías
+💡 _Pausa de 1 segundo después de cada cifra grande._
+
+🗣️ "Y este es el dato que sostiene todo. De cada cien películas mal evaluadas, cincuenta y tres no recuperan lo que costaron: más de la mitad pierde plata. De cada cien bien evaluadas, solo veintiuna. A la derecha, lo que nadie espera: cuánto se gastó casi no dice nada sobre cuánto se recupera. En una frase: la nota predice la plata; el presupuesto, no. Gastar más no garantiza nada; producir lo que la audiencia valora, sí. *Matías.*"
+
+━━━━━━━━━━━━━━━━━━━━
+
+8️⃣ *DIAPO 8 · JAPÓN Y COREA*
+🔵 *Habla: MATÍAS* · ⏱️ 5:30 → 6:10
+🖱️ Pasa diapos: Claudio
+✂️ _Si vamos atrasados, esta es la SEGUNDA que se salta._
+
+🗣️ "Lo mismo pasa por país. Japón es el país mejor evaluado del catálogo, y Corea del Sur está entre los tres primeros. Estados Unidos aporta casi la mitad de las películas y queda en el puesto quince de veinticuatro. Ojo: no decimos que el contenido asiático sea mejor. Decimos que, dentro de este catálogo, está subrepresentado respecto de cómo se recibe."
+
+━━━━━━━━━━━━━━━━━━━━
+
+9️⃣ *DIAPO 9 · TRES DECISIONES*
+🔵 *Habla: MATÍAS* (sigue él) · ⏱️ 6:10 → 7:30
+🖱️ Pasa diapos: Claudio
+⭐ _Las tres de memoria, con su número._
+
+🗣️ "Tres decisiones, cada una con una meta que se puede comprobar en doce meses.
+*Uno:* mover la compra hacia los cuatro géneros que ganan dos veces. Hoy son el veintidós por ciento de las películas; la meta es treinta. Y no es dejar de producir terror: es decidir hacia dónde crece el catálogo.
+*Dos:* abrir una línea de compra en Japón y Corea del Sur. Hoy son menos del doce por ciento; la meta es dieciocho.
+*Tres:* que el presupuesto siga a la recepción esperada, y no al revés. Ningún proyecto de los más caros sin evidencia de que se va a recibir bien. Hoy treinta y siete de cada cien películas no recuperan lo que costaron; la meta es bajar a treinta.
+Estas decisiones se revisan cada semana, y para eso construimos una herramienta. *Claudio.*"
+
+🔀 _Mientras Matías dice "…Claudio", Claudio aprieta *Alt + Tab* y aparece el dashboard._
+
+━━━━━━━━━━━━━━━━━━━━
+
+📊 *DEMO DEL DASHBOARD*
+🟠 *Habla y maneja: CLAUDIO* · ⏱️ 7:30 → 9:20
+🔵 Matías: se queda al lado, en silencio, mirando al profe.
+
+*PASO 1 · Mostrar la vista general* (≈ 20 seg)
+🖱️ _No tocar nada. Señalar las 4 tarjetas de arriba._
+
+🗣️ "Este es el dashboard que usaría el Gerente. Tiene tres páginas, en el mismo orden que la presentación: contexto, hallazgo y decisión."
+
+*PASO 2 · Filtrar por Japón* (≈ 40 seg)
+🖱️ _Clic en el filtro *PAÍS* → elegir *Japón*._
+👀 _Esperar 1 segundo: las tarjetas cambian y aparecen flechas verdes ▲._
+👆 _Señalar la tarjeta de NOTA y después la de RETORNO._
+
+🗣️ "Supongamos que llega una propuesta: comprar películas japonesas. ¿Encaja? Filtro por Japón. La nota sube a siete coma dos, medio punto sobre el catálogo, y el retorno a dos coma setenta y siete, más de un punto por encima. En diez segundos, la recomendación dos se comprueba sin nosotros."
+
+*PASO 3 · Ir a la decisión* (≈ 50 seg)
+🖱️ _Clic en *Limpiar filtros*._
+🖱️ _Clic en la pestaña de arriba *3 · DECISIÓN – Recomendaciones*._
+🖱️ _En *TIPO*, clic en *Películas*._
+👆 _Señalar el gráfico: arriba a la izquierda los verdes ●, abajo a la derecha los rojos ▼._
+
+🗣️ "Y aquí se pasa a la acción: es el mismo gráfico de la diapo cinco, pero vivo. Cambia con cada filtro, y el título se reescribe solo con la conclusión."
+
+🖱️ _Bajar con la rueda del mouse hasta la tabla._
+
+🗣️ "Abajo está la lista corta: los títulos mejor evaluados de los géneros en oportunidad. Es, literalmente, una lista de compras. *Matías.*"
+
+🔀 _Claudio aprieta *Alt + Tab* → vuelve la presentación → pasa a la *diapo 10*._
+
+━━━━━━━━━━━━━━━━━━━━
+
+🔟 *DIAPO 10 · CIERRE*
+🔵 *Habla: MATÍAS* · ⏱️ 9:20 → 10:00
+🖱️ Pasa diapos: Claudio
+💡 _Decir la última frase lento, mirando al profe._
+
+🗣️ "Cerramos con lo que no sabemos. Sabemos qué títulos se reciben bien; no sabemos cuántas personas los vieron ni cuántas se quedaron por ellos. Sin datos de consumo, todo esto es sobre la composición del catálogo, no sobre el comportamiento de la audiencia. Si se quedan con una sola idea, que sea esta: *la nota predice la plata; el presupuesto, no.* Gracias."
+
+━━━━━━━━━━━━━━━━━━━━
+
+🚨 *SI ALGO FALLA*
+
+❌ *El dashboard no abre o se pega:* Claudio NO lo arregla en vivo. Vuelve con Alt + Tab a la diapo 5 y dice: _"Les muestro la misma vista"_, y cuenta con palabras lo del filtro de Japón (nota 7,21, medio punto arriba; retorno 2,77, más de un punto arriba).
+
+⏰ *Vamos atrasados:*
+1. Saltar la diapo 4 (decir "casi treinta y dos mil títulos" en la 3).
+2. Saltar la diapo 8.
+3. En la demo, hacer solo el paso 2 (Japón).
+🚫 *Nunca* se saltan la 3, 5, 6, 7, 9 ni 10.
+
+🤐 *Nos preguntan algo que no sabemos:*
+_"No lo analizamos y no lo vamos a inventar. Lo que sí podemos decir es…"_ y volver al dato más cercano.
+
+━━━━━━━━━━━━━━━━━━━━
+
+🧠 *CIFRAS QUE LOS DOS TIENEN QUE SABER*
+
+• 31.991 títulos (16.000 películas + 15.991 series)
+• Nota media: 6,71
+• Película típica recauda 1,70 veces lo que costó
+• Drama: 46% del catálogo
+• Terror y suspenso: 1 de cada 3 películas, las peores notas
+• Documental, musical, histórico: +0,77 de nota
+• Terror cuesta 7 millones vs 50 de animación, y recauda 2,03 veces
+• 53 de cada 100 mal evaluadas pierden plata · 21 de cada 100 bien evaluadas
+• Japón 7,21 · Corea 7,11 · EE.UU. 6,56 (puesto 15 de 24)
+• Metas: 22% → 30% · 12% → 18% · 37% → 30%
+
+━━━━━━━━━━━━━━━━━━━━
+
+🔁 *CÓMO ENSAYAR*
+
+1️⃣ Una pasada leyendo, cada uno su parte.
+2️⃣ Una pasada *sin leer*, con cronómetro.
+3️⃣ Una pasada *cambiando roles* (Claudio dice lo de Matías y al revés). Si alguno se traba, esa parte no está entendida.
+4️⃣ Practicar la demo del dashboard *3 veces* hasta que salga sin mirar dónde hacer clic.
+
+💪 ¡Vamos que sale!
