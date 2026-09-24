@@ -5,8 +5,8 @@
  * retocar una lámina a mano en PowerPoint o Google Slides el día de la defensa
  * sin tener que regenerar nada. Las cifras NO están escritas aquí: se leen de
  * data/processed/cifras_clave.json, que escribe src/informe/generar.py a partir
- * de analisis.cifras_clave(). Las notas del orador traen el guion de cada lámina
- * y quién la presenta.
+ * de analisis.cifras_clave(). Las notas del orador traen el guion hablado de cada
+ * lámina y quién la presenta: es el mismo texto del punto 8 de docs/guion_defensa.md.
  *
  * Paleta: la de src/graficos.py. Tipografía: Arial, porque la .pptx la abre el
  * PowerPoint de otra persona y Arial viene en todos; Inter no.
@@ -170,13 +170,7 @@ function figura(slide, archivo, ancho, alto, caja) {
     { text: "ADY1104 Visualización de Datos · Duoc UC", options: { color: C.tenueOscuro } },
   ], { x: M, y: 6.0, w: 8, h: 0.75, fontSize: 14, lineSpacingMultiple: 1.3 });
   numero(s, 1, true);
-  s.addNotes(
-    "PRESENTA: Claudio · 0:20\n\n" +
-    `"Buenas. Matías Retamal y Claudio González. Analizamos el catálogo de StreamView: ${num(K.titulos)} títulos. ` +
-    "La pregunta que fuimos a responder es si lo que el catálogo produce coincide con lo que la audiencia recibe mejor. " +
-    'La respuesta está en el título: no coincide. Y dónde no coincide es donde está la plata."\n\n' +
-    "No leer el título. Decir la conclusión de entrada compra la atención de los diez minutos siguientes."
-  );
+  s.addNotes("PRESENTA: Matías · 0:20 (0:00 → 0:20)\n\nEsperar dos segundos en silencio antes de hablar.\n\n\"Buenas. Somos Matías Retamal y Claudio González. Analizamos los casi treinta y dos mil títulos del catálogo de StreamView con una sola pregunta: ¿lo que más producimos es lo que la audiencia mejor recibe? La respuesta está en el título: no. Y esa diferencia tiene un costo que se puede medir.\"");
 }
 
 // ════════════════════════════════════════════════════════════════════════════
@@ -210,13 +204,7 @@ function figura(slide, archivo, ancho, alto, caja) {
     { text: "decide adquisiciones cada pocas semanas. Tiene criterio de negocio, no perfil técnico. Lo que necesita no es un dato: es una lista corta de decisiones que pueda defender ante su jefatura.", options: { color: C.tinta2 } },
   ], { x: M + 0.4, y: 5.4, w: ANCHO - 0.8, h: 1.2, fontSize: 16, valign: "middle", lineSpacingMultiple: 1.15 });
   numero(s, 2);
-  s.addNotes(
-    "PRESENTA: Claudio · 0:50\n\n" +
-    '"Esto está hecho para una persona concreta: el Gerente de Contenidos. Decide adquisiciones cada pocas semanas, tiene criterio de negocio pero no es perfil técnico, y hoy decide sin una vista consolidada del desempeño del catálogo.\n\n' +
-    "El propósito que nos fijamos fue que pudiera responder tres preguntas en menos de un minuto y sin ayuda técnica: qué está funcionando, dónde hay una oportunidad que hoy no ve, y qué hacer al respecto.\n\n" +
-    'Por eso entregamos dos piezas y no una. El dashboard es para su exploración recurrente: le llega una propuesta, filtra por género o país y comprueba en el momento si encaja. El informe es para respaldar la decisión ante su jefatura. El dashboard responde preguntas que todavía no le hicimos; el informe defiende las respuestas que ya tenemos."\n\n' +
-    "Este párrafo es IE2 y la mitad de IE3. Los dos tienen que poder decirlo sin la lámina delante."
-  );
+  s.addNotes("PRESENTA: Matías · 0:40 (0:20 → 1:00)\n\n\"Esto está hecho para una persona: el Gerente de Contenidos. Cada pocas semanas decide qué comprar, qué producir y qué promocionar. Tiene criterio de negocio, no perfil técnico, y hoy decide sin poder ver el catálogo completo. Nuestro objetivo fue que pueda responder estas tres preguntas en menos de un minuto. Por eso entregamos dos piezas: un informe, para defender la decisión ante su jefatura, y un dashboard, para revisarla cada semana. Claudio.\"");
 }
 
 // ════════════════════════════════════════════════════════════════════════════
@@ -248,15 +236,7 @@ function figura(slide, archivo, ancho, alto, caja) {
   });
   pie(s, "Los diez hallazgos de la auditoría están verificados en código, celda por celda, en el notebook 01.");
   numero(s, 3);
-  s.addNotes(
-    "PRESENTA: Claudio · 1:15\n\n" +
-    '"Antes de cualquier gráfico auditamos los datos, y eso cambió el proyecto.\n\n' +
-    `El enunciado pedía relacionar duración con popularidad: la columna duration viene 100% nula en películas y constante en las ${num(K.series)} series. ` +
-    "Pedía análisis por clasificación de edad: rating resultó ser copia exacta de vote_average. Un gráfico de evolución saldría plano por construcción, porque hay exactamente 1.000 títulos por año. " +
-    "Y los datos de usuarios nunca llegaron, así que no medimos retención ni engagement: usamos proxies de recepción y lo declaramos.\n\n" +
-    'Preferimos entregar menos análisis y que cada uno se sostenga, antes que entregar lo que el enunciado sugería sabiendo que no se sostiene."\n\n' +
-    "La lámina que convierte una limitación en un punto a favor. No se corta nunca."
-  );
+  s.addNotes("PRESENTA: Claudio · 1:00 (1:00 → 2:00)\n\nLa lámina que nunca se corta.\n\n\"Antes de hacer un solo gráfico revisamos los datos, y eso cambió el proyecto. El encargo pedía cuatro análisis que estos datos no permiten hacer bien. La duración viene vacía en todas las películas. La clasificación por edad es, en realidad, una copia de la nota. Hay exactamente mil títulos por año, así que cualquier tendencia sería un efecto del muestreo. Y los datos de usuarios nunca llegaron. Podríamos haber hecho esos gráficos igual: se habrían visto bien y habrían estado mal. Preferimos responder menos preguntas, pero que cada respuesta se sostenga.\"");
 }
 
 // ════════════════════════════════════════════════════════════════════════════
@@ -294,11 +274,7 @@ function figura(slide, archivo, ancho, alto, caja) {
     { text: "sin ponderar por votos, el ranking del catálogo lo encabezan títulos con un solo voto y nota 10,0.", options: { color: C.tinta2 } },
   ], { x: M + 0.4, y: 5.4, w: ANCHO - 0.8, h: 1.05, fontSize: 16, valign: "middle" });
   numero(s, 4);
-  s.addNotes(
-    "PRESENTA: Claudio · 0:45 · Si se pasan de tiempo, esta es la primera lámina que se corta.\n\n" +
-    `"Para situar el tamaño: ${num(K.titulos)} títulos, mitad películas y mitad series. Nota media ponderada ${num(K.nota_media, 2)}, y digo ponderada porque sin eso el ranking lo encabezan títulos con un solo voto y nota 10. ` +
-    `ROI mediano ${num(K.roi_mediano, 1)} veces, sobre las ${num(K.con_roi)} películas que tienen datos financieros. Y casi la mitad del catálogo es drama."`
-  );
+  s.addNotes("PRESENTA: Claudio · 0:30 (2:00 → 2:30)\n\nPrimera lámina que se corta si falta tiempo.\n\n\"El catálogo en cuatro números: casi treinta y dos mil títulos, mitad películas y mitad series. Nota media de seis coma siete, ponderada por votos, porque sin eso el primer lugar lo gana un título con un solo voto. Una película típica recauda uno coma siete veces lo que costó. Y casi la mitad del catálogo es drama. Matías.\"");
 }
 
 // ════════════════════════════════════════════════════════════════════════════
@@ -322,14 +298,7 @@ function figura(slide, archivo, ancho, alto, caja) {
   });
   pie(s, "Cortes en las medianas del conjunto. Eje horizontal logarítmico. Datos de catálogo, no de usuarios.");
   numero(s, 5);
-  s.addNotes(
-    "PRESENTA: Claudio · 1:10 · No se corta nunca.\n\n" +
-    '"Aquí está el hallazgo. Cada punto es un género: a la derecha los que más se producen, arriba los que mejor nota reciben.\n\n' +
-    `Abajo a la derecha, terror y suspenso: ${num(K.terror_suspenso_titulos)} títulos distintos, un tercio del catálogo de películas, y las dos peores notas. ` +
-    `Arriba a la izquierda, documental, musical e histórico: ${num(K.doc_mus_hist_titulos)} títulos y ${num(K.brecha_nota_grupos, 2)} puntos más de nota.\n\n` +
-    'Los cortes son las medianas del propio conjunto, no números que elegimos. Y el eje es logarítmico porque drama quintuplica a bélico: en escala lineal el cuadrante de la izquierda se aplasta contra el margen."\n\n' +
-    "Señalar los dos cuadrantes con la mano."
-  );
+  s.addNotes("PRESENTA: Matías · 1:00 (2:30 → 3:30)\n\nSeñalar con la mano: primero abajo a la derecha, después arriba a la izquierda.\n\n\"Aquí está el hallazgo. Cada punto es un género: a la derecha, lo que más se produce; arriba, lo mejor evaluado. Aquí abajo, terror y suspenso: una de cada tres películas, y las dos peores notas. Aquí arriba, documental, musical e histórico: un tercio del volumen y casi ocho décimas más de nota. Es la oportunidad que hoy nadie está mirando. Con esto, la recomendación parecía obvia: producir menos terror. Casi la hacemos. Claudio.\"");
 }
 
 // ════════════════════════════════════════════════════════════════════════════
@@ -354,14 +323,7 @@ function figura(slide, archivo, ancho, alto, caja) {
   figura(s, "21_recepcion_vs_retorno.png", 2703, 1697, { x: 5.25, y: 0.55, w: W - 5.25 - 0.45, h: 6.2, alt: "Nota contra ROI mediano por género" });
   pie(s, `Sobre las ${num(K.con_roi)} películas con presupuesto y recaudación positivos.`);
   numero(s, 6);
-  s.addNotes(
-    "PRESENTA: Matías · 1:15 · No se corta nunca.\n\n" +
-    '"Si nos hubiéramos quedado en la lámina anterior, la recomendación habría estado mal fundada. Cruzamos nota contra retorno y aparecieron dos cosas.\n\n' +
-    `La primera: terror tiene el presupuesto mediano más bajo del catálogo, ${num(K.presupuesto_terror / 1e6)} millones de dólares, contra ${num(K.presupuesto_animacion / 1e6)} de animación. Su ROI mediano es ${num(K.roi_terror, 2)}, sobre la mediana. No es un descuido: es una apuesta de costo, y la nota baja es el precio conocido de esa apuesta.\n\n` +
-    `La segunda: histórico tiene la mejor nota entre las películas con datos financieros y el peor retorno, ${num(K.roi_historico, 2)} veces. Recomendarlo sería recomendar prestigio, no un caso de negocio.\n\n` +
-    'El cuadrante que sí sostiene una inversión es el de arriba a la derecha: animación, familiar, aventura y musical."\n\n' +
-    "Adelantarse aquí desarma las preguntas 9 y 10 del banco antes de que las hagan."
-  );
+  s.addNotes("PRESENTA: Claudio · 1:00 (3:30 → 4:30)\n\n\"Habría sido un error. Cruzamos la nota con la plata y apareció el giro. Terror es el género más barato de producir: siete millones de dólares la película típica, contra cincuenta de animación. Y aun así recauda dos veces lo que costó, más que el catálogo en general. No es un descuido: es una apuesta de costo. Al revés, histórico tiene muy buena nota y el peor retorno: eso es prestigio, no negocio. Lo que gana dos veces, en nota y en plata, son cuatro géneros: animación, familiar, aventura y musical. Arriba a la derecha.\"");
 }
 
 // ════════════════════════════════════════════════════════════════════════════
@@ -424,13 +386,7 @@ function figura(slide, archivo, ancho, alto, caja) {
   });
   pie(s, `Sobre las ${num(K.con_roi)} películas con datos financieros válidos. Gráfico completo en la figura 18 del informe.`);
   numero(s, 7);
-  s.addNotes(
-    "PRESENTA: Matías · 1:10\n\n" +
-    '"Este es el dato que sostiene todo lo demás. Cada punto es una película.\n\n' +
-    `Entre las que la audiencia califica mal, bajo 6, ${Math.round(K.no_recupera_nota_baja)} de cada 100 no recuperan lo que costaron. Entre las bien calificadas, sobre 7, son ${Math.round(K.no_recupera_nota_alta)}.\n\n` +
-    `Y a la derecha, lo que nadie espera: el presupuesto casi no ordena el retorno. ${num(K.spearman_presupuesto, 2)} contra ${num(K.spearman_nota, 2)} de la nota. Sin esa comparación, 'invertir en calidad' no se distingue de 'invertir más'. Con ella, la recomendación se puede defender."\n\n` +
-    "Nunca decir 'correlación' sin traducirla: 'la nota ordena el retorno; el presupuesto no lo ordena'."
-  );
+  s.addNotes("PRESENTA: Claudio · 1:00 (4:30 → 5:30)\n\nPausa de un segundo después de cada cifra.\n\n\"Y este es el dato que sostiene todo. De cada cien películas mal evaluadas, cincuenta y tres no recuperan lo que costaron: más de la mitad pierde plata. De cada cien bien evaluadas, solo veintiuna. A la derecha, lo que nadie espera: cuánto se gastó casi no dice nada sobre cuánto se recupera. En una frase: la nota predice la plata; el presupuesto, no. Gastar más no garantiza nada; producir lo que la audiencia valora, sí. Matías.\"");
 }
 
 // ════════════════════════════════════════════════════════════════════════════
@@ -465,12 +421,7 @@ function figura(slide, archivo, ancho, alto, caja) {
   ], { x: tx, y: 4.65, w: tw, h: 1.9, fontSize: 15, valign: "top", lineSpacingMultiple: 1.1 });
   pie(s, "Países con ≥150 títulos con votación suficiente. Un título coproducido cuenta en cada país que lo lista.");
   numero(s, 8);
-  s.addNotes(
-    "PRESENTA: Matías · 0:50 · Segunda lámina que se corta si falta tiempo.\n\n" +
-    `"Por origen: Japón ${num(K.japon_nota, 2)} y Corea del Sur ${num(K.corea_nota, 2)} encabezan la recepción. Estados Unidos aporta casi la mitad de las películas con nota ${num(K.eeuu_nota, 2)}: de los ${K.paises_ranking} países con más de 150 títulos, ${K.eeuu_puesto - 1} reciben mejor nota.\n\n` +
-    "El corte por idioma ordena igual, y que dos cortes independientes den el mismo orden es lo que nos da confianza.\n\n" +
-    'Cuidado con lo que esto no dice: no dice que el contenido asiático sea mejor. Dice que, entre lo que este catálogo ya tiene, recibe mejores calificaciones. Es subrepresentación relativa."'
-  );
+  s.addNotes("PRESENTA: Matías · 0:40 (5:30 → 6:10)\n\nSegunda lámina que se corta si falta tiempo.\n\n\"Lo mismo pasa por país. Japón es el país mejor evaluado del catálogo, y Corea del Sur está entre los tres primeros. Estados Unidos aporta casi la mitad de las películas y queda en el puesto quince de veinticuatro. Ojo: no decimos que el contenido asiático sea mejor. Decimos que, dentro de este catálogo, está subrepresentado respecto de cómo se recibe.\"");
 }
 
 // ════════════════════════════════════════════════════════════════════════════
@@ -513,13 +464,7 @@ function figura(slide, archivo, ancho, alto, caja) {
     texto(s, evid, { x: px + 0.3, y: py + 4.38, w: w - 0.6, h: 0.3, fontSize: 11, color: C.tenue });
   });
   numero(s, 9);
-  s.addNotes(
-    "PRESENTA: Matías · 1:35 · No se corta nunca. Las tres, de memoria, con su número.\n\n" +
-    '"Tres decisiones, cada una con una meta que permite comprobar en doce meses si se cumplió.\n\n' +
-    `Una: reequilibrar hacia animación, familiar, aventura y musical, los únicos cuatro géneros sobre la mediana en recepción y en retorno. Hoy son el ${pct(K.meta1_actual)} de las películas; la meta es 30% de las nuevas adquisiciones. Y subrayo: no es dejar de producir terror. Es mover el margen de crecimiento.\n\n` +
-    `Dos: abrir una línea de adquisición en Japón y Corea del Sur. Hoy son el ${pct(K.meta2_actual)}; la meta es 18%.\n\n` +
-    `Tres: condicionar el presupuesto a la recepción esperada. Ningún proyecto del cuartil superior de presupuesto sin evidencia de recepción comparable. La meta es bajar del ${pct(K.no_recupera_total)} al 30% las películas que no recuperan lo invertido."`
-  );
+  s.addNotes("PRESENTA: Matías · 1:20 (6:10 → 7:30)\n\nLas tres de memoria, con su número. Al terminar, Claudio cambia al dashboard.\n\n\"Tres decisiones, cada una con una meta que se puede comprobar en doce meses. Uno: mover la compra hacia los cuatro géneros que ganan dos veces. Hoy son el veintidós por ciento de las películas; la meta es treinta. Y no es dejar de producir terror: es decidir hacia dónde crece el catálogo. Dos: abrir una línea de compra en Japón y Corea del Sur. Hoy son menos del doce por ciento; la meta es dieciocho. Tres: que el presupuesto siga a la recepción esperada, y no al revés. Ningún proyecto de los más caros sin evidencia de que se va a recibir bien. Hoy treinta y siete de cada cien películas no recuperan lo que costaron; la meta es bajar a treinta. Estas decisiones se revisan cada semana, y para eso construimos una herramienta. Claudio.\"\n\n── DEMO DEL DASHBOARD · Claudio · 1:50 (7:30 → 9:20) ──\nCambiar a la pestaña del dashboard y presionar F. Paso 1: filtro País → Japón. Paso 2: limpiar el filtro, ir a «3 · decisión» y poner Tipo → Películas. Paso 3: bajar a la tabla.\n\n\"Este es el dashboard que usaría el Gerente. Tiene tres páginas, en el mismo orden que la presentación: contexto, hallazgo y decisión. Supongamos que llega una propuesta: comprar películas japonesas. ¿Encaja? Filtro por Japón. La nota sube a siete coma dos, medio punto sobre el catálogo, y el retorno a dos coma setenta y siete, más de un punto por encima. En diez segundos, la recomendación dos se comprueba sin nosotros. Y aquí se pasa a la acción: es el mismo gráfico de la lámina cinco, pero vivo. Cambia con cada filtro, y el título se reescribe solo con la conclusión. Abajo está la lista corta: los títulos mejor evaluados de los géneros en oportunidad. Es, literalmente, una lista de compras. Matías.\"");
 }
 
 // ════════════════════════════════════════════════════════════════════════════
@@ -541,13 +486,7 @@ function figura(slide, archivo, ancho, alto, caja) {
     x: M, y: 6.9, w: 8, h: 0.35, fontSize: 12, bold: true, color: C.blanco,
   });
   numero(s, 10, true);
-  s.addNotes(
-    "PRESENTA: Matías · 0:50 · No se corta nunca.\n\n" +
-    '"Cerramos con lo que no sabemos, porque es lo más honesto que podemos decir.\n\n' +
-    "Sabemos qué títulos reciben mejor nota de quienes los calificaron. No sabemos cuántas personas los vieron ni cuántas se suscribieron por ellos. Sin datos de consumo, todo lo que dijimos es sobre composición del catálogo, no sobre comportamiento de audiencia.\n\n" +
-    'Con reproducciones y suscripciones se podría medir si la recepción alta se traduce en retención, que es lo que el negocio realmente quiere saber. No está en estos datos, y por eso no lo afirmamos. Gracias."\n\n' +
-    "No pedir disculpas por la debilidad: enunciarla como una decisión. Es lo que IE12 premia."
-  );
+  s.addNotes("PRESENTA: Matías · 0:40 (9:20 → 10:00)\n\nVolver a la pestaña de la presentación, lámina 10.\n\n\"Cerramos con lo que no sabemos. Sabemos qué títulos se reciben bien; no sabemos cuántas personas los vieron ni cuántas se quedaron por ellos. Sin datos de consumo, todo esto es sobre la composición del catálogo, no sobre el comportamiento de la audiencia. Si se quedan con una sola idea, que sea esta: la nota predice la plata; el presupuesto, no. Gracias.\"");
 }
 
 pres.writeFile({ fileName: SALIDA }).then((f) => console.log(`→ ${path.relative(RAIZ, f)}`));

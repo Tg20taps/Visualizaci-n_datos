@@ -5,6 +5,8 @@
 
 **Formato de la defensa:** 10 minutos. Primero se presenta el **informe narrativo** (`docs/informe_narrativo.html`, se recorre con scroll) y después una **demo en vivo del dashboard** (`dashboard/streamview_dashboard.html`).
 
+> **¿Van a presentar con las láminas (`presentacion.pdf`)?** El guion lámina por lámina está en el **punto 8**, al final.
+
 **Regla que manda sobre todo lo demás:** la pantalla apoya y la voz explica. En pantalla van las cifras. La voz dice qué significan y qué hacer con ellas. Si lo que se dice es lo que ya está escrito en pantalla, se pierde IE11 aunque el contenido sea correcto.
 
 **A quién le hablamos:** al *dueño del problema*, no a un técnico. Por eso en voz alta no se dice "correlación", "Z-score", "mediana ponderada" ni "ROI" sin traducirlo en la misma frase. El ROI se dice así: *"cuánto recauda por cada dólar que costó"*.
@@ -284,3 +286,87 @@ Regla: contesta primero quien presentó esa parte; el otro solo complementa si q
 - **Tarea 33, ensayo cruzado:** una pasada completa con los roles invertidos: Claudio hace A, C, E y G; Matías hace B, D y F. Si alguno se traba, esa parte no está entendida.
 - **Tarea 34, ensayo final:** con cronómetro y con el HTML y el dashboard reales en el computador de la presentación. Anotar el tiempo de cada bloque en la tabla del punto 2. Si pasa de 10:00, se aplica el orden de corte; no se habla más rápido.
 - **Checklist de voz:** mirar a la audiencia y no a la pantalla, una pausa de un segundo después de cada cifra grande, y señalar con la mano, no con el mouse.
+
+---
+
+## 8 · Guion con las láminas (`presentacion.pdf` / `.pptx`)
+
+Es la versión para presentar **con las 10 láminas**, con la demo del dashboard entre la lámina 9 y la 10. Suma 10:00 exactos. Las voces se alternan: Matías abre y cierra; Claudio hace la auditoría, el giro y la demo. El mismo texto está en las notas del orador de `docs/presentacion.pptx`.
+
+| Lámina | Habla | Tiempo | De → a |
+|---|---|---|---|
+| 1 · Portada | **Matías** | 0:20 | 0:00 → 0:20 |
+| 2 · Audiencia y propósito | **Matías** | 0:40 | 0:20 → 1:00 |
+| 3 · Auditamos los datos primero | **Claudio** | 1:00 | 1:00 → 2:00 |
+| 4 · Los cuatro números | **Claudio** | 0:30 | 2:00 → 2:30 |
+| 5 · El hallazgo | **Matías** | 1:00 | 2:30 → 3:30 |
+| 6 · Terror no es un error | **Claudio** | 1:00 | 3:30 → 4:30 |
+| 7 · La nota predice la plata | **Claudio** | 1:00 | 4:30 → 5:30 |
+| 8 · Japón y Corea | **Matías** | 0:40 | 5:30 → 6:10 |
+| 9 · Tres decisiones | **Matías** | 1:20 | 6:10 → 7:30 |
+| Demo · Demo del dashboard | **Claudio** | 1:50 | 7:30 → 9:20 |
+| 10 · Lo que no sabemos y cierre | **Matías** | 0:40 | 9:20 → 10:00 |
+
+**Orden de corte si se pasan:** primero la lámina 4 (se dice «casi treinta y dos mil títulos» en la 3); después la 8 (la recomendación 2 igual cita a Japón y Corea); después se acorta la demo a solo el filtro de Japón. Nunca se cortan la 3, la 5, la 6, la 7, la 9 ni la 10.
+
+### Lámina 1 · Portada — *Matías* — 0:00 → 0:20
+
+*Esperar dos segundos en silencio antes de hablar.*
+
+> "Buenas. Somos Matías Retamal y Claudio González. Analizamos los casi treinta y dos mil títulos del catálogo de StreamView con una sola pregunta: ¿lo que más producimos es lo que la audiencia mejor recibe? La respuesta está en el título: no. Y esa diferencia tiene un costo que se puede medir."
+
+### Lámina 2 · Audiencia y propósito — *Matías* — 0:20 → 1:00
+
+> "Esto está hecho para una persona: el Gerente de Contenidos. Cada pocas semanas decide qué comprar, qué producir y qué promocionar. Tiene criterio de negocio, no perfil técnico, y hoy decide sin poder ver el catálogo completo. Nuestro objetivo fue que pueda responder estas tres preguntas en menos de un minuto. Por eso entregamos dos piezas: un informe, para defender la decisión ante su jefatura, y un dashboard, para revisarla cada semana. Claudio."
+
+### Lámina 3 · Auditamos los datos primero — *Claudio* — 1:00 → 2:00
+
+*La lámina que nunca se corta.*
+
+> "Antes de hacer un solo gráfico revisamos los datos, y eso cambió el proyecto. El encargo pedía cuatro análisis que estos datos no permiten hacer bien. La duración viene vacía en todas las películas. La clasificación por edad es, en realidad, una copia de la nota. Hay exactamente mil títulos por año, así que cualquier tendencia sería un efecto del muestreo. Y los datos de usuarios nunca llegaron. Podríamos haber hecho esos gráficos igual: se habrían visto bien y habrían estado mal. Preferimos responder menos preguntas, pero que cada respuesta se sostenga."
+
+### Lámina 4 · Los cuatro números — *Claudio* — 2:00 → 2:30
+
+*Primera lámina que se corta si falta tiempo.*
+
+> "El catálogo en cuatro números: casi treinta y dos mil títulos, mitad películas y mitad series. Nota media de seis coma siete, ponderada por votos, porque sin eso el primer lugar lo gana un título con un solo voto. Una película típica recauda uno coma siete veces lo que costó. Y casi la mitad del catálogo es drama. Matías."
+
+### Lámina 5 · El hallazgo — *Matías* — 2:30 → 3:30
+
+*Señalar con la mano: primero abajo a la derecha, después arriba a la izquierda.*
+
+> "Aquí está el hallazgo. Cada punto es un género: a la derecha, lo que más se produce; arriba, lo mejor evaluado. Aquí abajo, terror y suspenso: una de cada tres películas, y las dos peores notas. Aquí arriba, documental, musical e histórico: un tercio del volumen y casi ocho décimas más de nota. Es la oportunidad que hoy nadie está mirando. Con esto, la recomendación parecía obvia: producir menos terror. Casi la hacemos. Claudio."
+
+### Lámina 6 · Terror no es un error — *Claudio* — 3:30 → 4:30
+
+> "Habría sido un error. Cruzamos la nota con la plata y apareció el giro. Terror es el género más barato de producir: siete millones de dólares la película típica, contra cincuenta de animación. Y aun así recauda dos veces lo que costó, más que el catálogo en general. No es un descuido: es una apuesta de costo. Al revés, histórico tiene muy buena nota y el peor retorno: eso es prestigio, no negocio. Lo que gana dos veces, en nota y en plata, son cuatro géneros: animación, familiar, aventura y musical. Arriba a la derecha."
+
+### Lámina 7 · La nota predice la plata — *Claudio* — 4:30 → 5:30
+
+*Pausa de un segundo después de cada cifra.*
+
+> "Y este es el dato que sostiene todo. De cada cien películas mal evaluadas, cincuenta y tres no recuperan lo que costaron: más de la mitad pierde plata. De cada cien bien evaluadas, solo veintiuna. A la derecha, lo que nadie espera: cuánto se gastó casi no dice nada sobre cuánto se recupera. En una frase: la nota predice la plata; el presupuesto, no. Gastar más no garantiza nada; producir lo que la audiencia valora, sí. Matías."
+
+### Lámina 8 · Japón y Corea — *Matías* — 5:30 → 6:10
+
+*Segunda lámina que se corta si falta tiempo.*
+
+> "Lo mismo pasa por país. Japón es el país mejor evaluado del catálogo, y Corea del Sur está entre los tres primeros. Estados Unidos aporta casi la mitad de las películas y queda en el puesto quince de veinticuatro. Ojo: no decimos que el contenido asiático sea mejor. Decimos que, dentro de este catálogo, está subrepresentado respecto de cómo se recibe."
+
+### Lámina 9 · Tres decisiones — *Matías* — 6:10 → 7:30
+
+*Las tres de memoria, con su número. Al terminar, Claudio cambia al dashboard.*
+
+> "Tres decisiones, cada una con una meta que se puede comprobar en doce meses. Uno: mover la compra hacia los cuatro géneros que ganan dos veces. Hoy son el veintidós por ciento de las películas; la meta es treinta. Y no es dejar de producir terror: es decidir hacia dónde crece el catálogo. Dos: abrir una línea de compra en Japón y Corea del Sur. Hoy son menos del doce por ciento; la meta es dieciocho. Tres: que el presupuesto siga a la recepción esperada, y no al revés. Ningún proyecto de los más caros sin evidencia de que se va a recibir bien. Hoy treinta y siete de cada cien películas no recuperan lo que costaron; la meta es bajar a treinta. Estas decisiones se revisan cada semana, y para eso construimos una herramienta. Claudio."
+
+### Demo del dashboard — *Claudio* — 7:30 → 9:20
+
+*Cambiar a la pestaña del dashboard y presionar F. Paso 1: filtro País → Japón. Paso 2: limpiar el filtro, ir a «3 · decisión» y poner Tipo → Películas. Paso 3: bajar a la tabla.*
+
+> "Este es el dashboard que usaría el Gerente. Tiene tres páginas, en el mismo orden que la presentación: contexto, hallazgo y decisión. Supongamos que llega una propuesta: comprar películas japonesas. ¿Encaja? Filtro por Japón. La nota sube a siete coma dos, medio punto sobre el catálogo, y el retorno a dos coma setenta y siete, más de un punto por encima. En diez segundos, la recomendación dos se comprueba sin nosotros. Y aquí se pasa a la acción: es el mismo gráfico de la lámina cinco, pero vivo. Cambia con cada filtro, y el título se reescribe solo con la conclusión. Abajo está la lista corta: los títulos mejor evaluados de los géneros en oportunidad. Es, literalmente, una lista de compras. Matías."
+
+### Lámina 10 · Lo que no sabemos y cierre — *Matías* — 9:20 → 10:00
+
+*Volver a la pestaña de la presentación, lámina 10.*
+
+> "Cerramos con lo que no sabemos. Sabemos qué títulos se reciben bien; no sabemos cuántas personas los vieron ni cuántas se quedaron por ellos. Sin datos de consumo, todo esto es sobre la composición del catálogo, no sobre el comportamiento de la audiencia. Si se quedan con una sola idea, que sea esta: la nota predice la plata; el presupuesto, no. Gracias."
