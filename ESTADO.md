@@ -148,7 +148,8 @@ python src/informe/generar.py   # los dos PDF, el informe narrativo HTML y la .p
 
 - **Si cambia una cifra, no se edita un documento a mano.** Se corrige en `src/analisis.py` o en el HTML de `src/informe/` y se vuelve a generar. Así el informe no puede quedar diciendo algo distinto de los gráficos.
 - **Los gráficos usan la fuente Inter.** Si no está instalada, matplotlib usa DejaVu Sans y los PNG cambian levemente. Los archivos woff2 están en `assets/fuentes/`.
-- **El dashboard necesita sus archivos juntos** (`streamview_dashboard.html`, `estilo.css`, `graficos.js`, `app.js`, `datos.js` y la carpeta `fuentes/`).
+- **Para compartir el dashboard, usar `dashboard/streamview_dashboard_un_archivo.html`:** trae todo adentro y funciona suelto. Se regenera con `python src/empaquetar_dashboard.py` cada vez que cambia el dashboard.
+- **La versión de desarrollo sí necesita sus archivos juntos** (`streamview_dashboard.html`, `estilo.css`, `graficos.js`, `app.js`, `datos.js` y la carpeta `fuentes/`).
 
 ---
 
